@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Flowing Wave Background */
+@keyframes wave1 {
+  0%, 100% { 
+    transform: translateX(-50%) translateY(-50%) rotate(0deg) scale(1);
+  }
+  33% { 
+    transform: translateX(-50%) translateY(-50%) rotate(120deg) scale(1.1);
+  }
+  66% { 
+    transform: translateX(-50%) translateY(-50%) rotate(240deg) scale(0.9);
+  }
+}
+
+@keyframes wave2 {
+  0%, 100% { 
+    transform: translateX(-50%) translateY(-50%) rotate(45deg) scale(0.8);
+  }
+  50% { 
+    transform: translateX(-50%) translateY(-50%) rotate(225deg) scale(1.2);
+  }
+}
+
+@keyframes wave3 {
+  0%, 100% { 
+    transform: translateX(-50%) translateY(-50%) rotate(-30deg) scale(1.1);
+  }
+  25% { 
+    transform: translateX(-50%) translateY(-50%) rotate(90deg) scale(0.7);
+  }
+  75% { 
+    transform: translateX(-50%) translateY(-50%) rotate(270deg) scale(1.3);
+  }
+}
+
+@keyframes wave4 {
+  0%, 100% { 
+    transform: translateX(-50%) translateY(-50%) rotate(60deg) scale(0.9);
+  }
+  40% { 
+    transform: translateX(-50%) translateY(-50%) rotate(180deg) scale(1.1);
+  }
+  80% { 
+    transform: translateX(-50%) translateY(-50%) rotate(300deg) scale(0.8);
+  }
+}
+
+.flowing-waves {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  background: #0F0F0F;
+}
+
+.wave {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200vmax;
+  height: 200vmax;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.6;
+  mix-blend-mode: screen;
+}
+
+.wave:nth-child(1) {
+  background: radial-gradient(ellipse at center, 
+    rgba(147, 51, 234, 0.4) 0%, 
+    rgba(147, 51, 234, 0.2) 25%, 
+    rgba(79, 70, 229, 0.1) 50%, 
+    transparent 70%);
+  animation: wave1 20s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.wave:nth-child(2) {
+  background: radial-gradient(ellipse at center, 
+    rgba(79, 70, 229, 0.3) 0%, 
+    rgba(139, 92, 246, 0.2) 30%, 
+    rgba(147, 51, 234, 0.1) 60%, 
+    transparent 80%);
+  animation: wave2 25s ease-in-out infinite;
+  animation-delay: -5s;
+}
+
+.wave:nth-child(3) {
+  background: radial-gradient(ellipse at center, 
+    rgba(139, 92, 246, 0.4) 0%, 
+    rgba(147, 51, 234, 0.2) 20%, 
+    rgba(79, 70, 229, 0.1) 40%, 
+    transparent 60%);
+  animation: wave3 30s ease-in-out infinite;
+  animation-delay: -10s;
+}
+
+.wave:nth-child(4) {
+  background: radial-gradient(ellipse at center, 
+    rgba(168, 85, 247, 0.3) 0%, 
+    rgba(139, 92, 246, 0.2) 35%, 
+    rgba(79, 70, 229, 0.1) 70%, 
+    transparent 90%);
+  animation: wave4 35s ease-in-out infinite;
+  animation-delay: -15s;
+}
+
+.wave:nth-child(5) {
+  background: radial-gradient(ellipse at center, 
+    rgba(124, 58, 237, 0.2) 0%, 
+    rgba(147, 51, 234, 0.15) 40%, 
+    rgba(139, 92, 246, 0.1) 80%, 
+    transparent 100%);
+  animation: wave1 40s ease-in-out infinite reverse;
+  animation-delay: -20s;
+}
