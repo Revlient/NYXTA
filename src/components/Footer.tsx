@@ -31,7 +31,7 @@ export const Footer: React.FC = () => {
   ];
 
   const socialLinks = [
-    { icon: <Instagram className="w-5 h-5" />, href: '#', name: 'Instagram' },
+    { icon: <Instagram className="w-5 h-5" />, href: 'https://www.instagram.com/nyxtahostels?igsh=cHV6MDFzNGZrcWg5', name: 'Instagram' },
     { icon: <Facebook className="w-5 h-5" />, href: '#', name: 'Facebook' },
     { icon: <Twitter className="w-5 h-5" />, href: '#', name: 'Twitter' },
     { icon: <Youtube className="w-5 h-5" />, href: '#', name: 'YouTube' }
@@ -147,8 +147,9 @@ export const Footer: React.FC = () => {
                   <MapPin className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="text-white/70 text-sm">
-                      123 Downtown Street<br />
-                      City Center, State 12345
+                      Behind Nice Chemicals <br />
+                      Edappally Cochin 24  <br />
+                      PIN 682024
                     </p>
                   </div>
                 </div>
@@ -156,14 +157,15 @@ export const Footer: React.FC = () => {
                 <div className="flex items-center space-x-3">
                   <Phone className="w-5 h-5 text-blue-400" />
                   <a href="tel:+15551234567" className="text-white/70 hover:text-white transition-colors">
-                    +1 (555) 123-4567
+                    8921-111503 <br />
+                    884-8574001
                   </a>
                 </div>
                 
                 <div className="flex items-center space-x-3">
                   <Mail className="w-5 h-5 text-teal-400" />
-                  <a href="mailto:info@nyxtahostels.com" className="text-white/70 hover:text-white transition-colors">
-                    info@nyxtahostels.com
+                  <a href="mailto:yxtahostels@gmail.com" className="text-white/70 hover:text-white transition-colors">
+                    nyxtahostels@gmail.com
                   </a>
                 </div>
 
@@ -174,7 +176,7 @@ export const Footer: React.FC = () => {
               </div>
 
               {/* Newsletter Signup */}
-              <div className="bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-sm rounded-xl border border-white/20 p-4">
+              {/* <div className="bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-sm rounded-xl border border-white/20 p-4">
                 <h5 className="text-white font-medium mb-2">Newsletter</h5>
                 <p className="text-white/60 text-sm mb-3">Get special offers & updates</p>
                 <div className="flex space-x-2">
@@ -187,7 +189,7 @@ export const Footer: React.FC = () => {
                     Subscribe
                   </button>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -195,22 +197,9 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 bg-black/20 backdrop-blur-sm">
           <div className="container mx-auto px-6 py-6">
-            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0">
               <div className="text-white/60 text-sm">
                 © {currentYear} Nyxta Hostels. All rights reserved.
-              </div>
-              
-              <div className="flex items-center space-x-6 text-sm text-white/60">
-                <span>Made with ❤️ for travelers</span>
-                <span>•</span>
-                <span>Premium Hosting Experience</span>
-              </div>
-
-              <div className="flex items-center space-x-4">
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-white/60 text-sm">Online Booking Available</span>
-                </div>
               </div>
             </div>
           </div>

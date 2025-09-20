@@ -84,19 +84,19 @@ export const Contact: React.FC = () => {
     {
       icon: <MapPin className="w-6 h-6" />,
       title: 'Address',
-      details: ['123 Downtown Street', 'City Center, State 12345'],
+      details: ['Behind Nice Chemicals', 'Edappally Cochin 24 ' ,'PIN 682024'],
       gradient: 'from-purple-500 to-blue-500'
     },
     {
       icon: <Phone className="w-6 h-6" />,
       title: 'Phone',
-      details: ['+91 8848574001'],
+      details: ['8921-111503' , '884-8574001'],
       gradient: 'from-blue-500 to-teal-500'
     },
     {
       icon: <Mail className="w-6 h-6" />,
       title: 'Email',
-      details: ['info@nyxtahostels.com', 'bookings@nyxtahostels.com'],
+      details: ['nyxtahostels@gmail.com'],
       gradient: 'from-teal-500 to-purple-500'
     },
     {
