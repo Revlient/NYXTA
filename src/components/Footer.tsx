@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { 
   MapPin, 
   Phone, 
@@ -11,24 +12,22 @@ import {
   Shield,
   Award
 } from 'lucide-react';
+import { TermsAndConditions } from './TermsAndConditions';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const [showTerms, setShowTerms] = useState(false);
 
   const quickLinks = [
     { name: 'About Us', href: '#about' },
-    { name: 'Rooms & Pricing', href: '#rooms' },
+    { name: 'Hostels', href: '#hostels' },
     { name: 'Amenities', href: '#amenities' },
     { name: 'Gallery', href: '#gallery' },
     { name: 'Contact', href: '#contact' }
   ];
 
   const policies = [
-    { name: 'Privacy Policy', href: '#' },
-    { name: 'Terms of Service', href: '#' },
-    { name: 'Cancellation Policy', href: '#' },
-    { name: 'House Rules', href: '#' },
-    { name: 'Safety Guidelines', href: '#' }
+    { name: 'Terms & Conditions', href: '#', action: () => setShowTerms(true) },
   ];
 
   const socialLinks = [
@@ -60,9 +59,9 @@ export const Footer: React.FC = () => {
               <div>
                 <div className="flex items-center space-x-3 mb-4">
                   <img 
-                    src="/nyxta_hostels_pdf_page-0001-removebg-preview.png" 
+                    src="/logo.png" 
                     alt="Nyxta Hostels Logo" 
-                    className="h-20 w-auto"
+                    className="h-20 align-middle justify-center fle w-auto"
                   />
                 </div>
                 <p className="text-white/70 leading-relaxed">
@@ -72,7 +71,7 @@ export const Footer: React.FC = () => {
               </div>
 
               {/* Awards & Certifications */}
-              <div className="space-y-3">
+              {/* <div className="space-y-3">
                 <h4 className="text-white font-semibold">Certified Excellence</h4>
                 <div className="flex space-x-4">
                   <div className="flex items-center space-x-2 text-white/60">
@@ -86,7 +85,7 @@ export const Footer: React.FC = () => {
                     <span className="text-sm">Safety Certified</span>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               {/* Social Links */}
               <div>
@@ -129,13 +128,13 @@ export const Footer: React.FC = () => {
               <h4 className="text-xl font-semibold text-white">Policies</h4>
               <nav className="space-y-3">
                 {policies.map((policy, index) => (
-                  <a
+                  <button
                     key={index}
-                    href={policy.href}
-                    className="block text-white/70 hover:text-white hover:translate-x-2 transition-all duration-300"
+                    onClick={policy.action || (() => {})}
+                    className="block text-left text-white/70 hover:text-white hover:translate-x-2 transition-all duration-300"
                   >
                     {policy.name}
-                  </a>
+                  </button>
                 ))}
               </nav>
             </div>
@@ -217,6 +216,12 @@ export const Footer: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Terms and Conditions Modal */}
+      <TermsAndConditions
+        isOpen={showTerms} 
+        onClose={() => setShowTerms(false)} 
+      />
     </footer>
   );
 };

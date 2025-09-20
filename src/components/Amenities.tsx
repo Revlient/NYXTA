@@ -1,134 +1,150 @@
-import React, { useEffect, useRef } from 'react';
-import { Wifi, Coffee, Car, Utensils, Gamepad2, Dumbbell, WashingMachine as Washing, Shield, Clock, MapPin, Users, Headphones } from 'lucide-react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useEffect, useRef } from "react";
+import {
+  Wifi,
+  Coffee,
+  Car,
+  Utensils,
+  Gamepad2,
+  Dumbbell,
+  WashingMachine as Washing,
+  Shield,
+  Clock,
+  MapPin,
+  Users,
+  Headphones,
+  Bed,
+  BedDouble,
+  ParkingCircle,
+  BathIcon,
+  GlassWater,
+  BellElectric,
+  Camera,
+  Bug,
+} from "lucide-react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export const Amenities: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const amenities = [
-    { 
-      icon: <Wifi className="w-8 h-8" />, 
-      title: 'High-Speed WiFi', 
-      description: 'Complimentary ultra-fast internet throughout the property',
-      gradient: 'from-blue-500 to-cyan-500'
+    {
+      icon: <Wifi className="w-8 h-8" />,
+      title: "High-Speed WiFi",
+      description: "Complimentary ultra-fast internet throughout the property",
+      gradient: "from-blue-500 to-cyan-500",
     },
-    { 
-      icon: <Coffee className="w-8 h-8" />, 
-      title: 'Coffee Lounge', 
-      description: 'Premium coffee bar open 24/7 with barista service',
-      gradient: 'from-amber-500 to-orange-500'
+    {
+      icon: <Utensils className="w-8 h-8" />,
+      title: "Full Kitchen",
+      description:
+        "Modern communal kitchen fully equipped with appliances and utensils",
+      gradient: "from-red-500 to-pink-500",
     },
-    { 
-      icon: <Car className="w-8 h-8" />, 
-      title: 'Parking', 
-      description: 'Secure covered parking available for guests',
-      gradient: 'from-green-500 to-emerald-500'
+    {
+      icon: <BedDouble className="w-8 h-8" />,
+      title: "Double & Single Decker Beds",
+      description:
+        "Comfortable bunk beds offering both privacy and space efficiency",
+      gradient: "from-blue-500 to-cyan-500",
     },
-    { 
-      icon: <Utensils className="w-8 h-8" />, 
-      title: 'Full Kitchen', 
-      description: 'Modern communal kitchen with all appliances',
-      gradient: 'from-red-500 to-pink-500'
+    {
+      icon: <Car className="w-8 h-8" />,
+      title: "Parking Facility",
+      description:
+        "Secure and convenient parking space available for residents",
+      gradient: "from-red-500 to-pink-500",
     },
-    { 
-      icon: <Gamepad2 className="w-8 h-8" />, 
-      title: 'Gaming Zone', 
-      description: 'Console gaming area with latest games and VR',
-      gradient: 'from-purple-500 to-violet-500'
+    {
+      icon: <BathIcon className="w-8 h-8" />,
+      title: "Attached Bathrooms",
+      description: "Private bathrooms with modern fittings for added comfort",
+      gradient: "from-blue-500 to-cyan-500",
     },
-    { 
-      icon: <Dumbbell className="w-8 h-8" />, 
-      title: 'Fitness Center', 
-      description: 'Fully equipped gym with modern equipment',
-      gradient: 'from-orange-500 to-red-500'
+    {
+      icon: <GlassWater className="w-8 h-8" />,
+      title: "Purified Drinking Water",
+      description: "Clean and safe purified water available 24/7",
+      gradient: "from-red-500 to-pink-500",
     },
-    { 
-      icon: <Washing className="w-8 h-8" />, 
-      title: 'Laundry', 
-      description: 'Self-service laundry facilities with detergent',
-      gradient: 'from-teal-500 to-blue-500'
+    {
+      icon: <BellElectric className="w-8 h-8" />,
+      title: "Electricity Charges Included",
+      description: "No extra electricity bills — fully covered in the rent",
+      gradient: "from-blue-500 to-cyan-500",
     },
-    { 
-      icon: <Shield className="w-8 h-8" />, 
-      title: '24/7 Security', 
-      description: 'Round-the-clock security with CCTV monitoring',
-      gradient: 'from-gray-500 to-slate-500'
+    {
+      icon: <Camera className="w-8 h-8" />,
+      title: "CCTV Surveillance",
+      description: "24/7 security monitoring for a safe and secure environment",
+      gradient: "from-red-500 to-pink-500",
     },
-    { 
-      icon: <Clock className="w-8 h-8" />, 
-      title: 'Reception', 
-      description: '24-hour front desk assistance and concierge',
-      gradient: 'from-indigo-500 to-blue-500'
+    {
+      icon: <Bug className="w-8 h-8" />,
+      title: "Bed Bug Treatment",
+      description:
+        "Regular preventive treatment for a clean and pest-free stay",
+      gradient: "from-blue-500 to-cyan-500",
     },
-    { 
-      icon: <MapPin className="w-8 h-8" />, 
-      title: 'Tour Desk', 
-      description: 'Local tours and attraction booking service',
-      gradient: 'from-pink-500 to-rose-500'
+    {
+      icon: <Washing className="w-8 h-8" />,
+      title: "Traditional Washing Area",
+      description:
+        "Dedicated washing space for clothes and daily laundry needs",
+      gradient: "from-red-500 to-pink-500",
     },
-    { 
-      icon: <Users className="w-8 h-8" />, 
-      title: 'Social Events', 
-      description: 'Regular social activities and networking events',
-      gradient: 'from-cyan-500 to-teal-500'
-    },
-    { 
-      icon: <Headphones className="w-8 h-8" />, 
-      title: 'Silent Areas', 
-      description: 'Quiet zones for work and relaxation',
-      gradient: 'from-violet-500 to-purple-500'
-    }
   ];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo('.amenities-title',
+      gsap.fromTo(
+        ".amenities-title",
         { y: 60, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           duration: 1,
-          ease: 'power3.out',
+          ease: "power3.out",
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 80%'
-          }
+            start: "top 80%",
+          },
         }
       );
 
-      gsap.fromTo('.amenity-card',
+      gsap.fromTo(
+        ".amenity-card",
         { y: 80, opacity: 0, scale: 0.8 },
         {
           y: 0,
           opacity: 1,
           scale: 1,
           duration: 0.8,
-          ease: 'power3.out',
+          ease: "power3.out",
           stagger: 0.1,
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 70%',
-            end: 'bottom 30%'
-          }
+            start: "top 70%",
+            end: "bottom 30%",
+          },
         }
       );
 
       // Hover animations
-      document.querySelectorAll('.amenity-card').forEach((card) => {
-        card.addEventListener('mouseenter', () => {
-          gsap.to(card, { 
-            scale: 1.05, 
-            duration: 0.3, 
-            ease: 'power2.out' 
+      document.querySelectorAll(".amenity-card").forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+          gsap.to(card, {
+            scale: 1.05,
+            duration: 0.3,
+            ease: "power2.out",
           });
         });
-        
-        card.addEventListener('mouseleave', () => {
-          gsap.to(card, { 
-            scale: 1, 
-            duration: 0.3, 
-            ease: 'power2.out' 
+
+        card.addEventListener("mouseleave", () => {
+          gsap.to(card, {
+            scale: 1,
+            duration: 0.3,
+            ease: "power2.out",
           });
         });
       });
@@ -138,7 +154,11 @@ export const Amenities: React.FC = () => {
   }, []);
 
   return (
-    <section id="amenities" ref={sectionRef} className="py-20 relative overflow-hidden">
+    <section
+      id="amenities"
+      ref={sectionRef}
+      className="py-20 relative overflow-hidden"
+    >
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="amenities-title text-5xl font-bold mb-6">
@@ -148,7 +168,8 @@ export const Amenities: React.FC = () => {
             </span>
           </h2>
           <p className="text-xl text-white/70 max-w-2xl mx-auto">
-            Enjoy world-class facilities and services designed to make your stay comfortable and memorable
+            Enjoy world-class facilities and services designed to make your stay
+            comfortable and memorable
           </p>
         </div>
 
@@ -160,10 +181,14 @@ export const Amenities: React.FC = () => {
               className="amenity-card group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border border-white/20 p-6 hover:border-white/30 transition-all duration-300 cursor-pointer"
             >
               {/* Background gradient effect */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${amenity.gradient} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300`} />
-              
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${amenity.gradient} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300`}
+              />
+
               {/* Icon container */}
-              <div className={`relative mb-4 w-16 h-16 bg-gradient-to-br ${amenity.gradient} rounded-xl flex items-center justify-center text-white shadow-lg group-hover:shadow-xl transition-shadow duration-300`}>
+              <div
+                className={`relative mb-4 w-16 h-16 bg-gradient-to-br ${amenity.gradient} rounded-xl flex items-center justify-center text-white shadow-lg group-hover:shadow-xl transition-shadow duration-300`}
+              >
                 {amenity.icon}
               </div>
 

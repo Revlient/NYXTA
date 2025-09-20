@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Navigation } from './components/Navigation';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
-import { Rooms } from './components/Rooms';
+import { Hostels } from './components/Hostels';
 import { Amenities } from './components/Amenities';
 import { Gallery } from './components/Gallery';
 import { Testimonials } from './components/Testimonials';
@@ -40,7 +40,7 @@ function App() {
         <Navigation />
         <Hero />
         <About />
-        <Rooms />
+        <Hostels />
         <Amenities />
         <Gallery />
         <Testimonials />

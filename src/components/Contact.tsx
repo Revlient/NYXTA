@@ -90,7 +90,7 @@ export const Contact: React.FC = () => {
     {
       icon: <Phone className="w-6 h-6" />,
       title: 'Phone',
-      details: ['+1 (555) 123-4567', '+1 (555) 987-6543'],
+      details: ['+91 8848574001'],
       gradient: 'from-blue-500 to-teal-500'
     },
     {
