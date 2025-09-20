@@ -43,7 +43,7 @@ function App() {
         <Hostels />
         <Amenities />
         <Gallery />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <Contact />
         <Footer />
       </div>
