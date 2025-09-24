@@ -538,7 +538,7 @@ export const Hostels: React.FC = () => {
           <div className="text-center mb-16">
             <h2 className="text-5xl font-bold mb-6">
               Choose Your
-              <span className="block bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-[#D1C0B2] via-pink-400 to-[#A08647] bg-clip-text text-transparent">
                 Perfect Branch & Stay
               </span>
             </h2>
@@ -556,7 +556,7 @@ export const Hostels: React.FC = () => {
                 onClick={() => setSelectedBranch(index)}
                 className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center space-x-2 ${
                   selectedBranch === index
-                    ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg"
+                    ? "bg-gradient-to-r from-[#D1C0B2] via-pink-400 to-[#A08647] text-white shadow-lg"
                     : "bg-white/10 border border-white/20 text-white hover:bg-white/20"
                 }`}
               >
@@ -665,7 +665,7 @@ export const Hostels: React.FC = () => {
                           const url = `https://wa.me/${phone}?text=${encoded}`;
                           window.open(url, "_blank", "noopener,noreferrer");
                         }}
-                        className="w-full py-3 rounded-xl font-semibold transition-all duration-300 bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:shadow-lg hover:shadow-purple-500/25 transform hover:scale-105"
+                        className="w-full py-3 rounded-xl font-semibold transition-all duration-300 bg-gradient-to-r from-[#917432] to-[#A08647] text-white hover:shadow-lg hover:shadow-purple-500/25 transform hover:scale-105"
                       >
                         Book Room
                       </button>
@@ -677,7 +677,7 @@ export const Hostels: React.FC = () => {
           </div>
 
           {/* Additional Info */}
-          <div className="text-center mt-12 p-6 bg-gradient-to-r from-purple-600/20 to-blue-600/20 backdrop-blur-lg rounded-2xl border border-white/20 max-w-4xl mx-auto">
+          <div className="text-center mt-12 p-6 bg-[#A08647] backdrop-blur-lg rounded-2xl border border-white/20 max-w-4xl mx-auto">
             <p className="text-white/80 mb-2">
               <span className="font-semibold">Registration Fee:</span> ₹500
               (One-time, Non-refundable)
@@ -849,7 +849,7 @@ export const Hostels: React.FC = () => {
 
                   {/* Action Buttons */}
                   <div className="flex gap-4 pt-4">
-                    <button className="flex-1 py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl text-white font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105">
+                    <button className="flex-1 py-4 bg-gradient-to-r from-[#917432] to-[#A08647] rounded-xl text-white font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105">
                       Book This Room
                     </button>
                     <button className="flex-1 py-4 bg-white/10 border border-white/20 rounded-xl text-white font-semibold hover:bg-white/20 transition-all duration-300">

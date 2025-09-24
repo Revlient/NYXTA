@@ -68,7 +68,7 @@ export const Navigation: React.FC = () => {
             ))}
             <button 
               onClick={() => scrollToSection('#contact')}
-              className="nav-item px-6 py-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full text-white font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105"
+              className="nav-item px-6 py-2 bg-gradient-to-r from-[#917432] to-[#A08647] rounded-full text-white font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105"
             >
               Book Now
             </button>
@@ -99,7 +99,7 @@ export const Navigation: React.FC = () => {
             ))}
             <button 
               onClick={() => scrollToSection('#contact')}
-              className="w-full px-6 py-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full text-white font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300"
+              className="w-full px-6 py-2 bg-gradient-to-r from-[#D1C0B2] via-pink-400 to-[#A08647] rounded-full text-white font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300"
             >
               Book Now
             </button>

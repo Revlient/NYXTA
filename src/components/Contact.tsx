@@ -113,7 +113,7 @@ export const Contact: React.FC = () => {
         <div className="text-center mb-16">
           <h2 className="contact-title text-5xl font-bold mb-6">
             Get In
-            <span className="block bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-[#D1C0B2] to-[#A08647] bg-clip-text text-transparent">
               Touch
             </span>
           </h2>
@@ -237,7 +237,7 @@ export const Contact: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl text-white font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+                  className="w-full px-8 py-4 bg-gradient-to-r from-[#977933] to-[#A08647] rounded-xl text-white font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
                 >
                   {isSubmitting ? (
                     <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -282,7 +282,7 @@ export const Contact: React.FC = () => {
               </div>
               
               {/* Map placeholder */}
-              <div className="relative h-64 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+              <div className="relative h-64 bg-gradient-to-br from-[#0e1d16] to-[#0c1d16] flex items-center justify-center">
                 <div className="text-center text-white/60">
                   <MapPin className="w-12 h-12 mx-auto mb-4 text-purple-400" />
                   <p className="text-lg font-medium">Interactive Map</p>
@@ -300,7 +300,7 @@ export const Contact: React.FC = () => {
             </div>
 
             {/* Quick Stats */}
-            <div className="contact-item bg-gradient-to-r from-purple-600/20 to-blue-600/20 backdrop-blur-lg rounded-2xl border border-white/20 p-6">
+            <div className="contact-item bg-gradient-to-r from-[#08110d] to-[#0c1d16] backdrop-blur-lg rounded-2xl border border-white/20 p-6">
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div>
                   <div className="text-2xl font-bold text-white">5 min</div>

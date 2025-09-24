@@ -185,7 +185,7 @@ export const Footer: React.FC = () => {
                     placeholder="Your email"
                     className="flex-1 px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 text-sm focus:outline-none focus:border-purple-400"
                   />
-                  <button className="px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg text-white text-sm font-medium hover:shadow-lg transition-all duration-300">
+                  <button className="px-4 py-2 bg-gradient-to-r from-[#D1C0B2] via-pink-400 to-[#A08647] rounded-lg text-white text-sm font-medium hover:shadow-lg transition-all duration-300">
                     Subscribe
                   </button>
                 </div>

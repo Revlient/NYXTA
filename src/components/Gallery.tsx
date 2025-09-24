@@ -284,7 +284,7 @@ export const Gallery: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <div className="inline-block mb-4">
-            <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium">
+            <span className="bg-gradient-to-r from-[#D1C0B2] to-[#A08647] text-white px-4 py-2 rounded-full text-sm font-medium">
               Gallery
             </span>
           </div>
@@ -306,7 +306,7 @@ export const Gallery: React.FC = () => {
                 onClick={() => setActiveFilter(branch)}
                 className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 ${
                   activeFilter === branch
-                    ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-blue-500/25"
+                    ? "bg-gradient-to-r from-[#13261E] via-[#A08647] to-[#13261E] text-white shadow-lg shadow-[#0b1813]"
                     : "bg-white/10 backdrop-blur-sm text-slate-300 border border-white/20 hover:bg-white/20 hover:text-white"
                 }`}
               >
@@ -356,7 +356,7 @@ export const Gallery: React.FC = () => {
                     <div className="absolute top-4 right-4 w-10 h-10 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
                       <ZoomIn className="w-5 h-5 text-white" />
                     </div>
-                    <div className="absolute top-4 left-4 px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-medium rounded-full">
+                    <div className="absolute top-4 left-4 px-3 py-1 bg-gradient-to-r from-[#0c1813] to-[#13261E] text-xs font-medium rounded-full">
                       {image.branch}
                     </div>
                   </div>

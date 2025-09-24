@@ -163,7 +163,7 @@ export const Amenities: React.FC = () => {
         <div className="text-center mb-16">
           <h2 className="amenities-title text-5xl font-bold mb-6">
             Premium
-            <span className="block bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-[#D1C0B2] to-[#A08647] bg-clip-text text-transparent">
               Amenities
             </span>
           </h2>
@@ -211,15 +211,15 @@ export const Amenities: React.FC = () => {
 
         {/* Additional Info Cards */}
         <div className="grid md:grid-cols-3 gap-8 mt-16">
-          <div className="amenity-card bg-gradient-to-br from-purple-600/20 to-blue-600/20 backdrop-blur-lg rounded-2xl border border-white/20 p-8 text-center">
+          <div className="amenity-card bg-gradient-to-br from-[#D1C0B2]/30 to-[#A08647]/20 backdrop-blur-lg rounded-2xl border border-white/20 p-8 text-center">
             <div className="text-4xl font-bold text-white mb-2">100+</div>
             <div className="text-white/60">Premium Amenities</div>
           </div>
-          <div className="amenity-card bg-gradient-to-br from-blue-600/20 to-teal-600/20 backdrop-blur-lg rounded-2xl border border-white/20 p-8 text-center">
+          <div className="amenity-card bg-gradient-to-br from-[#D1C0B2]/30 to-[#A08647]/20 backdrop-blur-lg rounded-2xl border border-white/20 p-8 text-center">
             <div className="text-4xl font-bold text-white mb-2">24/7</div>
             <div className="text-white/60">Available Services</div>
           </div>
-          <div className="amenity-card bg-gradient-to-br from-teal-600/20 to-purple-600/20 backdrop-blur-lg rounded-2xl border border-white/20 p-8 text-center">
+          <div className="amenity-card bg-gradient-to-br from-[#D1C0B2]/30 to-[#A08647]/20 backdrop-blur-lg rounded-2xl border border-white/20 p-8 text-center">
             <div className="text-4xl font-bold text-white mb-2">5★</div>
             <div className="text-white/60">Facility Rating</div>
           </div>

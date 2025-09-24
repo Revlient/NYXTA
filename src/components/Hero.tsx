@@ -103,7 +103,7 @@ export const Hero: React.FC = () => {
                 <span className="text-sm font-medium">Downtown City Center</span>
               </div> */}
               <h1 className="hero-title text-6xl lg:text-7xl font-bold leading-tight">
-                <span className="block bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-[#D1C0B2] via-pink-400 to-[#A08647] bg-clip-text text-transparent">
                   NYXTA  
                 </span>
                 HOSTELS
@@ -115,7 +115,7 @@ export const Hero: React.FC = () => {
             </div>
 
             <div className="hero-cta flex flex-col sm:flex-row gap-4">
-              <button className="group px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full text-white font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2">
+              <button className="group px-8 py-4 bg-gradient-to-r from-[#D1C0B2] via-pink-400 to-[#A08647] rounded-full text-white font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2">
                 <span>Book Your Stay</span>
                 <ArrowRight
                   size={20}
@@ -158,7 +158,7 @@ export const Hero: React.FC = () => {
                   <div className="space-y-8">
                     {/* Top section - Logo area */}
                     <div className="text-center space-y-4">
-                      <div className="w-20 h-20 mx-auto bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center shadow-lg">
+                      <div className="w-20 h-20 mx-auto bg-gradient-to-br from-[#D1C0B2] via-pink-400 to-[#A08647] rounded-2xl flex items-center justify-center shadow-lg">
                         <div className="text-3xl font-bold text-white">N</div>
                       </div>
                       <div>
