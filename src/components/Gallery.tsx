@@ -279,7 +279,7 @@ export const Gallery: React.FC = () => {
     <section
       id="gallery"
       ref={sectionRef}
-      className="py-20 bg-gradient-to-b from-slate-900 to-slate-800 min-h-screen"
+      className="py-20 bg-gradient-to-b from-[#13261E] to-[#13261E] min-h-screen"
     >
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">

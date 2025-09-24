@@ -75,7 +75,7 @@ export const Hero: React.FC = () => {
       className="relative min-h-screen flex items-center overflow-hidden"
     >
       {/* Animated background elements */}
-      <div className="hero-bg absolute inset-0 bg-gradient-to-br from-purple-900/30 via-transparent to-blue-900/30" />
+      <div className="hero-bg absolute inset-0 bg-gradient-to-br from-[#13261E] via-transparent to-blue-900/30" />
 
       {/* Floating particles */}
       <div className="absolute inset-0">
@@ -159,7 +159,7 @@ export const Hero: React.FC = () => {
                     {/* Top section - Logo area */}
                     <div className="text-center space-y-4">
                       <div className="w-20 h-20 mx-auto bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center shadow-lg">
-                        <div className="text-3xl font-bold text-white">L</div>
+                        <div className="text-3xl font-bold text-white">N</div>
                       </div>
                       <div>
                         <div className="text-2xl font-bold bg-gradient-to-r from-purple-300 to-blue-300 bg-clip-text text-transparent">
@@ -173,17 +173,6 @@ export const Hero: React.FC = () => {
 
                     {/* Feature highlights */}
                     <div className="space-y-4">
-                      <div className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/10">
-                        <span className="text-white/80">Modern Rooms</span>
-                        <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse" />
-                      </div>
-                      <div className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/10">
-                        <span className="text-white/80">Premium Amenities</span>
-                        <div
-                          className="w-3 h-3 bg-blue-400 rounded-full animate-pulse"
-                          style={{ animationDelay: "0.5s" }}
-                        />
-                      </div>
                       <div className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/10">
                         <span className="text-white/80">24/7 Service</span>
                         <div
