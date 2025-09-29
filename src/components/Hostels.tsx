@@ -561,13 +561,13 @@ export const Hostels: React.FC = () => {
                 }`}
               >
                 <Building className="w-4 h-4" />
-                <span>{branch.location}</span>
+                <span>Branch {branch.branchNumber}</span>
               </button>
             ))}
           </div>
 
           {/* Branch Info Card */}
-          <div className="max-w-4xl mx-auto mb-12 bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-lg rounded-3xl border border-white/20 overflow-hidden shadow-2xl">
+          {/* <div className="max-w-4xl mx-auto mb-12 bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-lg rounded-3xl border border-white/20 overflow-hidden shadow-2xl">
             <div className="relative h-48 overflow-hidden">
               <img
                 src={currentBranch.image}
@@ -582,36 +582,40 @@ export const Hostels: React.FC = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* Room Cards Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-1 lg:grid-cols-1 gap-8 max-w-6xl mx-auto">
             {currentBranch.rooms.map((room) => (
               <div
                 key={room.id}
                 className="room-card transition-all duration-500 transform hover:scale-105"
               >
-                <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-3xl border border-white/20 overflow-hidden shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 h-full">
+                <div className="bg-gradient-to-br flex flex-row  from-white/10 to-white/5 backdrop-blur-lg rounded-3xl border border-white/20 overflow-hidden shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 h-full">
                   {/* Room Image */}
-                  <div className="relative h-64 overflow-hidden">
-                    <img
-                      src={room.image}
-                      alt={room.name}
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                    <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1 flex items-center space-x-1">
-                      <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                      <span className="text-white text-sm font-semibold">
-                        {room.rating}
-                      </span>
+                  <div className="relative h-full overflow-hidden">
+                    <div>
+                      <img
+                        src={room.image}
+                        alt={room.name}
+                        className="w-full h-80 object-cover transition-transform duration-500 hover:scale-110"
+                      />
                     </div>
-                    <div className="absolute bottom-4 left-4 text-white">
-                      <div className="flex items-center space-x-2 mb-2">
-                        <Users className="w-4 h-4" />
-                        <span className="text-sm">
-                          {room.capacity} person{room.capacity > 1 ? "s" : ""}
+                    <div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                      <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1 flex items-center space-x-1">
+                        <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                        <span className="text-white text-sm font-semibold">
+                          {room.rating}
                         </span>
+                      </div>
+                      <div className="absolute bottom-4 left-4 text-white">
+                        <div className="flex items-center space-x-2 mb-2">
+                          <Users className="w-4 h-4" />
+                          <span className="text-sm">
+                            {room.capacity} person{room.capacity > 1 ? "s" : ""}
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -650,25 +654,31 @@ export const Hostels: React.FC = () => {
 
                     {/* CTA Buttons */}
                     <div className="space-y-3 mt-auto">
-                      <button
-                        onClick={() => openRoomDetails(selectedBranch, room.id)}
-                        className="w-full py-3 rounded-xl font-semibold transition-all duration-300 bg-white/10 border border-white/20 text-white hover:bg-white/20 hover:border-purple-400/50 flex items-center justify-center space-x-2"
-                      >
-                        <span>View Details</span>
-                        <ChevronRight className="w-4 h-4" />
-                      </button>
-                      <button
-                        onClick={() => {
-                          const phone = "918848574001"; 
-                          const message = "Hello, I’d like to book a room.";
-                          const encoded = encodeURIComponent(message);
-                          const url = `https://wa.me/${phone}?text=${encoded}`;
-                          window.open(url, "_blank", "noopener,noreferrer");
-                        }}
-                        className="w-full py-3 rounded-xl font-semibold transition-all duration-300 bg-gradient-to-r from-[#917432] to-[#A08647] text-white hover:shadow-lg hover:shadow-purple-500/25 transform hover:scale-105"
-                      >
-                        Book Room
-                      </button>
+                      <div>
+                        <button
+                          onClick={() =>
+                            openRoomDetails(selectedBranch, room.id)
+                          }
+                          className="w-full py-3 rounded-xl font-semibold transition-all duration-300 bg-white/10 border border-white/20 text-white hover:bg-white/20 hover:border-purple-400/50 flex items-center justify-center space-x-2"
+                        >
+                          <span>View Details</span>
+                          <ChevronRight className="w-4 h-4" />
+                        </button>
+                      </div>
+                      <div>
+                        <button
+                          onClick={() => {
+                            const phone = "918848574001";
+                            const message = "Hello, I’d like to book a room.";
+                            const encoded = encodeURIComponent(message);
+                            const url = `https://wa.me/${phone}?text=${encoded}`;
+                            window.open(url, "_blank", "noopener,noreferrer");
+                          }}
+                          className="w-full py-3 rounded-xl font-semibold transition-all duration-300 bg-gradient-to-r from-[#917432] to-[#A08647] text-white hover:shadow-lg hover:shadow-purple-500/25 transform hover:scale-105"
+                        >
+                          Book Room
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

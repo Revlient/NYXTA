@@ -23,49 +23,49 @@ export const Gallery: React.FC = () => {
     {
       src: "/gallery/branch31/front.jpg",
       title: "Front",
-      branch: "Edapally Ladies Branch 31",
+      branch: "Branch 31",
       description: "",
     },
     {
       src: "/gallery/branch31/kitchen.jpg",
       title: "Kitchen",
-      branch: "Edapally Ladies Branch 31",
+      branch: "Branch 31",
       description: "",
     },
     {
       src: "/gallery/branch31/bathroom.jpg",
       title: "Bathroom",
-      branch: "Edapally Ladies Branch 31",
+      branch: "Branch 31",
       description: "",
     },
     {
       src: "/gallery/branch31/balcony.jpg",
       title: "Balcony",
-      branch: "Edapally Ladies Branch 31",
+      branch: "Branch 31",
       description: "",
     },
     {
       src: "/gallery/branch31/room1.jpg",
       title: "Room",
-      branch: "Edapally Ladies Branch 31",
+      branch: "Branch 31",
       description: "",
     },
     {
       src: "/gallery/branch31/room2.jpg",
       title: "Room",
-      branch: "Edapally Ladies Branch 31",
+      branch: "Branch 31",
       description: "",
     },
     {
       src: "/gallery/branch31/room3.jpg",
       title: "Room",
-      branch: "Edapally Ladies Branch 31",
+      branch: "Branch 31",
       description: "",
     },
     {
       src: "/gallery/branch31/stair.jpg",
       title: "Stairs",
-      branch: "Edapally Ladies Branch 31",
+      branch: "Branch 31",
       description: "",
     },
 
@@ -73,44 +73,44 @@ export const Gallery: React.FC = () => {
     {
       src: "/gallery/branch32/front.jpg",
       title: "Front",
-      branch: "Edapally Ladies Branch 32",
+      branch: "Branch 32",
       description: "",
     },
     {
       src: "/gallery/branch32/front2.jpg",
       title: "Front",
-      branch: "Edapally Ladies Branch 32",
+      branch: "Branch 32",
       description: "",
     },
     {
       src: "/gallery/branch32/kitchen.jpg",
       title: "Kitchen",
-      branch: "Edapally Ladies Branch 32",
+      branch: "Branch 32",
       description: "",
     },
     {
       src: "/gallery/branch32/kitchen2.jpg",
       title: "Kitchen",
-      branch: "Edapally Ladies Branch 32",
+      branch: "Branch 32",
       description: "",
     },
     {
       src: "/gallery/branch32/bathroom.jpg",
       title: "Bathroom",
-      branch: "Edapally Ladies Branch 32",
+      branch: "Branch 32",
       description: "",
     },
     {
       src: "/gallery/branch32/room2.jpg",
       title: "Room",
-      branch: "Edapally Ladies Branch 32",
+      branch: "Branch 32",
       description: "",
     },
 
     {
       src: "/gallery/branch32/room3.jpg",
       title: "Room",
-      branch: "Edapally Ladies Branch 32",
+      branch: "Branch 32",
       description: "",
     },
 
@@ -118,90 +118,90 @@ export const Gallery: React.FC = () => {
     {
       src: "/gallery/branch33/front.jpg",
       title: "Front",
-      branch: "Palarivattom Ladies Branch 33",
+      branch: "Branch 33",
       description: "",
     },
     {
       src: "/gallery/branch33/room.jpg",
       title: "Room",
-      branch: "Palarivattom Ladies Branch 33",
+      branch: "Branch 33",
       description: "",
     },
     {
       src: "/gallery/branch33/room1.jpg",
       title: "Room",
-      branch: "Palarivattom Ladies Branch 33",
+      branch: "Branch 33",
       description: "",
     },
     {
       src: "/gallery/branch33/room2.jpg",
       title: "Room",
-      branch: "Palarivattom Ladies Branch 33",
+      branch: "Branch 33",
       description: "",
     },
     {
       src: "/gallery/branch33/room3.jpg",
       title: "Room",
-      branch: "Palarivattom Ladies Branch 33",
+      branch: "Branch 33",
       description: "",
     },
     {
       src: "/gallery/branch33/stair.jpg",
       title: "Stair",
-      branch: "Palarivattom Ladies Branch 33",
+      branch: "Branch 33",
       description: "",
     },
     {
       src: "/gallery/branch33/bathroom2.jpg",
       title: "Bathroom",
-      branch: "Palarivattom Ladies Branch 33",
+      branch: "Branch 33",
       description: "",
     },
 
-    //Edapally mens branch 05
+    //Branch 05
     {
       src: "/gallery/branch05/front.jpg",
       title: "Bathroom",
-      branch: "Edapally Mens Branch 05",
+      branch: "Branch 05",
       description: "",
     },
     {
       src: "/gallery/branch05/room.jpg",
       title: "Room",
-      branch: "Edapally Mens Branch 05",
+      branch: "Branch 05",
       description: "",
     },
     {
       src: "/gallery/branch05/room2.jpg",
       title: "Room",
-      branch: "Edapally Mens Branch 05",
+      branch: "Branch 05",
       description: "",
     },
     {
       src: "/gallery/branch05/room3.jpg",
       title: "Room",
-      branch: "Edapally Mens Branch 05",
+      branch: "Branch 05",
       description: "",
     },
     {
       src: "/gallery/branch05/stair.jpg",
       title: "Stair",
-      branch: "Edapally Mens Branch 05",
+      branch: "Branch 05",
       description: "",
     },
     {
       src: "/gallery/branch05/purifier.jpg",
       title: "Purifier",
-      branch: "Edapally Mens Branch 05",
+      branch: "Branch 05",
       description: "",
     },
   ];
 
   const branches = [
-    "Edapally Mens Branch 05",
-    "Edapally Ladies Branch 31",
-    "Edapally Ladies Branch 32",
-    "Palarivattom Ladies Branch 33",
+    "Branch 05",
+    "Branch 31",
+    "Branch 32",
+    "Branch 33",
   ];
 
   const filteredImages = images.filter((image) => {
