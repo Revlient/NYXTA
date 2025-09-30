@@ -26,7 +26,7 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-[#13261E] text-white overflow-x-hidden">
+    <div className="text-white overflow-x-hidden">
       {/* Flowing Wave Background */}
       {/* <div className="flowing-waves">
         <div className="wave"></div>

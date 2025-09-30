@@ -279,7 +279,7 @@ export const Gallery: React.FC = () => {
     <section
       id="gallery"
       ref={sectionRef}
-      className="py-20 bg-gradient-to-b from-[#13261E] to-[#13261E] min-h-screen"
+      className="py-20  min-h-screen"
     >
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
@@ -306,7 +306,7 @@ export const Gallery: React.FC = () => {
                 onClick={() => setActiveFilter(branch)}
                 className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 ${
                   activeFilter === branch
-                    ? "bg-gradient-to-r from-[#13261E] via-[#A08647] to-[#13261E] text-white shadow-lg shadow-[#0b1813]"
+                    ? "bg-[#A08647]  text-white shadow-lg shadow-[#0b1813]"
                     : "bg-white/10 backdrop-blur-sm text-slate-300 border border-white/20 hover:bg-white/20 hover:text-white"
                 }`}
               >
@@ -328,7 +328,7 @@ export const Gallery: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="flex flex-row flex-nowrap overflow-x-auto gap-6 snap-x snap-mandatory scrollbar-hide">
           {isLoading ? (
             <div className="text-center py-20 col-span-full">
               <div className="text-6xl mb-4 animate-spin">⏳</div>
@@ -341,7 +341,7 @@ export const Gallery: React.FC = () => {
             filteredImages.map((image, index) => (
               <div
                 key={`${image.src}-${index}`}
-                className="group cursor-pointer transform hover:scale-105 transition-all duration-500"
+                className="snap-center shrink-0 w-72 group cursor-pointer transform hover:scale-105 transition-all duration-500"
                 onClick={() => openLightbox(index)}
               >
                 <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500">

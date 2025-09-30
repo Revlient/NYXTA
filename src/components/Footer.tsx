@@ -47,7 +47,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className="relative  border-t border-white/10 overflow-hidden">
       {/* Background decorations */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-blue-900/20" />
+      <div className="absolute inset-0 " />
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
 
       <div className="relative z-10">

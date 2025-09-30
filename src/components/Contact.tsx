@@ -282,7 +282,7 @@ export const Contact: React.FC = () => {
               </div>
               
               {/* Map placeholder */}
-              <div className="relative h-64 bg-gradient-to-br from-[#0e1d16] to-[#0c1d16] flex items-center justify-center">
+              <div className="relative h-64  flex items-center justify-center">
                 <div className="text-center text-white/60">
                   <MapPin className="w-12 h-12 mx-auto mb-4 text-purple-400" />
                   <p className="text-lg font-medium">Interactive Map</p>
@@ -290,7 +290,7 @@ export const Contact: React.FC = () => {
                 </div>
                 
                 {/* Map overlay effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10" />
+                <div className="absolute inset-0 " />
                 
                 {/* Location marker */}
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
@@ -300,7 +300,7 @@ export const Contact: React.FC = () => {
             </div>
 
             {/* Quick Stats */}
-            <div className="contact-item bg-gradient-to-r from-[#08110d] to-[#0c1d16] backdrop-blur-lg rounded-2xl border border-white/20 p-6">
+            <div className="contact-item bg-gradient-to-r  backdrop-blur-lg rounded-2xl border border-white/20 p-6">
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div>
                   <div className="text-2xl font-bold text-white">5 min</div>

@@ -75,7 +75,7 @@ export const Hero: React.FC = () => {
       className="relative min-h-screen flex items-center overflow-hidden"
     >
       {/* Animated background elements */}
-      <div className="hero-bg absolute inset-0 bg-gradient-to-br from-[#13261E] via-transparent to-blue-900/30" />
+      <div className="hero-bg absolute inset-0 " />
 
       {/* Floating particles */}
       <div className="absolute inset-0">

@@ -28,7 +28,9 @@ export const Hostels: React.FC = () => {
       id: 0,
       name: "NYXTA LADIES HOSTEL - NEAR LULU MALL",
       branchNumber: "31",
-      location: "Edappally Branch 31",
+      location: "https://g.co/kgs/ZESuc9z",
+      phone:"+918848807930",
+      address : "📍 Address: Behind Nice Chemicals, Edappally, Kochi, Ernakulam, Kerala – 682024.",
       image: "/hostels/frontbranch31.jpg",
       rooms: [
         {
@@ -145,7 +147,9 @@ export const Hostels: React.FC = () => {
       id: 1,
       name: "NYXTA LADIES HOSTEL - NEAR LULU MALL",
       branchNumber: "32",
-      location: "Edappally Branch 32",
+      location: "https://maps.app.goo.gl/RSVNvLjDigj9DK398",
+      phone : "+919446922048",
+      address : "📍 Address: Chandrathil Road Opposite Edappally Post Office Kochi, Ernakulam, Kerala 682024",
       image: "/hostels/frontbranch32.jpg",
       rooms: [
         {
@@ -277,7 +281,9 @@ export const Hostels: React.FC = () => {
       id: 2,
       name: "NYXTA LADIES HOSTEL - PALARIVATTOM",
       branchNumber: "33",
-      location: "Palarivattom Branch 33",
+      location: "https://maps.app.goo.gl/c41oJXBqXUotLLFL9",
+      phone:"+919446441533",
+      address : "📍 Address: Behind EMC Hospital, Alinchuvadu, Vennala,Kochi, Ernakulam, Kerala – 682028",
       image: "/hostels/frontbranch33.jpg",
       rooms: [
         {
@@ -390,7 +396,9 @@ export const Hostels: React.FC = () => {
       id: 3,
       name: "NYXTA MEN'S HOSTEL",
       branchNumber: "05",
-      location: "Edappally Branch 05",
+      location: "https://goo.gl/maps/7Rrqp3gHS59jkJMX6",
+      phone : "",
+      address : "",
       image: "/hostels/frontbranch05.jpg",
       rooms: [
         {
@@ -639,17 +647,19 @@ export const Hostels: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Quick Features */}
-                    <div className="grid grid-cols-2 gap-2">
-                      {room.features.slice(0, 4).map((feature, idx) => (
-                        <div
-                          key={idx}
-                          className="flex items-center space-x-2 text-white/70 text-sm"
-                        >
-                          <div className="w-2 h-2 bg-purple-400 rounded-full" />
-                          <span>{feature}</span>
-                        </div>
-                      ))}
+                    {/* Contact and loction */}
+                    <div className="adress">
+                      <p className="text-white/80 mb-2"><span className="font-semibold">Contact: </span> {currentBranch.phone}</p>
+                      <p className="text-white/80"><span className="font-semibold">Address: </span> {currentBranch.address}</p>
+                      <a
+                        href={currentBranch.location}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-blue-400 hover:underline mt-1"
+                      >
+                        <MapPin className="w-4 h-4 mr-1" />
+                        View on Map
+                      </a>
                     </div>
 
                     {/* CTA Buttons */}
