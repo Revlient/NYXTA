@@ -5,14 +5,18 @@ import {
   Wifi,
   MapPin,
   Star,
-  X,
   Clock,
   Shield,
   Car,
   Utensils,
   ChevronRight,
   Building,
-  Navigation,
+  ArrowLeft,
+  Phone,
+  Mail,
+  Calendar,
+  CheckCircle,
+  Home,
 } from "lucide-react";
 
 export const Hostels: React.FC = () => {
@@ -22,23 +26,34 @@ export const Hostels: React.FC = () => {
     branchId: number;
     roomId: number;
   } | null>(null);
+  const [showDetails, setShowDetails] = useState(false);
 
   const branches = [
     {
       id: 0,
       name: "NYXTA LADIES HOSTEL - NEAR LULU MALL",
+      place:"Edapally",
       branchNumber: "31",
       location: "https://g.co/kgs/ZESuc9z",
-      phone:"+918848807930",
-      address : "📍 Address: Behind Nice Chemicals, Edappally, Kochi, Ernakulam, Kerala – 682024.",
+      phone: "+918848807930",
+      address:
+        "📍 Address: Behind Nice Chemicals, Edappally, Kochi, Ernakulam, Kerala – 682024.",
       image: "/hostels/frontbranch31.jpg",
+      heroImage: "/locations/edapally.jpg",
+      description:
+        "Experience premium hostel living in the heart of Kochi, just minutes away from Lulu Mall and major attractions.",
       rooms: [
         {
           id: 1,
           name: "Single Sharing",
           price: 4000,
           capacity: 1,
-          image: "/hostels/frontbranch31.jpg",
+          image: "/gallery/branch31/room1.jpg",
+          images: [
+            "/gallery/branch31/room1.jpg",
+            "/gallery/branch31/room2.jpg",
+            "/gallery/branch31/room3.jpg",
+          ],
           features: [
             "Private Space",
             "Individual Locker",
@@ -46,14 +61,20 @@ export const Hostels: React.FC = () => {
             "City View",
           ],
           rating: 4.9,
-          description: "Premium single occupancy room with complete privacy",
+          description:
+            "Premium single occupancy room with complete privacy and modern amenities. Perfect for professionals and students who value personal space.",
         },
         {
           id: 2,
           name: "4 Sharing",
           price: 3250,
           capacity: 4,
-          image: "/hostels/frontbranch31.jpg",
+          image: "/gallery/branch31/room2.jpg",
+          images: [
+            "/gallery/branch31/room2.jpg",
+            "/gallery/branch31/room1.jpg",
+            "/gallery/branch31/room3.jpg",
+          ],
           features: [
             "Shared Room",
             "Individual Lockers",
@@ -61,14 +82,20 @@ export const Hostels: React.FC = () => {
             "Double-Decker Beds",
           ],
           rating: 4.8,
-          description: "Comfortable shared accommodation with modern amenities",
+          description:
+            "Comfortable shared accommodation with modern amenities, perfect for building friendships while maintaining privacy.",
         },
         {
           id: 3,
           name: "6 Sharing",
           price: 3000,
           capacity: 6,
-          image: "/hostels/frontbranch31.jpg",
+          image: "/gallery/branch31/room3.jpg",
+          images: [
+            "/gallery/branch31/room3.jpg",
+            "/gallery/branch31/room1.jpg",
+            "/gallery/branch31/room2.jpg",
+          ],
           features: [
             "Shared Room",
             "Individual Lockers",
@@ -76,7 +103,8 @@ export const Hostels: React.FC = () => {
             "Budget Friendly",
           ],
           rating: 4.7,
-          description: "Most affordable option with all essential amenities",
+          description:
+            "Most affordable option with all essential amenities, ideal for budget-conscious students and travelers.",
         },
       ],
       locationPerks: [
@@ -146,18 +174,28 @@ export const Hostels: React.FC = () => {
     {
       id: 1,
       name: "NYXTA LADIES HOSTEL - NEAR LULU MALL",
+      place:"Edapally",
       branchNumber: "32",
       location: "https://maps.app.goo.gl/RSVNvLjDigj9DK398",
-      phone : "+919446922048",
-      address : "📍 Address: Chandrathil Road Opposite Edappally Post Office Kochi, Ernakulam, Kerala 682024",
+      phone: "+919446922048",
+      address:
+        "📍 Address: Chandrathil Road Opposite Edappally Post Office Kochi, Ernakulam, Kerala 682024",
       image: "/hostels/frontbranch32.jpg",
+      heroImage: "/locations/edapally.jpg",
+      description:
+        "Modern hostel accommodation with excellent connectivity to educational institutions and shopping centers.",
       rooms: [
         {
           id: 1,
           name: "Single Coat",
           price: 3250,
           capacity: 1,
-          image: "/hostels/frontbranch32.jpg",
+          image: "/gallery/branch32/room2.jpg",
+          images: [
+            "/gallery/branch32/room2.jpg",
+            "/gallery/branch32/room3.jpg",
+            "/gallery/branch32/front.jpg",
+          ],
           features: [
             "Private Space",
             "Individual Locker",
@@ -165,14 +203,20 @@ export const Hostels: React.FC = () => {
             "City View",
           ],
           rating: 4.9,
-          description: "Affordable single occupancy room with privacy",
+          description:
+            "Affordable single occupancy room with privacy and all essential amenities for comfortable living.",
         },
         {
           id: 2,
           name: "3 Sharing",
           price: 3500,
           capacity: 3,
-          image: "/hostels/frontbranch32.jpg",
+          image: "/gallery/branch32/room3.jpg",
+          images: [
+            "/gallery/branch32/room3.jpg",
+            "/gallery/branch32/room2.jpg",
+            "/gallery/branch32/kitchen.jpg",
+          ],
           features: [
             "Shared Room",
             "Individual Lockers",
@@ -181,14 +225,19 @@ export const Hostels: React.FC = () => {
           ],
           rating: 4.8,
           description:
-            "Comfortable 3-person accommodation with modern amenities",
+            "Comfortable 3-person accommodation with modern amenities and great community atmosphere.",
         },
         {
           id: 3,
           name: "4 Sharing",
           price: 3250,
           capacity: 4,
-          image: "/hostels/frontbranch32.jpg",
+          image: "/gallery/branch32/kitchen.jpg",
+          images: [
+            "/gallery/branch32/kitchen.jpg",
+            "/gallery/branch32/room2.jpg",
+            "/gallery/branch32/room3.jpg",
+          ],
           features: [
             "Shared Room",
             "Individual Lockers",
@@ -196,14 +245,20 @@ export const Hostels: React.FC = () => {
             "Double-Decker Beds",
           ],
           rating: 4.8,
-          description: "Popular 4-person shared accommodation",
+          description:
+            "Popular 4-person shared accommodation with excellent facilities and prime location.",
         },
         {
           id: 4,
           name: "5 Sharing",
           price: 3000,
           capacity: 5,
-          image: "/hostels/frontbranch32.jpg",
+          image: "/gallery/branch32/bathroom.jpg",
+          images: [
+            "/gallery/branch32/bathroom.jpg",
+            "/gallery/branch32/kitchen.jpg",
+            "/gallery/branch32/room2.jpg",
+          ],
           features: [
             "Shared Room",
             "Individual Lockers",
@@ -211,7 +266,8 @@ export const Hostels: React.FC = () => {
             "Budget Friendly",
           ],
           rating: 4.7,
-          description: "Most affordable option with all essential amenities",
+          description:
+            "Most affordable option with all essential amenities and great connectivity.",
         },
       ],
       locationPerks: [
@@ -280,18 +336,28 @@ export const Hostels: React.FC = () => {
     {
       id: 2,
       name: "NYXTA LADIES HOSTEL - PALARIVATTOM",
+      place:"Palarivattom",
       branchNumber: "33",
       location: "https://maps.app.goo.gl/c41oJXBqXUotLLFL9",
-      phone:"+919446441533",
-      address : "📍 Address: Behind EMC Hospital, Alinchuvadu, Vennala,Kochi, Ernakulam, Kerala – 682028",
+      phone: "+919446441533",
+      address:
+        "📍 Address: Behind EMC Hospital, Alinchuvadu, Vennala,Kochi, Ernakulam, Kerala – 682028",
       image: "/hostels/frontbranch33.jpg",
+      heroImage: "/locations/Palarivattom.avif",
+      description:
+        "Premium location hostel with excellent connectivity to hospitals, educational institutions, and shopping centers.",
       rooms: [
         {
           id: 1,
           name: "2 Sharing",
           price: 3500,
           capacity: 2,
-          image: "/hostels/frontbranch33.jpg",
+          image: "/gallery/branch33/room.jpg",
+          images: [
+            "/gallery/branch33/room.jpg",
+            "/gallery/branch33/room1.jpg",
+            "/gallery/branch33/room2.jpg",
+          ],
           features: [
             "Shared Room",
             "Individual Lockers",
@@ -299,14 +365,20 @@ export const Hostels: React.FC = () => {
             "Premium Location",
           ],
           rating: 4.8,
-          description: "Comfortable 2-person sharing in prime location",
+          description:
+            "Comfortable 2-person sharing in prime location with excellent connectivity and modern amenities.",
         },
         {
           id: 2,
           name: "8 Sharing",
           price: 3000,
           capacity: 8,
-          image: "/hostels/frontbranch33.jpg",
+          image: "/gallery/branch33/room1.jpg",
+          images: [
+            "/gallery/branch33/room1.jpg",
+            "/gallery/branch33/room2.jpg",
+            "/gallery/branch33/room3.jpg",
+          ],
           features: [
             "Shared Room",
             "Individual Lockers",
@@ -314,7 +386,8 @@ export const Hostels: React.FC = () => {
             "Budget Option",
           ],
           rating: 4.6,
-          description: "Most economical option with great connectivity",
+          description:
+            "Most economical option with great connectivity and all essential amenities for comfortable living.",
         },
       ],
       locationPerks: [
@@ -395,18 +468,27 @@ export const Hostels: React.FC = () => {
     {
       id: 3,
       name: "NYXTA MEN'S HOSTEL",
+      place:"Edapally",
       branchNumber: "05",
       location: "https://goo.gl/maps/7Rrqp3gHS59jkJMX6",
-      phone : "",
-      address : "",
+      phone: "",
+      address: "",
       image: "/hostels/frontbranch05.jpg",
+      heroImage: "/locations/edapally.jpg", 
+      description:
+        "Comfortable and affordable accommodation for men with modern amenities and excellent connectivity.",
       rooms: [
         {
           id: 1,
           name: "Single Cot",
           price: 3000,
           capacity: 1,
-          image: "/hostels/frontbranch05.jpg",
+          image: "/gallery/branch05/room.jpg",
+          images: [
+            "/gallery/branch05/room.jpg",
+            "/gallery/branch05/room2.jpg",
+            "/gallery/branch05/room3.jpg",
+          ],
           features: [
             "Private Cot",
             "Shared Room",
@@ -414,14 +496,20 @@ export const Hostels: React.FC = () => {
             "Budget Friendly",
           ],
           rating: 4.7,
-          description: "Affordable single cot accommodation for men",
+          description:
+            "Affordable single cot accommodation for men with all essential amenities and great location.",
         },
         {
           id: 2,
           name: "Shared Cot",
           price: 3000,
           capacity: 2,
-          image: "/hostels/frontbranch05.jpg",
+          image: "/gallery/branch05/room2.jpg",
+          images: [
+            "/gallery/branch05/room2.jpg",
+            "/gallery/branch05/room3.jpg",
+            "/gallery/branch05/stair.jpg",
+          ],
           features: [
             "Shared Cot",
             "Shared Room",
@@ -429,7 +517,8 @@ export const Hostels: React.FC = () => {
             "Budget Option",
           ],
           rating: 4.6,
-          description: "Most economical shared cot option for men",
+          description:
+            "Most economical shared cot option for men with comfortable living arrangements.",
         },
       ],
       locationPerks: [
@@ -495,35 +584,13 @@ export const Hostels: React.FC = () => {
 
   const openRoomDetails = (branchId: number, roomId: number) => {
     setSelectedRoom({ branchId, roomId });
-    document.body.style.overflow = "hidden";
+    setShowDetails(true);
   };
 
   const closeRoomDetails = () => {
     setSelectedRoom(null);
-    document.body.style.overflow = "unset";
+    setShowDetails(false);
   };
-
-  const handleBackdropClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) {
-      closeRoomDetails();
-    }
-  };
-
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && selectedRoom !== null) {
-        closeRoomDetails();
-      }
-    };
-
-    if (selectedRoom !== null) {
-      document.addEventListener("keydown", handleEscape);
-    }
-
-    return () => {
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, [selectedRoom]);
 
   const currentBranch = branches[selectedBranch];
   const selectedRoomData = selectedRoom
@@ -535,6 +602,258 @@ export const Hostels: React.FC = () => {
     ? branches[selectedRoom.branchId]
     : null;
 
+  if (showDetails && selectedRoomData && selectedBranchData) {
+    return (
+      <div className="min-h-screen">
+        {/* Hero Section with Branch Image */}
+        <div className="relative h-96 overflow-hidden">
+          <img
+            src={selectedBranchData.heroImage}
+            alt={selectedBranchData.name}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+
+          {/* Back Button */}
+          <button
+            onClick={closeRoomDetails}
+            className="absolute top-6 left-6 flex items-center space-x-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-white hover:bg-white/20 transition-all duration-300"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            <span>Back to Hostels</span>
+          </button>
+
+          {/* Branch Info Overlay */}
+          <div className="absolute bottom-8 left-8 right-8">
+            <div className="max-w-4xl">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                {/* Welcome to Branch {selectedBranchData.branchNumber} */}
+                {selectedBranchData.place}
+              </h1>
+              <p className="text-xl text-white/90 mb-4">
+                {selectedBranchData.description}
+              </p>
+              <div className="flex items-center space-x-4 text-white/80">
+                <div className="flex items-center space-x-2">
+                  <MapPin className="w-5 h-5" />
+                  <span>Prime Location in Kochi</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Star className="w-5 h-5 text-yellow-400 fill-current" />
+                  <span>4.8+ Rating</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Room Details Section */}
+        <div className="container mx-auto px-6 py-16">
+          <div className="max-w-6xl mx-auto">
+            {/* Room Header */}
+            <div className="mb-12">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                <div>
+                  <h2 className="text-3xl font-bold text-white mb-2">
+                    {selectedRoomData.name}
+                  </h2>
+                  <p className="text-white/70 text-lg">
+                    {selectedRoomData.description}
+                  </p>
+                </div>
+                <div className="mt-4 md:mt-0 text-right">
+                  <div className="text-4xl font-bold text-[#A08647]">
+                    ₹{selectedRoomData.price.toLocaleString()}
+                  </div>
+                  <div className="text-white/60">per month</div>
+                </div>
+              </div>
+
+              {/* Room Features */}
+              <div className="flex flex-wrap gap-3 mb-6">
+                {selectedRoomData.features.map((feature, index) => (
+                  <span
+                    key={index}
+                    className="px-4 py-2 bg-[#A08647]/20 border border-[#A08647]/30 rounded-full text-[#D1C0B2] text-sm"
+                  >
+                    {feature}
+                  </span>
+                ))}
+              </div>
+
+              {/* Contact Info */}
+              <div className="bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-sm rounded-2xl border border-white/20 p-6">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="flex items-center space-x-3">
+                    <Phone className="w-5 h-5 text-[#A08647]" />
+                    <div>
+                      <div className="text-white font-medium">Contact</div>
+                      <div className="text-white/70">
+                        {selectedBranchData.phone}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <MapPin className="w-5 h-5 text-[#A08647]" />
+                    <div>
+                      <div className="text-white font-medium">Location</div>
+                      <a
+                        href={selectedBranchData.location}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#D1C0B2] hover:underline"
+                      >
+                        View on Map
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Room Images Gallery */}
+            <div className="mb-12">
+              <h3 className="text-2xl font-bold text-white mb-6">
+                Room Gallery
+              </h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                {selectedRoomData.images.map((image, index) => (
+                  <div
+                    key={index}
+                    className="relative group overflow-hidden rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg border border-white/20"
+                  >
+                    <img
+                      src={image}
+                      alt={`${selectedRoomData.name} - Image ${index + 1}`}
+                      className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Detailed Information */}
+            <div className="grid lg:grid-cols-2 gap-12">
+              {/* Location Perks */}
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
+                  <MapPin className="w-6 h-6 mr-2 text-[#A08647]" />
+                  Prime Location Perks
+                </h3>
+                <div className="space-y-4">
+                  {selectedBranchData.locationPerks.map((perk, index) => (
+                    <div
+                      key={index}
+                      className="bg-white/5 rounded-xl p-4 border border-white/10 hover:bg-white/10 transition-colors duration-300"
+                    >
+                      <div className="font-semibold text-white">
+                        {perk.name}
+                      </div>
+                      <div className="text-white/60 text-sm">
+                        {perk.distance} • {perk.walk}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Amenities */}
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
+                  <Wifi className="w-6 h-6 mr-2 text-[#A08647]" />
+                  Included Amenities
+                </h3>
+                <div className="grid grid-cols-1 gap-3">
+                  {selectedBranchData.amenities.map((amenity, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center space-x-3 text-white/80 p-3 bg-white/5 rounded-lg border border-white/10"
+                    >
+                      <CheckCircle className="w-5 h-5 text-[#A08647] flex-shrink-0" />
+                      <span className="text-sm">{amenity}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Booking Section */}
+            <div className="mt-16 bg-gradient-to-r from-[#A08647]/20 to-[#D1C0B2]/20 rounded-3xl border border-white/20 p-8">
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-bold text-white mb-4">
+                  Ready to Book Your Stay?
+                </h3>
+                <p className="text-white/70 text-lg">
+                  Secure your spot in this premium accommodation today
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6 mb-8">
+                <div className="text-center p-4 bg-white/5 rounded-xl border border-white/10">
+                  <Calendar className="w-8 h-8 text-[#A08647] mx-auto mb-2" />
+                  <div className="text-white font-semibold">
+                    Flexible Check-in
+                  </div>
+                  <div className="text-white/60 text-sm">Available 24/7</div>
+                </div>
+                <div className="text-center p-4 bg-white/5 rounded-xl border border-white/10">
+                  <Shield className="w-8 h-8 text-[#A08647] mx-auto mb-2" />
+                  <div className="text-white font-semibold">Secure & Safe</div>
+                  <div className="text-white/60 text-sm">CCTV Monitored</div>
+                </div>
+                <div className="text-center p-4 bg-white/5 rounded-xl border border-white/10">
+                  <Home className="w-8 h-8 text-[#A08647] mx-auto mb-2" />
+                  <div className="text-white font-semibold">
+                    Home-like Comfort
+                  </div>
+                  <div className="text-white/60 text-sm">All Amenities</div>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button
+                  onClick={() => {
+                    const phone = "918848574001";
+                    const message = `Hello, I'd like to book ${selectedRoomData.name} at Branch ${selectedBranchData.branchNumber}.`;
+                    const encoded = encodeURIComponent(message);
+                    const url = `https://wa.me/${phone}?text=${encoded}`;
+                    window.open(url, "_blank", "noopener,noreferrer");
+                  }}
+                  className="px-8 py-4 bg-gradient-to-r from-[#A08647] to-[#D1C0B2] rounded-xl text-white font-semibold hover:shadow-lg hover:shadow-[#A08647]/25 transition-all duration-300 transform hover:scale-105"
+                >
+                  Book Now via WhatsApp
+                </button>
+                <button
+                  onClick={() => {
+                    const phone = selectedBranchData.phone;
+                    window.open(`tel:${phone}`, "_self");
+                  }}
+                  className="px-8 py-4 bg-white/10 border border-white/20 rounded-xl text-white font-semibold hover:bg-white/20 transition-all duration-300"
+                >
+                  Call Now
+                </button>
+              </div>
+
+              <div className="text-center mt-6 p-4 bg-white/5 rounded-xl border border-white/10">
+                <p className="text-white/80 mb-2">
+                  <span className="font-semibold">Registration Fee:</span> ₹500
+                  (One-time, Non-refundable)
+                </p>
+                <p className="text-white/80">
+                  <span className="font-semibold">
+                    Optional Cooking Facility:
+                  </span>{" "}
+                  ₹{selectedBranchData.cookingFee}/month
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen ">
       <section
@@ -544,14 +863,14 @@ export const Hostels: React.FC = () => {
       >
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold mb-6">
+            <h2 className="text-5xl font-bold mb-6 text-white">
               Choose Your
-              <span className="block bg-gradient-to-r from-[#D1C0B2] via-pink-400 to-[#A08647] bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-[#D1C0B2] to-[#A08647] bg-clip-text text-transparent">
                 Perfect Branch & Stay
               </span>
             </h2>
             <p className="text-xl text-white/70 max-w-2xl mx-auto">
-              Nyxta Ladies Hostels across prime locations in Kochi. Premium
+              Nyxta Hostels across prime locations in Kochi. Premium
               accommodation with modern amenities
             </p>
           </div>
@@ -564,7 +883,7 @@ export const Hostels: React.FC = () => {
                 onClick={() => setSelectedBranch(index)}
                 className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center space-x-2 ${
                   selectedBranch === index
-                    ? "bg-gradient-to-r from-[#D1C0B2] via-pink-400 to-[#A08647] text-white shadow-lg"
+                    ? "bg-gradient-to-r from-[#A08647] to-[#D1C0B2] text-white shadow-lg"
                     : "bg-white/10 border border-white/20 text-white hover:bg-white/20"
                 }`}
               >
@@ -574,24 +893,6 @@ export const Hostels: React.FC = () => {
             ))}
           </div>
 
-          {/* Branch Info Card */}
-          {/* <div className="max-w-4xl mx-auto mb-12 bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-lg rounded-3xl border border-white/20 overflow-hidden shadow-2xl">
-            <div className="relative h-48 overflow-hidden">
-              <img
-                src={currentBranch.image}
-                alt={currentBranch.name}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent" />
-              <div className="absolute bottom-4 left-6 text-white">
-                <h3 className="text-2xl font-bold">{currentBranch.name}</h3>
-                <p className="text-white/80">
-                  Branch No: {currentBranch.branchNumber}
-                </p>
-              </div>
-            </div>
-          </div> */}
-
           {/* Room Cards Grid */}
           <div className="grid md:grid-cols-1 lg:grid-cols-1 gap-8 max-w-6xl mx-auto">
             {currentBranch.rooms.map((room) => (
@@ -599,7 +900,7 @@ export const Hostels: React.FC = () => {
                 key={room.id}
                 className="room-card transition-all duration-500 transform hover:scale-105"
               >
-                <div className="bg-gradient-to-br flex flex-row  from-white/10 to-white/5 backdrop-blur-lg rounded-3xl border border-white/20 overflow-hidden shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 h-full">
+                <div className="bg-gradient-to-br flex flex-row from-white/10 to-white/5 backdrop-blur-lg rounded-3xl border border-white/20 overflow-hidden shadow-2xl hover:shadow-[#A08647]/10 transition-all duration-300 h-full">
                   {/* Room Image */}
                   <div className="relative h-full overflow-hidden">
                     <div>
@@ -647,15 +948,21 @@ export const Hostels: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Contact and loction */}
-                    <div className="adress">
-                      <p className="text-white/80 mb-2"><span className="font-semibold">Contact: </span> {currentBranch.phone}</p>
-                      <p className="text-white/80"><span className="font-semibold">Address: </span> {currentBranch.address}</p>
+                    {/* Contact and location */}
+                    <div className="address">
+                      <p className="text-white/80 mb-2">
+                        <span className="font-semibold">Contact: </span>{" "}
+                        {currentBranch.phone}
+                      </p>
+                      <p className="text-white/80">
+                        <span className="font-semibold">Address: </span>{" "}
+                        {currentBranch.address}
+                      </p>
                       <a
                         href={currentBranch.location}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center text-blue-400 hover:underline mt-1"
+                        className="inline-flex items-center text-[#D1C0B2] hover:underline mt-1"
                       >
                         <MapPin className="w-4 h-4 mr-1" />
                         View on Map
@@ -663,32 +970,27 @@ export const Hostels: React.FC = () => {
                     </div>
 
                     {/* CTA Buttons */}
-                    <div className="space-y-3 mt-auto">
-                      <div>
-                        <button
-                          onClick={() =>
-                            openRoomDetails(selectedBranch, room.id)
-                          }
-                          className="w-full py-3 rounded-xl font-semibold transition-all duration-300 bg-white/10 border border-white/20 text-white hover:bg-white/20 hover:border-purple-400/50 flex items-center justify-center space-x-2"
-                        >
-                          <span>View Details</span>
-                          <ChevronRight className="w-4 h-4" />
-                        </button>
-                      </div>
-                      <div>
-                        <button
-                          onClick={() => {
-                            const phone = "918848574001";
-                            const message = "Hello, I’d like to book a room.";
-                            const encoded = encodeURIComponent(message);
-                            const url = `https://wa.me/${phone}?text=${encoded}`;
-                            window.open(url, "_blank", "noopener,noreferrer");
-                          }}
-                          className="w-full py-3 rounded-xl font-semibold transition-all duration-300 bg-gradient-to-r from-[#917432] to-[#A08647] text-white hover:shadow-lg hover:shadow-purple-500/25 transform hover:scale-105"
-                        >
-                          Book Room
-                        </button>
-                      </div>
+                    <div className="flex flex-row gap-3 mt-auto w-full">
+                      <button
+                        onClick={() => openRoomDetails(selectedBranch, room.id)}
+                        className="flex-1 py-3 rounded-xl font-semibold transition-all duration-300 bg-white/10 border border-white/20 text-white hover:bg-white/20 hover:border-purple-400/50 flex items-center justify-center space-x-2"
+                      >
+                        <span>View Details</span>
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+
+                      <button
+                        onClick={() => {
+                          const phone = "918848574001";
+                          const message = "Hello, I’d like to book a room.";
+                          const encoded = encodeURIComponent(message);
+                          const url = `https://wa.me/${phone}?text=${encoded}`;
+                          window.open(url, "_blank", "noopener,noreferrer");
+                        }}
+                        className="flex-1 py-3 rounded-xl font-semibold transition-all duration-300 bg-gradient-to-r from-[#917432] to-[#A08647] text-white hover:shadow-lg hover:shadow-purple-500/25 transform hover:scale-105"
+                      >
+                        Book Room
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -697,7 +999,7 @@ export const Hostels: React.FC = () => {
           </div>
 
           {/* Additional Info */}
-          <div className="text-center mt-12 p-6 bg-[#A08647] backdrop-blur-lg rounded-2xl border border-white/20 max-w-4xl mx-auto">
+          <div className="text-center mt-12 p-6 bg-gradient-to-r from-[#A08647]/20 to-[#D1C0B2]/20 backdrop-blur-lg rounded-2xl border border-white/20 max-w-4xl mx-auto">
             <p className="text-white/80 mb-2">
               <span className="font-semibold">Registration Fee:</span> ₹500
               (One-time, Non-refundable)
@@ -712,175 +1014,6 @@ export const Hostels: React.FC = () => {
             </p>
           </div>
         </div>
-
-        {/* Room Details Modal */}
-        {selectedRoom !== null && selectedRoomData && selectedBranchData && (
-          <div
-            className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto"
-            onClick={handleBackdropClick}
-          >
-            <div className="relative max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-3xl border border-white/20 overflow-hidden shadow-2xl">
-                {/* Header */}
-                <div className="p-8 border-b border-white/10 relative">
-                  <button
-                    onClick={closeRoomDetails}
-                    className="absolute top-4 right-4 w-8 h-8 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
-                    aria-label="Close"
-                  >
-                    <X className="w-4 h-4" />
-                  </button>
-
-                  <div className="flex items-center justify-between mb-4 pr-12">
-                    <div>
-                      <h2 className="text-3xl font-bold text-white mb-2">
-                        {selectedBranchData.name}
-                      </h2>
-                      <p className="text-white/70">
-                        Branch No: {selectedBranchData.branchNumber} •{" "}
-                        {selectedRoomData.name}
-                      </p>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-4xl font-bold text-white">
-                        ₹{selectedRoomData.price.toLocaleString()}
-                      </div>
-                      <div className="text-white/60">per month</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="p-8 space-y-8">
-                  {/* Location Perks */}
-                  <div>
-                    <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
-                      <MapPin className="w-6 h-6 mr-2 text-purple-400" />
-                      Prime Location Perks
-                    </h3>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      {selectedBranchData.locationPerks.map((perk, index) => (
-                        <div
-                          key={index}
-                          className="bg-white/5 rounded-xl p-4 border border-white/10"
-                        >
-                          <div className="font-semibold text-white">
-                            {perk.name}
-                          </div>
-                          <div className="text-white/60 text-sm">
-                            {perk.distance} • {perk.walk}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Included Amenities */}
-                  <div>
-                    <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
-                      <Wifi className="w-6 h-6 mr-2 text-blue-400" />
-                      Included Amenities
-                    </h3>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
-                      {selectedBranchData.amenities.map((amenity, index) => (
-                        <div
-                          key={index}
-                          className="flex items-center space-x-2 text-white/80"
-                        >
-                          <div className="w-2 h-2 bg-green-400 rounded-full" />
-                          <span className="text-sm">{amenity}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Nearby Essentials */}
-                  <div>
-                    <h3 className="text-2xl font-bold text-white mb-4">
-                      Nearby Essentials
-                    </h3>
-                    <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-3">
-                      {selectedBranchData.nearbyEssentials.map(
-                        (essential, index) => (
-                          <div
-                            key={index}
-                            className="bg-white/5 rounded-lg p-3 text-center border border-white/10"
-                          >
-                            <span className="text-white/80 text-sm">
-                              {essential}
-                            </span>
-                          </div>
-                        )
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Cooking Facility */}
-                  <div className="bg-gradient-to-r from-orange-600/20 to-red-600/20 rounded-xl p-6 border border-white/20">
-                    <h3 className="text-xl font-bold text-white mb-3 flex items-center">
-                      <Utensils className="w-5 h-5 mr-2 text-orange-400" />
-                      Optional Cooking Facility - ₹
-                      {selectedBranchData.cookingFee}/month
-                    </h3>
-                    <div className="grid md:grid-cols-3 gap-4">
-                      <div className="flex items-center space-x-2 text-white/80">
-                        <div className="w-2 h-2 bg-orange-400 rounded-full" />
-                        <span>Gas & Stove</span>
-                      </div>
-                      <div className="flex items-center space-x-2 text-white/80">
-                        <div className="w-2 h-2 bg-orange-400 rounded-full" />
-                        <span>Fridge Access</span>
-                      </div>
-                      <div className="flex items-center space-x-2 text-white/80">
-                        <div className="w-2 h-2 bg-orange-400 rounded-full" />
-                        <span>Basic Cooking Vessels</span>
-                      </div>
-                    </div>
-                    <p className="text-white/60 text-sm mt-3">
-                      Mess food is also available upon request for interested
-                      residents.
-                    </p>
-                  </div>
-
-                  {/* House Rules */}
-                  <div className="bg-gradient-to-r from-red-600/20 to-pink-600/20 rounded-xl p-6 border border-white/20">
-                    <h3 className="text-xl font-bold text-white mb-3 flex items-center">
-                      <Shield className="w-5 h-5 mr-2 text-red-400" />
-                      House Rules
-                    </h3>
-                    <div className="space-y-2">
-                      <div className="flex items-center space-x-2 text-white/80">
-                        <Clock className="w-4 h-4 text-red-400" />
-                        <span>Curfew: 11:30 PM</span>
-                      </div>
-                      <div className="flex items-center space-x-2 text-white/80">
-                        <div className="w-4 h-4 text-red-400">💰</div>
-                        <span>
-                          Rent + Registration Fee required at check-in
-                        </span>
-                      </div>
-                      <div className="flex items-center space-x-2 text-white/80">
-                        <div className="w-4 h-4 text-red-400">🚫</div>
-                        <span>
-                          Payments are non-refundable in case of early checkout
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="flex gap-4 pt-4">
-                    <button className="flex-1 py-4 bg-gradient-to-r from-[#917432] to-[#A08647] rounded-xl text-white font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105">
-                      Book This Room
-                    </button>
-                    <button className="flex-1 py-4 bg-white/10 border border-white/20 rounded-xl text-white font-semibold hover:bg-white/20 transition-all duration-300">
-                      Contact for More Info
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
       </section>
     </div>
   );
