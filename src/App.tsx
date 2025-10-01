@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { Navigation } from './components/Navigation';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Hostels } from './components/Hostels';
+import { HostelDetails } from './components/HostelDetails';
 import { Amenities } from './components/Amenities';
 import { Gallery } from './components/Gallery';
 import { Testimonials } from './components/Testimonials';
@@ -27,26 +29,21 @@ function App() {
 
   return (
     <div className="text-white overflow-x-hidden">
-      {/* Flowing Wave Background */}
-      {/* <div className="flowing-waves">
-        <div className="wave"></div>
-        <div className="wave"></div>
-        <div className="wave"></div>
-        <div className="wave"></div>
-        <div className="wave"></div>
-      </div> */}
-      
-      <div className="relative z-10">
-        <Navigation />
-        <Hero />
-        <About />
-        <Hostels />
-        <Amenities />
-        <Gallery />
-        {/* <Testimonials /> */}
-        <Contact />
-        <Footer />
-      </div>
+      <Routes>
+        <Route path="/" element={
+          <div className="relative z-10">
+            <Navigation />
+            <Hero />
+            <About />
+            <Hostels />
+            <Amenities />
+            <Gallery />
+            <Contact />
+            <Footer />
+          </div>
+        } />
+        <Route path="/hostel/:branchId/" element={<HostelDetails />} />
+      </Routes>
     </div>
   );
 }

@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { gsap } from 'gsap';
 
 export const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,9 +36,21 @@ export const Navigation: React.FC = () => {
   ];
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    // If not on home page, navigate to home first
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Wait for navigation to complete, then scroll
+      setTimeout(() => {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
     setIsOpen(false);
   };
@@ -47,11 +62,13 @@ export const Navigation: React.FC = () => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="nav-item flex items-center space-x-3">
-            <img 
-              src="/logo.png" 
-              alt="Nyxta Hostels Logo" 
-              className="h-20 w-30"
-            />
+            <button onClick={() => navigate('/')}>
+              <img 
+                src="/logo.png" 
+                alt="Nyxta Hostels Logo" 
+                className="h-20 w-30"
+              />
+            </button>
           </div>
           
           {/* Desktop Menu */}
