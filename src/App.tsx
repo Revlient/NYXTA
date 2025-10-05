@@ -12,6 +12,7 @@ import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { WhyNyxta } from './components/WhyNyxta';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,6 +36,7 @@ function App() {
             <Navigation />
             <Hero />
             <About />
+            <WhyNyxta />
             <Hostels />
             <Amenities />
             <Gallery />

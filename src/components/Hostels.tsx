@@ -54,7 +54,7 @@ export const Hostels: React.FC = () => {
               </span>
             </h2>
             <p className="text-xl text-white/70 max-w-2xl mx-auto">
-              Nyxta Hostels across prime locations in Kochi. Premium
+              Nyxta Hostels across prime locations in Kochi. budget
               accommodation with modern amenities
             </p>
           </div>
@@ -68,11 +68,11 @@ export const Hostels: React.FC = () => {
               >
                 <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-3xl border border-white/20 overflow-hidden shadow-2xl hover:shadow-[#A08647]/10 transition-all duration-300 flex flex-col md:flex-row h-full">
                   {/* Branch Image */}
-                  <div className="relative w-full md:w-1/2 h-80 md:h-auto overflow-hidden">
+                  <div className="relative w-full md:w-1/2 h-64 md:h-full overflow-hidden">
                     <img
                       src={branch.image}
                       alt={`Branch ${branch.branchNumber}`}
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                      className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-3xl font-bold md:hidden">
@@ -82,7 +82,11 @@ export const Hostels: React.FC = () => {
                       onClick={() => toggleDetails(branch.id)}
                       className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#A08647] to-[#D1C0B2] text-white px-4 py-2 rounded-xl font-semibold md:hidden flex items-center space-x-2"
                     >
-                      <span>{expandedBranches.includes(branch.id) ? "Hide Details" : "View Details"}</span>
+                      <span>
+                        {expandedBranches.includes(branch.id)
+                          ? "Hide Details"
+                          : "View Details"}
+                      </span>
                       <ChevronRight className="w-4 h-4" />
                     </button>
                   </div>
@@ -99,7 +103,7 @@ export const Hostels: React.FC = () => {
                           Branch {branch.branchNumber}
                         </h3>
                         <p className="text-white/60 text-sm">
-                          Premium accommodation in prime location
+                          budget accommodation in prime location
                         </p>
                       </div>
                     </div>
@@ -155,7 +159,7 @@ export const Hostels: React.FC = () => {
           </div>
 
           {/* Additional Info */}
-          <div className="text-center mt-12 p-6 bg-gradient-to-r from-[#A08647]/20 to-[#D1C0B2]/20 backdrop-blur-lg rounded-2xl border border-white/20 max-w-4xl mx-auto">
+          {/* <div className="text-center mt-12 p-6 bg-gradient-to-r from-[#A08647]/20 to-[#D1C0B2]/20 backdrop-blur-lg rounded-2xl border border-white/20 max-w-4xl mx-auto">
             <p className="text-white/80 mb-2">
               <span className="font-semibold">Registration Fee:</span> ₹500
               (One-time, Non-refundable)
@@ -168,7 +172,7 @@ export const Hostels: React.FC = () => {
               <Clock className="w-4 h-4 inline mr-1" />
               Curfew: 11:30 PM | Payments are non-refundable for early checkout
             </p>
-          </div>
+          </div> */}
         </div>
       </section>
     </div>

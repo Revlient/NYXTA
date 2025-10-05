@@ -162,9 +162,9 @@ export const Amenities: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="amenities-title text-5xl font-bold mb-6">
-            Premium
+            Amenities &
             <span className="block bg-gradient-to-r from-[#D1C0B2] to-[#A08647] bg-clip-text text-transparent">
-              Amenities
+              Property Features
             </span>
           </h2>
           <p className="text-xl text-white/70 max-w-2xl mx-auto">
@@ -174,11 +174,11 @@ export const Amenities: React.FC = () => {
         </div>
 
         {/* Amenities Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {amenities.map((amenity, index) => (
             <div
               key={index}
-              className="amenity-card group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border border-white/20 p-6 hover:border-white/30 transition-all duration-300 cursor-pointer"
+              className="amenity-card group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl border border-white/20 p-6 hover:border-white/30 transition-all duration-300 cursor-pointer w-full h-64 flex flex-col justify-between"
             >
               {/* Background gradient effect */}
               <div
@@ -193,11 +193,11 @@ export const Amenities: React.FC = () => {
               </div>
 
               {/* Content */}
-              <div className="relative">
+              <div className="relative flex flex-col flex-grow">
                 <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-white transition-colors duration-300">
                   {amenity.title}
                 </h3>
-                <p className="text-white/60 group-hover:text-white/80 transition-colors duration-300">
+                <p className="text-white/60 text-sm flex-grow lg:block group-hover:text-white/80 transition-colors duration-300">
                   {amenity.description}
                 </p>
               </div>
@@ -210,11 +210,7 @@ export const Amenities: React.FC = () => {
         </div>
 
         {/* Additional Info Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mt-16">
-          <div className="amenity-card bg-gradient-to-br from-[#D1C0B2]/30 to-[#A08647]/20 backdrop-blur-lg rounded-2xl border border-white/20 p-8 text-center">
-            <div className="text-4xl font-bold text-white mb-2">100+</div>
-            <div className="text-white/60">Premium Amenities</div>
-          </div>
+        <div className="grid md:grid-cols-2 gap-8 mt-16">
           <div className="amenity-card bg-gradient-to-br from-[#D1C0B2]/30 to-[#A08647]/20 backdrop-blur-lg rounded-2xl border border-white/20 p-8 text-center">
             <div className="text-4xl font-bold text-white mb-2">24/7</div>
             <div className="text-white/60">Available Services</div>

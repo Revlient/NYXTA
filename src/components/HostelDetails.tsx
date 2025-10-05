@@ -11,6 +11,7 @@ import {
   CheckCircle,
   Wifi,
   X,
+  Clock,
 } from "lucide-react";
 import { Navigation } from "./Navigation";
 import { Footer } from "./Footer";
@@ -39,7 +40,7 @@ export const HostelDetails: React.FC = () => {
       image: "/hostels/frontbranch31.jpg",
       heroImage: "/locations/edapally.jpg",
       description:
-        "Experience premium hostel living in the heart of Kochi, just minutes away from Lulu Mall and major attractions.",
+        "Experience budget hostel living in the heart of Kochi, just minutes away from Lulu Mall and major attractions.",
       rooms: [
         {
           id: 1,
@@ -57,7 +58,7 @@ export const HostelDetails: React.FC = () => {
           ],
           rating: 4.9,
           description:
-            "Premium single occupancy room with complete privacy and modern amenities. Perfect for professionals and students who value personal space.",
+            "budget single occupancy room with complete privacy and modern amenities. Perfect for professionals and students who value personal space.",
         },
         {
           id: 2,
@@ -103,11 +104,9 @@ export const HostelDetails: React.FC = () => {
         },
       ],
       roomsPrice: {
-        "single sharing": 4500,
-        "2 sharing": 3250,
-        "3 sharing": 3000,
-        "4 sharing": 2800,
-        "6 sharing": 2500,
+        "single sharing": 4000,
+        "4 sharing": 3250,
+        "6 sharing": 3000,
       },
       locationPerks: [
         {
@@ -171,7 +170,7 @@ export const HostelDetails: React.FC = () => {
         "Church",
         "Mosque",
       ],
-      cookingFee: 300,
+      cookingFee: 350,
     },
     {
       id: 1,
@@ -337,7 +336,7 @@ export const HostelDetails: React.FC = () => {
         "Church",
         "Mosque",
       ],
-      cookingFee: 300,
+      cookingFee: 350,
     },
     {
       id: 2,
@@ -351,7 +350,7 @@ export const HostelDetails: React.FC = () => {
       image: "/hostels/frontbranch33.jpg",
       heroImage: "/locations/Palarivattom.avif",
       description:
-        "Premium location hostel with excellent connectivity to hospitals, educational institutions, and shopping centers.",
+        "budget location hostel with excellent connectivity to hospitals, educational institutions, and shopping centers.",
       rooms: [
         {
           id: 1,
@@ -365,7 +364,7 @@ export const HostelDetails: React.FC = () => {
             "Shared Room",
             "Individual Lockers",
             "Attached Bathroom",
-            "Premium Location",
+            "budget Location",
           ],
           rating: 4.8,
           description:
@@ -828,7 +827,7 @@ export const HostelDetails: React.FC = () => {
             <div>
               <h3 className="text-xl md:text-2xl font-bold text-white mb-5 flex items-center">
                 <Wifi className="w-6 h-6 mr-2 text-[#A08647]" />
-                Included Amenities
+                Included Amenities & Property features
               </h3>
               <div className="grid grid-cols-1 gap-2">
                 {selectedBranchData.amenities.map((amenity, index) => (
@@ -851,17 +850,17 @@ export const HostelDetails: React.FC = () => {
                 Ready to Book Your Stay?
               </h3>
               <p className="text-white/70 text-base md:text-lg">
-                Secure your spot in this premium accommodation today
+                Secure your spot in this budget accommodation today
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               <div className="text-center p-3 bg-white/5 rounded-lg border border-white/10">
-                <Calendar className="w-7 h-7 text-[#A08647] mx-auto mb-2" />
+                <Clock className="w-7 h-7 text-[#A08647] mx-auto mb-2" />
                 <div className="text-white font-semibold">
-                  Flexible Check-in
+                  Curfew time
                 </div>
-                <div className="text-white/60 text-sm">Available 24/7</div>
+                <div className="text-white/60 text-sm">11:30 PM</div>
               </div>
               <div className="text-center p-3 bg-white/5 rounded-lg border border-white/10">
                 <Shield className="w-7 h-7 text-[#A08647] mx-auto mb-2" />
@@ -911,6 +910,11 @@ export const HostelDetails: React.FC = () => {
                   Optional Cooking Facility:
                 </span>{" "}
                 ₹{selectedBranchData.cookingFee}/month
+              </p>
+              <p className="text-white/80">
+                <span className="font-semibold">
+                  (Mess food available on request basis)
+                </span>
               </p>
             </div>
           </div>

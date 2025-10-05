@@ -45,32 +45,7 @@ export const About: React.FC = () => {
     return () => ctx.revert();
   }, []);
 
-  const features = [
-    // {
-    //   icon: <Award className="w-6 h-6" />,
-    //   title: "Award Winning",
-    //   description:
-    //     "Recognized as the best hostel in the city for 3 consecutive years",
-    // },
-    // {
-    //   icon: <Users className="w-6 h-6" />,
-    //   title: "Community Focused",
-    //   description:
-    //     "Connect with travelers from around the world in our social spaces",
-    // },
-    {
-      icon: <Globe className="w-6 h-6" />,
-      title: "Prime Location",
-      description:
-        "Steps away from major attractions, restaurants, and nightlife",
-    },
-    {
-      icon: <Shield className="w-6 h-6" />,
-      title: "Safe & Secure",
-      description:
-        "24/7 security, lockers, and keycard access throughout the facility",
-    },
-  ];
+ 
 
   return (
     <section
@@ -105,23 +80,7 @@ export const About: React.FC = () => {
               </p>
             </div>
 
-            {/* Features Grid */}
-            <div className="grid sm:grid-cols-2 gap-6">
-              {features.map((feature, index) => (
-                <div
-                  key={index}
-                  className="about-feature group p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300"
-                >
-                  <div className="text-purple-400 mb-3 group-hover:scale-110 transition-transform duration-300">
-                    {feature.icon}
-                  </div>
-                  <h3 className="font-semibold mb-2 text-white">
-                    {feature.title}
-                  </h3>
-                  <p className="text-sm text-white/60">{feature.description}</p>
-                </div>
-              ))}
-            </div>
+            
           </div>
 
           {/* Right Content - Glass Card */}

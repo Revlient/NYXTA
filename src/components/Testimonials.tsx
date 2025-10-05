@@ -40,7 +40,7 @@ export const Testimonials: React.FC = () => {
       name: 'David Thompson',
       location: 'London, UK',
       rating: 5,
-      text: 'Exceptional value for money! The 3D animations and smooth user experience on their website matched the actual hostel perfectly. Professional service and premium facilities.',
+      text: 'Exceptional value for money! The 3D animations and smooth user experience on their website matched the actual hostel perfectly. Professional service and budget facilities.',
       avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=200',
       stay: '3 nights'
     },
@@ -49,7 +49,7 @@ export const Testimonials: React.FC = () => {
       name: 'Lisa Wong',
       location: 'Toronto, Canada',
       rating: 5,
-      text: 'The attention to detail is remarkable. From the gradient lighting to the glassmorphism effects in the design, everything feels premium. Will definitely stay here again!',
+      text: 'The attention to detail is remarkable. From the gradient lighting to the glassmorphism effects in the design, everything feels budget. Will definitely stay here again!',
       avatar: 'https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=200',
       stay: '4 nights'
     }

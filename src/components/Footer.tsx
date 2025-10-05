@@ -65,7 +65,7 @@ export const Footer: React.FC = () => {
                   />
                 </div>
                 <p className="text-white/70 leading-relaxed">
-                  Experience premium hostel living with modern amenities, stunning design, 
+                  Experience budget hostel living with modern amenities, stunning design, 
                   and unparalleled hospitality at Nyxta Hostels in the heart of the city.
                 </p>
               </div>
@@ -167,11 +167,6 @@ export const Footer: React.FC = () => {
                   <a href="mailto:yxtahostels@gmail.com" className="text-white/70 hover:text-white transition-colors">
                     nyxtahostels@gmail.com
                   </a>
-                </div>
-
-                <div className="flex items-center space-x-3">
-                  <Wifi className="w-5 h-5 text-green-400" />
-                  <span className="text-white/70 text-sm">Free High-Speed WiFi</span>
                 </div>
               </div>
 

@@ -102,7 +102,7 @@ export const Contact: React.FC = () => {
     {
       icon: <Clock className="w-6 h-6" />,
       title: 'Reception Hours',
-      details: ['24/7 Front Desk', 'Check-in: 3:00 PM', 'Check-out: 11:00 AM'],
+      details: ['24/7 Front Desk', 'Time : 6:30 AM - 11:30 PM'],
       gradient: 'from-purple-500 to-pink-500'
     }
   ];

@@ -11,7 +11,7 @@
       image: "/hostels/frontbranch31.jpg",
       heroImage: "/locations/edapally.jpg",
       description:
-        "Experience premium hostel living in the heart of Kochi, just minutes away from Lulu Mall and major attractions.",
+        "Experience budget hostel living in the heart of Kochi, just minutes away from Lulu Mall and major attractions.",
       rooms: [
         {
           id: 1,
@@ -32,7 +32,7 @@
           ],
           rating: 4.9,
           description:
-            "Premium single occupancy room with complete privacy and modern amenities. Perfect for professionals and students who value personal space.",
+            "budget single occupancy room with complete privacy and modern amenities. Perfect for professionals and students who value personal space.",
         },
         {
           id: 2,
@@ -139,7 +139,7 @@
         "Church",
         "Mosque",
       ],
-      cookingFee: 300,
+      cookingFee: 350,
     },
     {
       id: 1,
@@ -147,7 +147,7 @@
       place: "Edapally",
       branchNumber: "32",
       location: "https://maps.app.goo.gl/RSVNvLjDigj9DK398",
-      phone: "+919446922048",
+      phone: "+91 8848807903",
       address:
         "📍 Address: Chandrathil Road Opposite Edappally Post Office Kochi, Ernakulam, Kerala 682024",
       image: "/hostels/frontbranch32.jpg",
@@ -301,7 +301,7 @@
         "Church",
         "Mosque",
       ],
-      cookingFee: 300,
+      cookingFee: 350,
     },
     {
       id: 2,
@@ -309,13 +309,13 @@
       place: "Palarivattom",
       branchNumber: "33",
       location: "https://maps.app.goo.gl/c41oJXBqXUotLLFL9",
-      phone: "+919446441533",
+      phone: "8921-111503",
       address:
         "📍 Address: Behind EMC Hospital, Alinchuvadu, Vennala,Kochi, Ernakulam, Kerala – 682028",
       image: "/hostels/frontbranch33.jpg",
       heroImage: "/locations/Palarivattom.avif",
       description:
-        "Premium location hostel with excellent connectivity to hospitals, educational institutions, and shopping centers.",
+        "budget location hostel with excellent connectivity to hospitals, educational institutions, and shopping centers.",
       rooms: [
         {
           id: 1,
@@ -332,7 +332,7 @@
             "Shared Room",
             "Individual Lockers",
             "Attached Bathroom",
-            "Premium Location",
+            "budget Location",
           ],
           rating: 4.8,
           description:

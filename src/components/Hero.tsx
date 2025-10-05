@@ -166,7 +166,7 @@ export const Hero: React.FC = () => {
                           Nyxta Hostels
                         </div>
                         <div className="text-white/60 text-sm">
-                          Premium Experience
+                          budget Experience
                         </div>
                       </div>
                     </div>
