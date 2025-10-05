@@ -175,6 +175,87 @@ const images = [
       branch: "Branch 05",
       description: "",
     },
+
+    //branch 07
+    {
+      src: "/gallery/branch07/balcony1.jpg",
+      title: "Balcony",
+      branch: "Branch 07",
+      description: "",
+    },
+    {
+      src: "/gallery/branch07/balcony2.jpg",
+      title: "Balcony",
+      branch: "Branch 07",
+      description: "",
+    },
+    {
+      src: "/gallery/branch07/balcony3.jpg",
+      title: "Balcony",
+      branch: "Branch 07",
+      description: "",
+    },
+    {
+      src: "/gallery/branch07/bathroom.jpg",
+      title: "Bathroom",
+      branch: "Branch 07",
+      description: "",
+    },
+    {
+      src: "/gallery/branch07/bathroom1.jpg",
+      title: "Bathroom",
+      branch: "Branch 07",
+      description: "",
+    },
+    {
+      src: "/gallery/branch07/outdoor1.jpg",
+      title: "Outdoor",
+      branch: "Branch 07",
+      description: "",
+    },
+    {
+      src: "/gallery/branch07/outdoor2.jpg",
+      title: "Outdoor",
+      branch: "Branch 07",
+      description: "",
+    },
+    {
+      src: "/gallery/branch07/purifier.jpg",
+      title: "Purifier",
+      branch: "Branch 07",
+      description: "",
+    },
+    {
+      src: "/gallery/branch07/room1.jpg",
+      title: "Room",
+      branch: "Branch 07",
+      description: "",
+    },
+    {
+      src: "/gallery/branch07/room2.jpg",
+      title: "Room",
+      branch: "Branch 07",
+      description: "",
+    },
+    {
+      src: "/gallery/branch07/room3.jpg",
+      title: "Room",
+      branch: "Branch 07",
+      description: "",
+    },
+    {
+      src: "/gallery/branch07/stairs.jpg",
+      title: "Stairs",
+      branch: "Branch 07",
+      description: "",
+    },
+    {
+      src: "/gallery/branch07/storage.jpg",
+      title: "Storage",
+      branch: "Branch 07",
+      description: "",
+    },
+
   ];
 
   export default images;

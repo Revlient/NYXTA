@@ -26,6 +26,7 @@ export const Gallery: React.FC = () => {
     "Branch 31",
     "Branch 32",
     "Branch 33",
+    "Branch 07",
   ];
 
   const filteredImages = images.filter((image) => {

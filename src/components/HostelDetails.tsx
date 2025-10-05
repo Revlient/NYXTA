@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { Navigation } from "./Navigation";
 import { Footer } from "./Footer";
-
+import branches from "../data/Branches";
 export const HostelDetails: React.FC = () => {
   const { branchId } = useParams();
   const navigate = useNavigate();
@@ -26,574 +26,6 @@ export const HostelDetails: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const branches = [
-    {
-      id: 0,
-      name: "NYXTA LADIES HOSTEL - NEAR LULU MALL",
-      place: "Edapally",
-      branchNumber: "31",
-      location: "https://g.co/kgs/ZESuc9z",
-      phone: "+918848807930",
-      address:
-        "📍 Address: Behind Nice Chemicals, Edappally, Kochi, Ernakulam, Kerala – 682024.",
-      image: "/hostels/frontbranch31.jpg",
-      heroImage: "/locations/edapally.jpg",
-      description:
-        "Experience budget hostel living in the heart of Kochi, just minutes away from Lulu Mall and major attractions.",
-      rooms: [
-        {
-          id: 1,
-          image: "/gallery/branch31/room1.jpg",
-          images: [
-            "/gallery/branch31/room1.jpg",
-            "/gallery/branch31/room2.jpg",
-            "/gallery/branch31/room3.jpg",
-          ],
-          features: [
-            "Private Space",
-            "Individual Locker",
-            "Attached Bathroom",
-            "City View",
-          ],
-          rating: 4.9,
-          description:
-            "budget single occupancy room with complete privacy and modern amenities. Perfect for professionals and students who value personal space.",
-        },
-        {
-          id: 2,
-          name: "4 Sharing",
-          price: 3250,
-          capacity: 4,
-          image: "/gallery/branch31/room2.jpg",
-          images: [
-            "/gallery/branch31/room2.jpg",
-            "/gallery/branch31/room1.jpg",
-            "/gallery/branch31/room3.jpg",
-          ],
-          features: [
-            "Shared Room",
-            "Individual Lockers",
-            "Attached Bathroom",
-            "Double-Decker Beds",
-          ],
-          rating: 4.8,
-          description:
-            "Comfortable shared accommodation with modern amenities, perfect for building friendships while maintaining privacy.",
-        },
-        {
-          id: 3,
-          name: "6 Sharing",
-          price: 3000,
-          capacity: 6,
-          image: "/gallery/branch31/room3.jpg",
-          images: [
-            "/gallery/branch31/room3.jpg",
-            "/gallery/branch31/room1.jpg",
-            "/gallery/branch31/room2.jpg",
-          ],
-          features: [
-            "Shared Room",
-            "Individual Lockers",
-            "Attached Bathroom",
-            "Budget Friendly",
-          ],
-          rating: 4.7,
-          description:
-            "Most affordable option with all essential amenities, ideal for budget-conscious students and travelers.",
-        },
-      ],
-      roomsPrice: {
-        "single sharing": 4000,
-        "4 sharing": 3250,
-        "6 sharing": 3000,
-      },
-      locationPerks: [
-        {
-          name: "Lulu Mall & Edappally Metro Station",
-          distance: "1.5 km",
-          walk: "18 mins",
-        },
-        {
-          name: "Lulu Group India Head Office",
-          distance: "300 m",
-          walk: "4 mins",
-        },
-        { name: "Let's Update Academy", distance: "500 m", walk: "7 mins" },
-        { name: "Future Ace Hospital", distance: "500 m", walk: "7 mins" },
-        {
-          name: "Bus Stop & Aster Cab Pick Point",
-          distance: "250 m",
-          walk: "3 mins",
-        },
-        {
-          name: "Ajinorah Institute Edappally",
-          distance: "1.0 km",
-          walk: "12 mins",
-        },
-        { name: "ISSD Edappally", distance: "1.0 km", walk: "12 mins" },
-        {
-          name: "Aritha Hospital Edappally",
-          distance: "1.2 km",
-          walk: "16 mins",
-        },
-      ],
-      amenities: [
-        "High-Speed WiFi",
-        "Double-Decker Beds",
-        "Individual Lockers/Cupboards",
-        "Parking Facility",
-        "Attached Bathrooms",
-        "Optional Cooking Facility",
-        "Refrigerator",
-        "Purified Drinking Water",
-        "Electricity Charges Included",
-        "Regular Cleaning Service",
-        "CCTV Surveillance",
-        "Bed Bug Control",
-        "Traditional Washing Area",
-        "Waste Disposal System",
-      ],
-      nearbyEssentials: [
-        "Bus Stop",
-        "Metro",
-        "Auto Stand",
-        "Hospitals",
-        "Medical Shops",
-        "ATMs",
-        "Banks",
-        "Railway Station",
-        "Petrol Pump",
-        "EV Charging",
-        "Restaurants",
-        "Temple",
-        "Church",
-        "Mosque",
-      ],
-      cookingFee: 350,
-    },
-    {
-      id: 1,
-      name: "NYXTA LADIES HOSTEL - NEAR LULU MALL",
-      place: "Edapally",
-      branchNumber: "32",
-      location: "https://maps.app.goo.gl/RSVNvLjDigj9DK398",
-      phone: "+919446922048",
-      address:
-        "📍 Address: Chandrathil Road Opposite Edappally Post Office Kochi, Ernakulam, Kerala 682024",
-      image: "/hostels/frontbranch32.jpg",
-      heroImage: "/locations/edapally.jpg",
-      description:
-        "Modern hostel accommodation with excellent connectivity to educational institutions and shopping centers.",
-      rooms: [
-        {
-          id: 1,
-          image: "/gallery/branch32/room2.jpg",
-          images: [
-            "/gallery/branch32/room2.jpg",
-            "/gallery/branch32/room3.jpg",
-            "/gallery/branch32/front.jpg",
-          ],
-          features: [
-            "Private Space",
-            "Individual Locker",
-            "Attached Bathroom",
-            "City View",
-          ],
-          rating: 4.9,
-          description:
-            "Affordable single occupancy room with privacy and all essential amenities for comfortable living.",
-        },
-        {
-          id: 2,
-          name: "3 Sharing",
-          price: 3500,
-          capacity: 3,
-          image: "/gallery/branch32/room3.jpg",
-          images: [
-            "/gallery/branch32/room3.jpg",
-            "/gallery/branch32/room2.jpg",
-            "/gallery/branch32/kitchen.jpg",
-          ],
-          features: [
-            "Shared Room",
-            "Individual Lockers",
-            "Attached Bathroom",
-            "Double-Decker Beds",
-          ],
-          rating: 4.8,
-          description:
-            "Comfortable 3-person accommodation with modern amenities and great community atmosphere.",
-        },
-        {
-          id: 3,
-          name: "4 Sharing",
-          price: 3250,
-          capacity: 4,
-          image: "/gallery/branch32/kitchen.jpg",
-          images: [
-            "/gallery/branch32/kitchen.jpg",
-            "/gallery/branch32/room2.jpg",
-            "/gallery/branch32/room3.jpg",
-          ],
-          features: [
-            "Shared Room",
-            "Individual Lockers",
-            "Attached Bathroom",
-            "Double-Decker Beds",
-          ],
-          rating: 4.8,
-          description:
-            "Popular 4-person shared accommodation with excellent facilities and prime location.",
-        },
-        {
-          id: 4,
-          name: "5 Sharing",
-          price: 3000,
-          capacity: 5,
-          image: "/gallery/branch32/bathroom.jpg",
-          images: [
-            "/gallery/branch32/bathroom.jpg",
-            "/gallery/branch32/kitchen.jpg",
-            "/gallery/branch32/room2.jpg",
-          ],
-          features: [
-            "Shared Room",
-            "Individual Lockers",
-            "Attached Bathroom",
-            "Budget Friendly",
-          ],
-          rating: 4.7,
-          description:
-            "Most affordable option with all essential amenities and great connectivity.",
-        },
-      ],
-      roomsPrice: {
-        "single sharing": 4500,
-        "2 sharing": 3250,
-        "3 sharing": 3000,
-        "4 sharing": 2800,
-        "6 sharing": 2500,
-      },
-      locationPerks: [
-        {
-          name: "Ajinorah Institutions Edappally",
-          distance: "500 m",
-          walk: "6 mins",
-        },
-        {
-          name: "Lulu Mall & Edappally Metro Station",
-          distance: "1.0 km",
-          walk: "10 mins",
-        },
-        {
-          name: "Changampuzha Park Metro Station",
-          distance: "800 m",
-          walk: "10 mins",
-        },
-        {
-          name: "Keyhole Clinic Edappally",
-          distance: "600 m",
-          walk: "10 mins",
-        },
-        {
-          name: "Skin Secrets Clinic Edappally",
-          distance: "800 m",
-          walk: "15 mins",
-        },
-        { name: "ISSD Edappally", distance: "800 m", walk: "10 mins" },
-        { name: "Oberon Mall Edappally", distance: "1.5 km", walk: "15 mins" },
-      ],
-      amenities: [
-        "High-Speed WiFi",
-        "Double-Decker Beds",
-        "Individual Lockers/Cupboards",
-        "Parking Facility",
-        "Attached Bathrooms",
-        "Optional Cooking Facility",
-        "Refrigerator",
-        "Purified Drinking Water",
-        "Electricity Charges Included",
-        "Regular Cleaning Service",
-        "CCTV Surveillance",
-        "Bed Bug Control",
-        "Traditional Washing Area",
-        "Waste Disposal System",
-      ],
-      nearbyEssentials: [
-        "Bus Stop",
-        "Metro",
-        "Auto Stand",
-        "Hospitals",
-        "Medical Shops",
-        "ATMs",
-        "Banks",
-        "Railway Station",
-        "Petrol Pump",
-        "EV Charging",
-        "Restaurants",
-        "Temple",
-        "Church",
-        "Mosque",
-      ],
-      cookingFee: 350,
-    },
-    {
-      id: 2,
-      name: "NYXTA LADIES HOSTEL - PALARIVATTOM",
-      place: "Palarivattom",
-      branchNumber: "33",
-      location: "https://maps.app.goo.gl/c41oJXBqXUotLLFL9",
-      phone: "+919446441533",
-      address:
-        "📍 Address: Behind EMC Hospital, Alinchuvadu, Vennala,Kochi, Ernakulam, Kerala – 682028",
-      image: "/hostels/frontbranch33.jpg",
-      heroImage: "/locations/Palarivattom.avif",
-      description:
-        "budget location hostel with excellent connectivity to hospitals, educational institutions, and shopping centers.",
-      rooms: [
-        {
-          id: 1,
-          image: "/gallery/branch33/room.jpg",
-          images: [
-            "/gallery/branch33/room.jpg",
-            "/gallery/branch33/room1.jpg",
-            "/gallery/branch33/room2.jpg",
-          ],
-          features: [
-            "Shared Room",
-            "Individual Lockers",
-            "Attached Bathroom",
-            "budget Location",
-          ],
-          rating: 4.8,
-          description:
-            "Comfortable 2-person sharing in prime location with excellent connectivity and modern amenities.",
-        },
-        {
-          id: 2,
-          name: "8 Sharing",
-          price: 3000,
-          capacity: 8,
-          image: "/gallery/branch33/room1.jpg",
-          images: [
-            "/gallery/branch33/room1.jpg",
-            "/gallery/branch33/room2.jpg",
-            "/gallery/branch33/room3.jpg",
-          ],
-          features: [
-            "Shared Room",
-            "Individual Lockers",
-            "Attached Bathroom",
-            "Budget Option",
-          ],
-          rating: 4.6,
-          description:
-            "Most economical option with great connectivity and all essential amenities for comfortable living.",
-        },
-      ],
-      roomsPrice: {
-        "single sharing": 4500,
-        "2 sharing": 3250,
-        "3 sharing": 3000,
-        "4 sharing": 2800,
-        "6 sharing": 2500,
-      },
-      locationPerks: [
-        {
-          name: "Triple i Commerce Academy",
-          distance: "200 m",
-          walk: "3 mins",
-        },
-        { name: "Ernakulam Medical Centre", distance: "500 m", walk: "8 mins" },
-        { name: "Jayalakshmi Silks", distance: "600 m", walk: "9 mins" },
-        {
-          name: "Lisie College of Pharmacy",
-          distance: "700 m",
-          walk: "10 mins",
-        },
-        {
-          name: "MAX Fashion Palarivattom",
-          distance: "700 m",
-          walk: "10 mins",
-        },
-        {
-          name: "Xylem Learning Palarivattom Center",
-          distance: "700 m",
-          walk: "10 mins",
-        },
-        { name: "Q1 Mall by Nippon", distance: "800 m", walk: "10 mins" },
-        {
-          name: "GIIMS Institute of Logistics",
-          distance: "950 m",
-          walk: "12 mins",
-        },
-        {
-          name: "Palarivattom Junction (Police Station)",
-          distance: "1.2 km",
-          walk: "12 mins",
-        },
-        { name: "Oberon Mall Edappally", distance: "1.2 km", walk: "15 mins" },
-        {
-          name: "Prestige Mall Edappally",
-          distance: "1.2 km",
-          walk: "15 mins",
-        },
-      ],
-      amenities: [
-        "High-Speed WiFi",
-        "Double-Decker Beds",
-        "Individual Lockers/Cupboards",
-        "Parking Facility",
-        "Attached Bathrooms",
-        "Optional Cooking Facility",
-        "Refrigerator",
-        "Purified Drinking Water",
-        "Electricity Charges Included",
-        "Regular Cleaning Service",
-        "CCTV Surveillance",
-        "Bed Bug Control",
-        "Traditional Washing Area",
-        "Waste Disposal System",
-      ],
-      nearbyEssentials: [
-        "Bus Stop",
-        "Metro",
-        "Auto Stand",
-        "Hospitals",
-        "Medical Shops",
-        "ATMs",
-        "Banks",
-        "Railway Station",
-        "Petrol Pump",
-        "EV Charging",
-        "Restaurants",
-        "Temple",
-        "Church",
-        "Mosque",
-      ],
-      cookingFee: 350,
-    },
-    {
-      id: 3,
-      name: "NYXTA MEN'S HOSTEL",
-      place: "Edapally",
-      branchNumber: "05",
-      location: "https://goo.gl/maps/7Rrqp3gHS59jkJMX6",
-      phone: "",
-      address: "",
-      image: "/hostels/frontbranch05.jpg",
-      heroImage: "/locations/edapally.jpg",
-      description:
-        "Comfortable and affordable accommodation for men with modern amenities and excellent connectivity.",
-      rooms: [
-        {
-          id: 1,
-          image: "/gallery/branch05/room.jpg",
-          images: [
-            "/gallery/branch05/room.jpg",
-            "/gallery/branch05/room2.jpg",
-            "/gallery/branch05/room3.jpg",
-          ],
-          features: [
-            "Private Cot",
-            "Shared Room",
-            "Attached Bathroom",
-            "Budget Friendly",
-          ],
-          rating: 4.7,
-          description:
-            "Affordable single cot accommodation for men with all essential amenities and great location.",
-        },
-        {
-          id: 2,
-          name: "Shared Cot",
-          price: 3000,
-          capacity: 2,
-          image: "/gallery/branch05/room2.jpg",
-          images: [
-            "/gallery/branch05/room2.jpg",
-            "/gallery/branch05/room3.jpg",
-            "/gallery/branch05/stair.jpg",
-          ],
-          features: [
-            "Shared Cot",
-            "Shared Room",
-            "Attached Bathroom",
-            "Budget Option",
-          ],
-          rating: 4.6,
-          description:
-            "Most economical shared cot option for men with comfortable living arrangements.",
-        },
-      ],
-      roomsPrice: {
-        "single sharing": 4500,
-        "2 sharing": 3250,
-        "3 sharing": 3000,
-        "4 sharing": 2800,
-        "6 sharing": 2500,
-      },
-      locationPerks: [
-        {
-          name: "Lulu Mall & Edappally Metro Station",
-          distance: "1.5 km",
-          walk: "18 mins",
-        },
-        { name: "Kochi Marriott Hotel", distance: "1.6 km", walk: "20 mins" },
-        { name: "Futureace Hospital", distance: "1.2 km", walk: "15 mins" },
-        { name: "MAJ Hospital Edappally", distance: "1.2 km", walk: "15 mins" },
-        { name: "Changampuzha Park", distance: "1.3 km", walk: "16 mins" },
-        { name: "I Hub Edappally", distance: "1.3 km", walk: "16 mins" },
-        {
-          name: "Ajinorah Institute Edappally",
-          distance: "1.4 km",
-          walk: "17 mins",
-        },
-        {
-          name: "Edappally Toll Junction",
-          distance: "1.5 km",
-          walk: "18 mins",
-        },
-        { name: "Grand Mall", distance: "1.8 km", walk: "22 mins" },
-        { name: "Oberon Mall", distance: "2.5 km", walk: "30 mins" },
-        {
-          name: "Palarivattom Junction",
-          distance: "3.5 km",
-          walk: "10 mins drive",
-        },
-      ],
-      amenities: [
-        "High-Speed WiFi",
-        "Double & Single Decker Beds",
-        "Parking Facility",
-        "Attached Bathrooms",
-        "Purified Drinking Water",
-        "Electricity Charges Included",
-        "Regular Cleaning Services",
-        "CCTV Surveillance",
-        "Bed Bug Treatment",
-        "Traditional Washing Area",
-      ],
-      nearbyEssentials: [
-        "Bus Stop",
-        "Metro",
-        "Auto Stand",
-        "Hospitals",
-        "Medical Shops",
-        "ATMs",
-        "Banks",
-        "Railway Station",
-        "Petrol Pump",
-        "EV Charging Station",
-        "Restaurants",
-        "Mosque",
-        "Church",
-        "Temple",
-      ],
-      cookingFee: 0,
-    },
-  ];
 
   const selectedBranchData = branches.find(
     (b) => b.id === parseInt(branchId || "0")
@@ -617,9 +49,9 @@ export const HostelDetails: React.FC = () => {
     );
   }
 
-  // Sort roomsPrice in descending order of capacity
-  const sortedRoomsPrice = Object.entries(selectedBranchData.roomsPrice).sort(
-    ([, priceA], [, priceB]) => priceB - priceA
+  // Sort rooms in descending order of capacity
+  const sortedRooms = selectedBranchData.rooms.sort(
+    (a, b) => b.capacity - a.capacity
   );
 
   const openLightbox = (image: string) => {
@@ -632,6 +64,15 @@ export const HostelDetails: React.FC = () => {
     setSelectedImage(null);
   };
 
+  // Get unique images for the gallery
+  const uniqueImages = Array.from(
+    new Set(
+      selectedBranchData.rooms.reduce<string[]>((acc, room) => {
+        return [...acc, ...room.images];
+      }, [])
+    )
+  );
+
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -641,7 +82,7 @@ export const HostelDetails: React.FC = () => {
         <div className="relative h-64 sm:h-80 w-full rounded-2xl overflow-hidden shadow-2xl">
           <img
             src={selectedBranchData.heroImage}
-            alt={selectedBranchData.name}
+            alt={`Hero image for ${selectedBranchData.name}`}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
@@ -679,30 +120,6 @@ export const HostelDetails: React.FC = () => {
         </div>
       </div>
 
-      {/* Rates Section */}
-      <div className="container mx-auto px-6 py-12">
-        <div className="max-w-5xl mx-auto">
-          <h3 className="text-xl md:text-2xl font-bold text-white mb-5">
-            Room Rates
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
-            {sortedRoomsPrice.map(([sharingType, price], index) => (
-              <div
-                key={index}
-                className="bg-gradient-to-r from-white/5 to-white/10 rounded-2xl border border-white/10 p-5"
-              >
-                <div className="text-white font-semibold capitalize">
-                  {sharingType}
-                </div>
-                <div className="text-[#A08647] text-xl font-bold">
-                  ₹{price.toLocaleString()}/month
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Branch Details Section */}
       <div className="container mx-auto px-6 py-12">
         <div className="max-w-5xl mx-auto">
@@ -718,7 +135,31 @@ export const HostelDetails: React.FC = () => {
                 </p>
               </div>
             </div>
-
+            {/* Rates Section */}
+            <div className="container mx-auto px-6 py-12">
+              <div className="max-w-5xl mx-auto">
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-5">
+                  Room Rates
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+                  {Object.entries(selectedBranchData.roomsPrice)
+                    .sort(([, priceA], [, priceB]) => priceB - priceA)
+                    .map(([roomType, price], index) => (
+                      <div
+                        key={index}
+                        className="bg-gradient-to-r from-white/5 to-white/10 rounded-2xl border border-white/10 p-5 h-24 flex flex-col justify-between"
+                      >
+                        <div className="text-white font-semibold capitalize">
+                          {roomType}
+                        </div>
+                        <div className="text-[#A08647] text-xl font-bold">
+                          ₹{price.toLocaleString()}/month
+                        </div>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            </div>
             {/* Contact Info */}
             <div className="bg-gradient-to-r from-white/5 to-white/10 rounded-2xl border border-white/10 p-5">
               <div className="grid md:grid-cols-2 gap-4">
@@ -727,7 +168,7 @@ export const HostelDetails: React.FC = () => {
                   <div>
                     <div className="text-white font-medium">Contact</div>
                     <div className="text-white/70">
-                      {selectedBranchData.phone}
+                      {selectedBranchData.phone || "Not available"}
                     </div>
                   </div>
                 </div>
@@ -755,39 +196,35 @@ export const HostelDetails: React.FC = () => {
               Branch Gallery
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {selectedBranchData.rooms
-                .reduce<string[]>((acc, room) => {
-                  return [...acc, ...room.images];
-                }, [])
-                .map((image, index) => (
-                  <div
-                    key={index}
-                    className="relative group overflow-hidden rounded-xl bg-gradient-to-br from-white/5 to-white/10 border border-white/10 cursor-pointer"
-                    onClick={() => openLightbox(image)}
-                  >
-                    <img
-                      src={image}
-                      alt={`Branch ${selectedBranchData.branchNumber} - Image ${
-                        index + 1
-                      }`}
-                      className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                ))}
+              {uniqueImages.map((image, index) => (
+                <div
+                  key={index}
+                  className="relative group overflow-hidden rounded-xl bg-gradient-to-br from-white/5 to-white/10 border border-white/10 cursor-pointer"
+                  onClick={() => openLightbox(image)}
+                >
+                  <img
+                    src={image}
+                    alt={`Branch ${
+                      selectedBranchData.branchNumber
+                    } - Gallery Image ${index + 1}`}
+                    className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+              ))}
             </div>
           </div>
 
           {/* Lightbox Modal */}
           {lightboxOpen && selectedImage && (
-            <div
-              className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
-              onClick={closeLightbox}
-            >
-              <div className="relative max-w-4xl w-full mx-4">
+            <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+              <div
+                className="relative max-w-4xl w-full mx-4"
+                onClick={(e) => e.stopPropagation()}
+              >
                 <img
                   src={selectedImage}
-                  alt="Lightbox Image"
+                  alt="Enlarged gallery image"
                   className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
                 />
                 <button
@@ -826,8 +263,8 @@ export const HostelDetails: React.FC = () => {
             {/* Amenities */}
             <div>
               <h3 className="text-xl md:text-2xl font-bold text-white mb-5 flex items-center">
-                <Wifi className="w-6 h-6 mr-2 text-[#A08647]" />
-                Included Amenities & Property features
+                <Star className="w-6 h-6 mr-2 text-[#A08647]" />
+                Included Amenities & Property Features
               </h3>
               <div className="grid grid-cols-1 gap-2">
                 {selectedBranchData.amenities.map((amenity, index) => (
@@ -857,9 +294,7 @@ export const HostelDetails: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               <div className="text-center p-3 bg-white/5 rounded-lg border border-white/10">
                 <Clock className="w-7 h-7 text-[#A08647] mx-auto mb-2" />
-                <div className="text-white font-semibold">
-                  Curfew time
-                </div>
+                <div className="text-white font-semibold">Curfew Time</div>
                 <div className="text-white/60 text-sm">11:30 PM</div>
               </div>
               <div className="text-center p-3 bg-white/5 rounded-lg border border-white/10">
@@ -879,25 +314,29 @@ export const HostelDetails: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <button
                 onClick={() => {
-                  const phone = "918848574001";
+                  const phone = selectedBranchData.phone || "918848574001";
                   const message = `Hello, I'd like to book a room at Branch ${selectedBranchData.branchNumber}.`;
                   const encoded = encodeURIComponent(message);
-                  const url = `https://wa.me/${phone}?text=${encoded}`;
+                  const url = `https://wa.me/${phone.replace(
+                    /\D/g,
+                    ""
+                  )}?text=${encoded}`;
                   window.open(url, "_blank", "noopener,noreferrer");
                 }}
                 className="px-6 py-3 bg-gradient-to-r from-[#A08647] to-[#D1C0B2] rounded-lg text-white font-semibold hover:shadow-lg hover:shadow-[#A08647]/20 transition-all duration-300 transform hover:scale-105"
               >
                 Book Now via WhatsApp
               </button>
-              <button
-                onClick={() => {
-                  const phone = selectedBranchData.phone;
-                  window.open(`tel:${phone}`, "_self");
-                }}
-                className="px-6 py-3 bg-white/10 border border-white/20 rounded-lg text-white font-semibold hover:bg-white/20 transition-all duration-300"
-              >
-                Call Now
-              </button>
+              {selectedBranchData.phone && (
+                <button
+                  onClick={() => {
+                    window.open(`tel:${selectedBranchData.phone}`, "_self");
+                  }}
+                  className="px-6 py-3 bg-white/10 border border-white/20 rounded-lg text-white font-semibold hover:bg-white/20 transition-all duration-300"
+                >
+                  Call Now
+                </button>
+              )}
             </div>
 
             <div className="text-center mt-5 p-3 bg-white/5 rounded-lg border border-white/10">
