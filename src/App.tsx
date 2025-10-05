@@ -13,6 +13,7 @@ import { Footer } from './components/Footer';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { WhyNyxta } from './components/WhyNyxta';
+import FloatingIcons from './components/FloatingIcons';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,6 +42,7 @@ function App() {
             <Amenities />
             <Gallery />
             <Contact />
+            <FloatingIcons />
             <Footer />
           </div>
         } />

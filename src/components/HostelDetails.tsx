@@ -16,6 +16,7 @@ import {
 import { Navigation } from "./Navigation";
 import { Footer } from "./Footer";
 import branches from "../data/Branches";
+import FloatingIcons from "./FloatingIcons";
 export const HostelDetails: React.FC = () => {
   const { branchId } = useParams();
   const navigate = useNavigate();
@@ -359,7 +360,7 @@ export const HostelDetails: React.FC = () => {
           </div>
         </div>
       </div>
-
+      <FloatingIcons />
       <Footer />
     </div>
   );
