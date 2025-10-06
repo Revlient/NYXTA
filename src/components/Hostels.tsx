@@ -76,7 +76,7 @@ export const Hostels: React.FC = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-3xl font-bold md:hidden">
-                      Branch {branch.branchNumber}
+                      Branch {branch.branchNumber} {branch.ladies ? "(Ladies)" : ""} 
                     </div>
                     <button
                       onClick={() => toggleDetails(branch.id)}
@@ -100,7 +100,7 @@ export const Hostels: React.FC = () => {
                     <div className="flex justify-between items-start">
                       <div className="flex-grow">
                         <h3 className="text-2xl font-bold text-white mb-2">
-                          Branch {branch.branchNumber}
+                          Branch {branch.branchNumber} {branch.ladies ? "(Ladies)" : ""}
                         </h3>
                         <p className="text-white/60 text-sm">
                           budget accommodation in prime location

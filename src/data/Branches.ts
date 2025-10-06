@@ -2,6 +2,7 @@ const branches = [
   {
     id: 0,
     name: "NYXTA LADIES HOSTEL - NEAR LULU MALL",
+    ladies: true,
     place: "Edapally",
     branchNumber: "31",
     location: "https://g.co/kgs/ZESuc9z",
@@ -81,7 +82,9 @@ const branches = [
         "single sharing": 4000,
         "4 sharing": 3250,
         "6 sharing": 3000,
+
     },
+
     locationPerks: [
       {
         name: "Lulu Mall & Edappally Metro Station",
@@ -149,6 +152,7 @@ const branches = [
   {
     id: 1,
     name: "NYXTA LADIES HOSTEL - NEAR LULU MALL",
+    ladies: true,
     place: "Edapally",
     branchNumber: "32",
     location: "https://maps.app.goo.gl/RSVNvLjDigj9DK398",
@@ -316,6 +320,7 @@ const branches = [
   {
     id: 2,
     name: "NYXTA LADIES HOSTEL - PALARIVATTOM",
+    ladies: true,
     place: "Palarivattom",
     branchNumber: "33",
     location: "https://maps.app.goo.gl/c41oJXBqXUotLLFL9",
@@ -371,9 +376,8 @@ const branches = [
       },
     ],
     roomsPrice: {
-        "single sharing": 4000,
-        "4 sharing": 3250,
-        "6 sharing": 3000,
+        "single Coat": 3250,
+        "8 Coat": 3000,
     },
     locationPerks: [
       {
@@ -453,6 +457,7 @@ const branches = [
   {
     id: 3,
     name: "NYXTA MEN'S HOSTEL",
+    ladies: false,
     place: "Edapally",
     branchNumber: "05",
     location: "https://goo.gl/maps/7Rrqp3gHS59jkJMX6",
@@ -507,9 +512,8 @@ const branches = [
       },
     ],
     roomsPrice: {
-        "single sharing": 4000,
-        "4 sharing": 3250,
-        "6 sharing": 3000,
+        "single sharing": 3750,
+        "4 sharing": 3000,
     },
     locationPerks: [
       {
@@ -568,11 +572,12 @@ const branches = [
       "Church",
       "Temple",
     ],
-    cookingFee: 0,
+    cookingFee: 350,
   },
   {
     id: 4,
     name: "NYXTA MEN'S HOSTEL – EDAPPALLY",
+    ladies: false,
     place: "Edappally",
     branchNumber: "07",
     location: "",
@@ -697,17 +702,18 @@ const branches = [
       "Church",
       "Mosque",
     ],
-    cookingFee: 0,
+    cookingFee: 350,
   },
   {
     id: 4,
     name: "NYXTA MEN'S HOSTEL – EDAPPALLY",
+    ladies: false,
     place: "Edappally",
     branchNumber: "08",
     location: "",
     phone: "+919447386229",
     address: "Old Railway station Road, Jawan cross Road Edappally Kochi, Ernakulam, Kerala – 682024",
-    image: "/hostels/frontbranch07.jpg",
+    image: "/hostels/frontbranch08.jpg",
     heroImage: "/locations/edapally.jpg",
     description:
       "Budget-friendly, secure, and cozy men's hostel accommodation in the heart of Edappally. Ideal for students, travelers, and working professionals.",
@@ -756,9 +762,9 @@ const branches = [
       },
     ],
     roomsPrice: {
-        "single sharing": 4000,
-        "4 sharing": 3250,
+        "4 sharing": 3000,
         "6 sharing": 3000,
+        "8 sharing": 3000,
     },
     locationPerks: [
       {
@@ -826,7 +832,7 @@ const branches = [
       "Church",
       "Mosque",
     ],
-    cookingFee: 0,
+    cookingFee: 350,
   },
 ];
 

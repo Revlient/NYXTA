@@ -161,6 +161,26 @@ export const HostelDetails: React.FC = () => {
                 </div>
               </div>
             </div>
+            {/* other info */}
+            <div className="text-center my-5 p-3 bg-white/5 rounded-lg border border-white/10">
+              <p className="text-white/80 mb-1">
+                <span className="font-semibold">Registration Fee:</span> ₹500
+                (One-time, Non-refundable)
+              </p>
+              {selectedBranchData.ladies ? (
+                <p className="text-white/80">
+                  <span className="font-semibold">
+                    Optional Cooking Facility:
+                  </span>{" "}
+                  ₹{selectedBranchData.cookingFee}/month
+                </p>
+              ) : null}
+              <p className="text-white/80">
+                <span className="font-semibold">
+                  Mess facility available at an additional cost (optional)
+                </span>
+              </p>
+            </div>
             {/* Contact Info */}
             <div className="bg-gradient-to-r from-white/5 to-white/10 rounded-2xl border border-white/10 p-5">
               <div className="grid md:grid-cols-2 gap-4">
@@ -345,15 +365,18 @@ export const HostelDetails: React.FC = () => {
                 <span className="font-semibold">Registration Fee:</span> ₹500
                 (One-time, Non-refundable)
               </p>
+              {selectedBranchData.ladies ? (
+                <p className="text-white/80">
+                  <span className="font-semibold">
+                    Optional Cooking Facility:
+                  </span>{" "}
+                  ₹{selectedBranchData.cookingFee}/month
+                </p>
+              ) : null}
+
               <p className="text-white/80">
                 <span className="font-semibold">
-                  Optional Cooking Facility:
-                </span>{" "}
-                ₹{selectedBranchData.cookingFee}/month
-              </p>
-              <p className="text-white/80">
-                <span className="font-semibold">
-                  (Mess food available on request basis)
+                  Mess facility available at an additional cost (optional)
                 </span>
               </p>
             </div>
