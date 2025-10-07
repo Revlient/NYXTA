@@ -370,7 +370,8 @@ export const HostelDetails: React.FC = () => {
                   <span className="font-semibold">
                     Optional Cooking Facility:
                   </span>{" "}
-                  ₹{selectedBranchData.cookingFee}/month
+                  ₹{selectedBranchData.cookingFee}/month <br />
+                  Includes: • ⛽ Gas & Stove • 🧊 Fridge • 🍳 Basic Cooking Vessel
                 </p>
               ) : null}
 
