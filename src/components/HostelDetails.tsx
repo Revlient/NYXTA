@@ -159,22 +159,26 @@ export const HostelDetails: React.FC = () => {
                       </div>
                     ))}
                 </div>
+                {/* cooking facility */}
+                {selectedBranchData.ladies ? (
+                  <div className="bg-gradient-to-r from-white/5 to-white/10 rounded-2xl border border-white/10 p-5 h-auto flex flex-col justify-between">
+                    <div className="text-white font-semibold capitalize">
+                      COOKING FACILITY (Optional): ₹350/month
+                    </div>
+                    <div className="text-[#A08647] text-xl font-bold">
+                      Includes:
+                      <ul className="list-disc list-inside">
+                        <li>Gas & Stove</li>
+                        <li>Fridge</li>
+                        <li>Basic Cooking Vessel</li>
+                      </ul>
+                    </div>
+                  </div>
+                ) : null}
               </div>
             </div>
             {/* other info */}
             <div className="text-center my-5 p-3 bg-white/5 rounded-lg border border-white/10">
-              <p className="text-white/80 mb-1">
-                <span className="font-semibold">Registration Fee:</span> ₹500
-                (One-time, Non-refundable)
-              </p>
-              {selectedBranchData.ladies ? (
-                <p className="text-white/80">
-                  <span className="font-semibold">
-                    Optional Cooking Facility:
-                  </span>{" "}
-                  ₹{selectedBranchData.cookingFee}/month
-                </p>
-              ) : null}
               <p className="text-white/80">
                 <span className="font-semibold">
                   Mess facility available at an additional cost (optional)
@@ -371,7 +375,8 @@ export const HostelDetails: React.FC = () => {
                     Optional Cooking Facility:
                   </span>{" "}
                   ₹{selectedBranchData.cookingFee}/month <br />
-                  Includes: • ⛽ Gas & Stove • 🧊 Fridge • 🍳 Basic Cooking Vessel
+                  Includes: • ⛽ Gas & Stove • 🧊 Fridge • 🍳
+                  Basic Cooking Vessel
                 </p>
               ) : null}
 
