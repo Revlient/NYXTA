@@ -168,8 +168,7 @@ export const Amenities: React.FC = () => {
             </span>
           </h2>
           <p className="text-xl text-white/70 max-w-2xl mx-auto">
-            Enjoy world-class facilities and services designed to make your stay
-            comfortable and memorable
+            Experience exceptional yet budget-friendly facilities and services, thoughtfully designed to make your stay comfortable, convenient
           </p>
         </div>
 
