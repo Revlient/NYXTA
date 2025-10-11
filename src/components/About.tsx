@@ -45,8 +45,6 @@ export const About: React.FC = () => {
     return () => ctx.revert();
   }, []);
 
- 
-
   return (
     <section
       id="about"
@@ -66,21 +64,21 @@ export const About: React.FC = () => {
               </h2>
               <p className="text-xl text-white/70 leading-relaxed">
                 At Nyxta, we believe a hostel is more than just a place to stay
-                – it's your home away from home. Founded with the vision to
-                provide clean, secure, and budget friendly accommodations for
-                students, working professionals, and travelers, Nyxta Hostels
-                has grown into a trusted name across Kochi.
+                it’s a space where comfort meets community. Founded with the
+                vision of offering clean, secure, and budget-friendly
+                accommodations for students, working professionals, and
+                travelers, Nyxta Hostels has earned the trust of residents
+                across Kochi.
               </p>
               <p className="text-white/60">
-                our mission is to provide safe, comfortable, and affordable
-                accommodation that feels like home while fostering a vibrant
-                community for students and young professionals. We strive to
-                combine modern amenities with a welcoming atmosphere, creating a
-                space where our residents can live, learn, and grow together.
+                Our mission is to provide safe, comfortable, and affordable
+                living spaces that foster a sense of belonging while nurturing a
+                vibrant community of students and young professionals. We aim to
+                blend thoughtful facilities with a warm, supportive environment
+                a place where our residents can truly live, learn,
+                and grow together.
               </p>
             </div>
-
-            
           </div>
 
           {/* Right Content - Glass Card */}
