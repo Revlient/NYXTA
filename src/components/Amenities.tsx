@@ -93,6 +93,9 @@ export const Amenities: React.FC = () => {
         "Dedicated washing space for clothes and daily laundry needs",
       gradient: "from-red-500 to-pink-500",
     },
+    {
+      
+    }
   ];
 
   useEffect(() => {

@@ -95,7 +95,7 @@ export const Contact: React.FC = () => {
     <section
       id="contact"
       ref={sectionRef}
-      className="py-20 relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800"
+      className="py-20 relative overflow-hidden "
     >
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">

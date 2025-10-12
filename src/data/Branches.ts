@@ -79,7 +79,7 @@ const branches = [
       },
     ],
     roomsPrice: {
-        "single coat": 4000,
+        "single sharing": 4000,
         "4 sharing": 3250,
         "6 sharing": 3000,
 
@@ -254,11 +254,11 @@ const branches = [
       },
     ],
     roomsPrice: {
-        "single coat": 4000,
         "3 Sharing":3500,
         "4 sharing": 3250,
         "6 sharing": 3000,
-        "8 Sharing" : 3000
+        "8 Sharing" : 3000,
+         "single coat": 3250,
     },
     locationPerks: [
       {
@@ -386,8 +386,8 @@ const branches = [
       },
     ],
     roomsPrice: {
-        "single coat": 3250,
-        "8 Sharing": 3000,
+      "8 Sharing": 3000,
+      "single coat": 3250,
     },
     locationPerks: [
       {
@@ -655,7 +655,7 @@ const branches = [
     ],
     roomsPrice: {
         "single coat with 4 sharing": 3500,
-        "4 sharing": 3250,
+        "4 sharing": 3000,
         "6 sharing": 3000,
         "8 sharing": 3000,
     },
@@ -732,7 +732,7 @@ const branches = [
     cookingFee: 350,
   },
   {
-    id: 4,
+    id: 5,
     name: "NYXTA MEN'S HOSTEL – EDAPPALLY",
     ladies: false,
     place: "Edappally",
