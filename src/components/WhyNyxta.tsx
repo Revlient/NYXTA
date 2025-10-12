@@ -1,5 +1,13 @@
 import React, { useEffect, useRef } from "react";
-import { Award, Globe, BedDouble, Wifi, Shield, Wallet, Users } from "lucide-react";
+import {
+  Award,
+  Globe,
+  BedDouble,
+  Wifi,
+  Shield,
+  Wallet,
+  Users,
+} from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -102,18 +110,42 @@ export const WhyNyxta: React.FC = () => {
                 </span>
               </h2>
               <p className="text-xl text-white/70 leading-relaxed">
-                At Nyxta, we believe a hostel is more than just a place to stay
-                – it's your home away from home. Founded with the vision to
-                provide clean, secure, and budget-friendly accommodations for
-                students, working professionals, and travelers, Nyxta Hostels
-                has grown into a trusted name across Kochi.
-              </p>
-              <p className="text-white/60">
-                Our mission is to provide safe, comfortable, and affordable
-                accommodation that feels like home while fostering a vibrant
-                community for students and young professionals. We strive to
-                combine modern amenities with a welcoming atmosphere, creating a
-                space where our residents can live, learn, and grow together.
+                Looking for a Best Hostels & Short Stay Rooms in Edappally,
+                Changampuzha, and Palarivattom for a comfortable, secure, and
+                affordable hostel in Kochi? <br /><br />
+                NYXTA offers, well-managed rooms and bed spaces in prime
+                locations Edappally, Changampuzha, and Palarivattom all near
+                major metro stations. <br /><br />
+                Whether you need a monthly rental room, weekly accommodation,
+                daily stay bed space, or a quick fresh-up room near Lulu Mall,
+                NYXTA provides complete flexibility for your lifestyle and
+                budget <br /> <br />
+                Our Edappally location is just minutes from Lulu Mall, Ajinorah
+                Institutions, ISSD, and leading hospitals, while our
+                Changampuzha and Palarivattom hostels are ideally placed near
+                metro access, making travel across Kochi simple and convenient.
+                <br /> <br />
+                Each NYXTA property is designed for comfort and functionality,
+                featuring spacious double-decker beds, attached bathrooms,
+                personal lockers, high-speed WiFi, and balconies with refreshing
+                city views.
+                <br />  <br />
+                Enjoy essential amenities included in your stay purified water,
+                electricity, CCTV surveillance, regular cleaning, and parking.
+                Optional facilities such as mess food and self cooking access
+                add extra flexibility for your daily needs.
+                <br /><br />
+                Safety and comfort come first at NYXTA. With 24x7 CCTV
+                monitoring, controlled entry, and friendly on-site staff, you
+                can feel secure and supported throughout your stay. Our
+                affordable and transparent pricing starts from just ₹3,000 per
+                month with no hidden costs. Whether you’re a student, working
+                professional, or traveler exploring Kochi, NYXTA offers the
+                perfect balance of privacy, community, and convenience.
+                <br /><br />
+                Choose NYXTA your trusted choice for hostels, PG rooms, and
+                short stay accommodations near Edappally, Changampuzha, and
+                Palarivattom metro stations in Kochi
               </p>
             </div>
 
