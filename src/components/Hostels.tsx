@@ -108,11 +108,11 @@ export const Hostels: React.FC = () => {
                           </h5>
                         ) : (
                           <h5 className="text-md  text-white mb-2">
-                            Mens
+                            Gents
                           </h5>
                         )}
                         <p className="text-white/60 text-sm">
-                          budget accommodation in prime location
+                          Budget accommodation in prime location
                         </p>
                       </div>
                     </div>

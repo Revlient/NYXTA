@@ -142,8 +142,13 @@ export const Contact: React.FC = () => {
               rel="noopener noreferrer"
               className="bg-green-500 text-white px-10 py-6 rounded-2xl font-semibold hover:bg-green-600 transition-all duration-300 flex items-center space-x-4 shadow-2xl hover:shadow-2xl transform hover:scale-105 w-full max-w-md h-64"
             >
-              <div className="flex flex-col items-center justify-center w-full h-full space-y-4">
-                <MessageCircle className="w-10 h-10" />
+              <div
+                onClick={() =>
+                  window.open("https://wa.me/918848574001", "_blank")
+                }
+                className="flex flex-col items-center justify-center w-full h-full space-y-4 cursor-pointer hover:scale-105 transition-transform duration-300"
+              >
+                <MessageCircle className="w-10 h-10 text-green-400" />
                 <span className="text-xl">Chat with Us on WhatsApp</span>
                 <p className="text-sm text-white/70">
                   Get instant support or book your stay now!

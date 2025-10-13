@@ -1,12 +1,12 @@
-import React from 'react';
-import { FaWhatsapp, FaPhoneAlt } from 'react-icons/fa';
+import React from "react";
+import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
 
 const FloatingIcons: React.FC = () => {
   return (
     <div className="fixed bottom-6 right-6 flex flex-col space-y-4 z-50">
       {/* WhatsApp Icon */}
       <a
-        href="https://wa.me/918921111503"
+        href="https://wa.me/918848574001"
         target="_blank"
         rel="noopener noreferrer"
         className="bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 transform hover:scale-110"

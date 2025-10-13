@@ -104,24 +104,30 @@ export const Hero: React.FC = () => {
               </div> */}
               <h1 className="hero-title text-6xl lg:text-7xl font-bold leading-tight">
                 <span className="block bg-gradient-to-r from-[#D1C0B2] via-pink-400 to-[#A08647] bg-clip-text text-transparent">
-                  NYXTA  
+                  NYXTA
                 </span>
                 HOSTELS
               </h1>
               <p className="hero-subtitle text-xl text-white/80 max-w-lg">
-                – the trusted space for budget friendly, safe, and
-                comfortable stays in the heart of Kochi
+                – the trusted space for budget friendly, safe, and comfortable
+                stays in the heart of Kochi
               </p>
             </div>
 
             <div className="hero-cta flex flex-col sm:flex-row gap-4">
-              <button className="group px-8 py-4 bg-gradient-to-r from-[#D1C0B2] via-pink-400 to-[#A08647] rounded-full text-white font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2">
+              <button
+                onClick={() =>
+                  window.open("https://wa.me/918848574001", "_blank")
+                }
+                className="group px-8 py-4 bg-gradient-to-r from-[#D1C0B2] via-pink-400 to-[#A08647] rounded-full text-white font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
+              >
                 <span>Book Your Stay</span>
                 <ArrowRight
                   size={20}
                   className="group-hover:translate-x-1 transition-transform"
                 />
               </button>
+
               {/* <button className="px-8 py-4 border border-white/20 rounded-full text-white font-semibold backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
                 Virtual Tour
               </button> */}
