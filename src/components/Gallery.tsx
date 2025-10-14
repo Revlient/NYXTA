@@ -1,33 +1,55 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
-import { createRoot } from "react-dom/client";
-import images from "../data/ImageLinks";
+import { galleryApi, branchApi } from "../services/api";
+import { mapGalleryImageToFrontend, FrontendGalleryImage } from "../services/dataAdapter";
 import {
   X,
   ChevronLeft,
   ChevronRight,
-  Filter,
   ZoomIn,
-  Grid,
-  Search,
 } from "lucide-react";
 
 export const Gallery: React.FC = () => {
   const sectionRef = useRef(null);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [activeFilter, setActiveFilter] = useState("all");
-  const [viewMode, setViewMode] = useState("grid");
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [images, setImages] = useState<FrontendGalleryImage[]>([]);
+  const [branches, setBranches] = useState<string[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
-  
+  // Fetch gallery images and branches
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+        const [apiImages, apiBranches] = await Promise.all([
+          galleryApi.getAll(),
+          branchApi.getAll(),
+        ]);
+        
+        const frontendImages = apiImages.map((img) =>
+          mapGalleryImageToFrontend(img, apiBranches)
+        );
+        setImages(frontendImages);
+        
+        // Get unique branch names
+        const uniqueBranches = Array.from(
+          new Set(frontendImages.map((img) => img.branch))
+        ).sort();
+        setBranches(uniqueBranches);
+        
+        setError(null);
+      } catch (err) {
+        console.error('Failed to fetch gallery:', err);
+        setError('Failed to load gallery images. Please try again later.');
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  const branches = [
-    "Branch 05",
-    "Branch 31",
-    "Branch 32",
-    "Branch 33",
-    "Branch 07",
-  ];
+    fetchData();
+  }, []);
 
   const filteredImages = images.filter((image) => {
     const matchesFilter =
@@ -44,7 +66,7 @@ export const Gallery: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const openLightbox = useCallback((index) => {
+  const openLightbox = useCallback((index: number) => {
     setSelectedImage(index);
     document.body.style.overflow = "hidden";
   }, []);
@@ -69,7 +91,7 @@ export const Gallery: React.FC = () => {
   }, [selectedImage, filteredImages.length]);
 
   useEffect(() => {
-    const handleKeyDown = (e) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       if (selectedImage !== null) {
         switch (e.key) {
           case "Escape":
@@ -92,7 +114,7 @@ export const Gallery: React.FC = () => {
   }, [selectedImage, closeLightbox, nextImage, prevImage]);
 
   const handleLightboxClick = useCallback(
-    (e) => {
+    (e: React.MouseEvent<HTMLDivElement>) => {
       if (e.target === e.currentTarget) {
         closeLightbox();
       }
@@ -152,6 +174,19 @@ export const Gallery: React.FC = () => {
             )}
           </p>
         </div>
+
+        {/* Error State */}
+        {error && (
+          <div className="max-w-2xl mx-auto bg-red-500/10 border border-red-500/20 rounded-xl p-6 text-center mb-8">
+            <p className="text-red-400 mb-4">{error}</p>
+            <button
+              onClick={() => window.location.reload()}
+              className="px-6 py-2 bg-red-500/20 hover:bg-red-500/30 rounded-lg text-white transition-all"
+            >
+              Retry
+            </button>
+          </div>
+        )}
 
         <div className="flex flex-row flex-nowrap overflow-x-auto gap-6 snap-x snap-mandatory scrollbar-hide">
           {isLoading ? (

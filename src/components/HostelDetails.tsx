@@ -12,32 +12,64 @@ import {
   Wifi,
   X,
   Clock,
+  Loader2,
 } from "lucide-react";
 import { Navigation } from "./Navigation";
 import { Footer } from "./Footer";
-import branches from "../data/Branches";
+import { branchApi } from "../services/api";
+import { mapBranchToFrontend, FrontendBranch } from "../services/dataAdapter";
 import FloatingIcons from "./FloatingIcons";
+
 export const HostelDetails: React.FC = () => {
   const { branchId } = useParams();
   const navigate = useNavigate();
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [branch, setBranch] = useState<FrontendBranch | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const selectedBranchData = branches.find(
-    (b) => b.id === parseInt(branchId || "0")
-  );
+  // Fetch branch data
+  useEffect(() => {
+    const fetchBranch = async () => {
+      if (!branchId) return;
+      
+      try {
+        setLoading(true);
+        const apiBranch = await branchApi.getById(parseInt(branchId));
+        const frontendBranch = mapBranchToFrontend(apiBranch);
+        setBranch(frontendBranch);
+        setError(null);
+      } catch (err) {
+        console.error('Failed to fetch branch:', err);
+        setError('Failed to load hostel details. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  if (!selectedBranchData) {
+    fetchBranch();
+  }, [branchId]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-12 h-12 text-[#A08647] animate-spin" />
+      </div>
+    );
+  }
+
+  if (error || !branch) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-white mb-4">
-            Branch not found
+            {error || 'Branch not found'}
           </h1>
           <button
             onClick={() => navigate("/")}
@@ -50,10 +82,11 @@ export const HostelDetails: React.FC = () => {
     );
   }
 
-  // Sort rooms in descending order of capacity
-  const sortedRooms = selectedBranchData.rooms.sort(
-    (a, b) => b.capacity - a.capacity
-  );
+  // Get unique images for the gallery (placeholder - will be replaced with actual gallery API)
+  const uniqueImages = [
+    branch.image,
+    branch.heroImage,
+  ].filter(img => img);
 
   const openLightbox = (image: string) => {
     setSelectedImage(image);
@@ -65,15 +98,6 @@ export const HostelDetails: React.FC = () => {
     setSelectedImage(null);
   };
 
-  // Get unique images for the gallery
-  const uniqueImages = Array.from(
-    new Set(
-      selectedBranchData.rooms.reduce<string[]>((acc, room) => {
-        return [...acc, ...room.images];
-      }, [])
-    )
-  );
-
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -82,8 +106,8 @@ export const HostelDetails: React.FC = () => {
       <div className="container mx-auto mt-24 px-4 sm:px-6 py-6">
         <div className="relative h-64 sm:h-80 w-full rounded-2xl overflow-hidden shadow-2xl">
           <img
-            src={selectedBranchData.heroImage}
-            alt={`Hero image for ${selectedBranchData.name}`}
+            src={branch.heroImage}
+            alt={`Hero image for ${branch.name}`}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
@@ -101,10 +125,10 @@ export const HostelDetails: React.FC = () => {
           <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6">
             <div className="max-w-2xl">
               <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-3">
-                Welcome to {selectedBranchData.place}
+                Welcome to {branch.place}
               </h1>
               <p className="text-sm sm:text-base text-white/90 mb-2 sm:mb-3 line-clamp-2 sm:line-clamp-3">
-                {selectedBranchData.description}
+                {branch.description}
               </p>
               <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-white/80 text-xs sm:text-sm">
                 <div className="flex items-center space-x-1 sm:space-x-2">
@@ -129,10 +153,10 @@ export const HostelDetails: React.FC = () => {
             <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-5">
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
-                  Branch {selectedBranchData.branchNumber}
+                  Branch {branch.branchNumber}
                 </h2>
                 <p className="text-white/70 text-base md:text-lg">
-                  {selectedBranchData.description}
+                  {branch.description}
                 </p>
               </div>
             </div>
@@ -143,7 +167,7 @@ export const HostelDetails: React.FC = () => {
                   Room Rates
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
-                  {Object.entries(selectedBranchData.roomsPrice)
+                  {Object.entries(branch.roomsPrice)
                     .sort(([, priceA], [, priceB]) => priceB - priceA)
                     .map(([roomType, price], index) => (
                       <div
@@ -160,7 +184,7 @@ export const HostelDetails: React.FC = () => {
                     ))}
                 </div>
                 {/* cooking facility */}
-                {selectedBranchData.ladies ? (
+                {branch.ladies ? (
                   <div className="bg-gradient-to-r from-white/5 to-white/10 rounded-2xl border border-white/10 p-5 h-auto flex flex-col justify-between">
                     <div className="text-white font-semibold capitalize">
                       COOKING FACILITY (Optional): ₹350/month
@@ -193,7 +217,7 @@ export const HostelDetails: React.FC = () => {
                   <div>
                     <div className="text-white font-medium">Contact</div>
                     <div className="text-white/70">
-                      {selectedBranchData.phone || "Not available"}
+                      {branch.phone || "Not available"}
                     </div>
                   </div>
                 </div>
@@ -202,7 +226,7 @@ export const HostelDetails: React.FC = () => {
                   <div>
                     <div className="text-white font-medium">Location</div>
                     <a
-                      href={selectedBranchData.location}
+                      href={branch.location}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-[#D1C0B2] hover:underline"
@@ -230,7 +254,7 @@ export const HostelDetails: React.FC = () => {
                   <img
                     src={image}
                     alt={`Branch ${
-                      selectedBranchData.branchNumber
+                      branch.branchNumber
                     } - Gallery Image ${index + 1}`}
                     className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
                   />
@@ -271,7 +295,7 @@ export const HostelDetails: React.FC = () => {
                 Prime Location Perks
               </h3>
               <div className="space-y-3">
-                {selectedBranchData.locationPerks.map((perk, index) => (
+                {branch.locationPerks.map((perk, index) => (
                   <div
                     key={index}
                     className="bg-white/5 rounded-lg p-3 border border-white/10 hover:bg-white/10 transition-colors duration-300"
@@ -292,7 +316,7 @@ export const HostelDetails: React.FC = () => {
                 Included Amenities & Property Features
               </h3>
               <div className="grid grid-cols-1 gap-2">
-                {selectedBranchData.amenities.map((amenity, index) => (
+                {branch.amenities.map((amenity, index) => (
                   <div
                     key={index}
                     className="flex items-center space-x-3 text-white/80 p-2 bg-white/5 rounded-lg border border-white/10"
@@ -339,8 +363,8 @@ export const HostelDetails: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <button
                 onClick={() => {
-                  const phone = selectedBranchData.phone || "918848574001";
-                  const message = `Hello, I'd like to book a room at Branch ${selectedBranchData.branchNumber}.`;
+                  const phone = branch.phone || "918848574001";
+                  const message = `Hello, I'd like to book a room at Branch ${branch.branchNumber}.`;
                   const encoded = encodeURIComponent(message);
                   const url = `https://wa.me/${phone.replace(
                     /\D/g,
@@ -352,10 +376,10 @@ export const HostelDetails: React.FC = () => {
               >
                 Book Now via WhatsApp
               </button>
-              {selectedBranchData.phone && (
+              {branch.phone && (
                 <button
                   onClick={() => {
-                    window.open(`tel:${selectedBranchData.phone}`, "_self");
+                    window.open(`tel:${branch.phone}`, "_self");
                   }}
                   className="px-6 py-3 bg-white/10 border border-white/20 rounded-lg text-white font-semibold hover:bg-white/20 transition-all duration-300"
                 >
@@ -369,12 +393,12 @@ export const HostelDetails: React.FC = () => {
                 <span className="font-semibold">Registration Fee:</span> ₹500
                 (One-time, Non-refundable)
               </p>
-              {selectedBranchData.ladies ? (
+              {branch.ladies ? (
                 <p className="text-white/80">
                   <span className="font-semibold">
                     Optional Cooking Facility:
                   </span>{" "}
-                  ₹{selectedBranchData.cookingFee}/month <br />
+                  ₹{branch.cookingFee}/month <br />
                   Includes: • ⛽ Gas & Stove • 🧊 Fridge • 🍳
                   Basic Cooking Vessel
                 </p>
