@@ -1,7 +1,7 @@
 // API service layer for communicating with the backend
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
-
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000/api';
+console.log(import.meta.env.VITE_BACKEND_URL)
 // Type definitions matching the backend schema
 export interface Branch {
   id: number;
@@ -9,11 +9,14 @@ export interface Branch {
   contact_no: string[];
   address: string;
   gmap_link: string;
-  room_rate: Record<string, number>;
+  room_rate: Array<{
+    title: string;
+    rate_per_month: number;
+  }>;
   prime_location_perks: Array<{
-    name: string;
+    title: string;
     distance: string;
-    walk: string;
+    time_to_reach: string;
   }>;
   amenities: string[];
   property_features: string[];
@@ -64,17 +67,19 @@ async function handleResponse<T>(response: Response): Promise<T> {
 // Branch API
 export const branchApi = {
   getAll: async (): Promise<Branch[]> => {
-    const response = await fetch(`${API_BASE_URL}/branches`);
+    const response = await fetch(`${API_BASE_URL}/api/branches`)
+
+    
     return handleResponse(response);
   },
 
   getById: async (id: number): Promise<Branch> => {
-    const response = await fetch(`${API_BASE_URL}/branches/${id}`);
+    const response = await fetch(`${API_BASE_URL}/api/branches/${id}`);
     return handleResponse(response);
   },
 
   create: async (data: Omit<Branch, 'id' | 'created_at' | 'updated_at'>): Promise<Branch> => {
-    const response = await fetch(`${API_BASE_URL}/branches`, {
+    const response = await fetch(`${API_BASE_URL}/api/branches`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
@@ -83,7 +88,7 @@ export const branchApi = {
   },
 
   update: async (id: number, data: Partial<Branch>): Promise<Branch> => {
-    const response = await fetch(`${API_BASE_URL}/branches/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/api/branches/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
@@ -92,7 +97,7 @@ export const branchApi = {
   },
 
   delete: async (id: number): Promise<void> => {
-    const response = await fetch(`${API_BASE_URL}/branches/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/api/branches/${id}`, {
       method: 'DELETE',
     });
     await handleResponse(response);
@@ -103,19 +108,19 @@ export const branchApi = {
 export const galleryApi = {
   getAll: async (branchId?: number): Promise<GalleryImage[]> => {
     const url = branchId 
-      ? `${API_BASE_URL}/gallery?branch_id=${branchId}`
-      : `${API_BASE_URL}/gallery`;
+      ? `${API_BASE_URL}/api/gallery?branch_id=${branchId}`
+      : `${API_BASE_URL}/api/gallery`;  
     const response = await fetch(url);
     return handleResponse(response);
   },
 
   getById: async (id: number): Promise<GalleryImage> => {
-    const response = await fetch(`${API_BASE_URL}/gallery/${id}`);
+    const response = await fetch(`${API_BASE_URL}/api/gallery/${id}`);
     return handleResponse(response);
   },
 
   create: async (data: Omit<GalleryImage, 'id' | 'created_at'>): Promise<GalleryImage> => {
-    const response = await fetch(`${API_BASE_URL}/gallery`, {
+    const response = await fetch(`${API_BASE_URL}/api/gallery`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
@@ -124,7 +129,7 @@ export const galleryApi = {
   },
 
   update: async (id: number, data: Partial<GalleryImage>): Promise<GalleryImage> => {
-    const response = await fetch(`${API_BASE_URL}/gallery/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/api/gallery/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
@@ -133,7 +138,7 @@ export const galleryApi = {
   },
 
   delete: async (id: number): Promise<void> => {
-    const response = await fetch(`${API_BASE_URL}/gallery/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/api/gallery/${id}`, {
       method: 'DELETE',
     });
     await handleResponse(response);
@@ -144,19 +149,19 @@ export const galleryApi = {
 export const enquiryApi = {
   getAll: async (branchId?: number): Promise<Enquiry[]> => {
     const url = branchId 
-      ? `${API_BASE_URL}/enquiries?branch_id=${branchId}`
-      : `${API_BASE_URL}/enquiries`;
+      ? `${API_BASE_URL}/api/enquiries?branch_id=${branchId}`
+      : `${API_BASE_URL}/api/enquiries`;
     const response = await fetch(url);
     return handleResponse(response);
   },
 
   getById: async (id: number): Promise<Enquiry> => {
-    const response = await fetch(`${API_BASE_URL}/enquiries/${id}`);
+    const response = await fetch(`${API_BASE_URL}/api/enquiries/${id}`);
     return handleResponse(response);
   },
 
   create: async (data: Omit<Enquiry, 'id' | 'created_at'>): Promise<Enquiry> => {
-    const response = await fetch(`${API_BASE_URL}/enquiries`, {
+    const response = await fetch(`${API_BASE_URL}/api/enquiries`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
@@ -165,7 +170,7 @@ export const enquiryApi = {
   },
 
   update: async (id: number, data: Partial<Enquiry>): Promise<Enquiry> => {
-    const response = await fetch(`${API_BASE_URL}/enquiries/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/api/enquiries/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
@@ -174,7 +179,7 @@ export const enquiryApi = {
   },
 
   delete: async (id: number): Promise<void> => {
-    const response = await fetch(`${API_BASE_URL}/enquiries/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/api/enquiries/${id}`, {
       method: 'DELETE',
     });
     await handleResponse(response);

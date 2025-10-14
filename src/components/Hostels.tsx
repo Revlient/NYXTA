@@ -36,7 +36,10 @@ export const Hostels: React.FC = () => {
       try {
         setLoading(true);
         const apiBranches = await branchApi.getAll();
-        const frontendBranches = apiBranches.map(mapBranchToFrontend);
+        
+        console.log("apiBranches",apiBranches)
+        // @ts-ignore
+        const frontendBranches = apiBranches.data.map(mapBranchToFrontend);
         setBranches(frontendBranches);
         setError(null);
       } catch (err) {

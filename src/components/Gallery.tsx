@@ -23,11 +23,13 @@ export const Gallery: React.FC = () => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const [apiImages, apiBranches] = await Promise.all([
+        let [apiImages, apiBranches] = await Promise.all([
           galleryApi.getAll(),
           branchApi.getAll(),
         ]);
-        
+        // @ts-ignore
+        [apiImages, apiBranches] = [apiImages.data,apiBranches.data]
+        // @ts-ignore
         const frontendImages = apiImages.map((img) =>
           mapGalleryImageToFrontend(img, apiBranches)
         );
@@ -35,8 +37,10 @@ export const Gallery: React.FC = () => {
         
         // Get unique branch names
         const uniqueBranches = Array.from(
+          // @ts-ignore
           new Set(frontendImages.map((img) => img.branch))
         ).sort();
+        // @ts-ignore
         setBranches(uniqueBranches);
         
         setError(null);

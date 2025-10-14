@@ -5,7 +5,6 @@ import {
   MapPin,
   Star,
   Phone,
-  Calendar,
   Shield,
   Home,
   CheckCircle,
@@ -41,7 +40,9 @@ export const HostelDetails: React.FC = () => {
       
       try {
         setLoading(true);
-        const apiBranch = await branchApi.getById(parseInt(branchId));
+        let apiBranch = await branchApi.getById(parseInt(branchId));
+        //@ts-ignore
+        apiBranch = apiBranch.data
         const frontendBranch = mapBranchToFrontend(apiBranch);
         setBranch(frontendBranch);
         setError(null);
@@ -167,18 +168,18 @@ export const HostelDetails: React.FC = () => {
                   Room Rates
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
-                  {Object.entries(branch.roomsPrice)
-                    .sort(([, priceA], [, priceB]) => priceB - priceA)
-                    .map(([roomType, price], index) => (
+                  {branch.roomsPrice
+                    .sort((a, b) => b.rate_per_month - a.rate_per_month)
+                    .map(({ title, rate_per_month }, index) => (
                       <div
                         key={index}
                         className="bg-gradient-to-r from-white/5 to-white/10 rounded-2xl border border-white/10 p-5 h-24 flex flex-col justify-between"
                       >
                         <div className="text-white font-semibold capitalize">
-                          {roomType}
+                          {title}
                         </div>
                         <div className="text-[#A08647] text-xl font-bold">
-                          ₹{price.toLocaleString()}/month
+                          ₹{rate_per_month.toLocaleString()}/month
                         </div>
                       </div>
                     ))}
@@ -300,9 +301,9 @@ export const HostelDetails: React.FC = () => {
                     key={index}
                     className="bg-white/5 rounded-lg p-3 border border-white/10 hover:bg-white/10 transition-colors duration-300"
                   >
-                    <div className="font-semibold text-white">{perk.name}</div>
+                    <div className="font-semibold text-white">{perk.title}</div>
                     <div className="text-white/60 text-sm">
-                      {perk.distance} • {perk.walk}
+                      {perk.distance} • {perk.time_to_reach}
                     </div>
                   </div>
                 ))}

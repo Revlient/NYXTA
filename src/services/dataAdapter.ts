@@ -15,7 +15,7 @@ export interface FrontendBranch {
   heroImage: string;
   description: string;
   rooms: Array<{
-    id: number;
+    string: number;
     name: string;
     price: number;
     capacity: number;
@@ -25,11 +25,14 @@ export interface FrontendBranch {
     rating: number;
     description: string;
   }>;
-  roomsPrice: Record<string, number>;
+  roomsPrice: Array<{
+    title: string;
+    rate_per_month: number;
+  }>;
   locationPerks: Array<{
-    name: string;
+    title: string;
     distance: string;
-    walk: string;
+    time_to_reach: string;
   }>;
   amenities: string[];
   nearbyEssentials: string[];
