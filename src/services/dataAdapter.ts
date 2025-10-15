@@ -86,7 +86,9 @@ export function mapGalleryImageToFrontend(
   apiImage: ApiGalleryImage,
   branches: ApiBranch[]
 ): FrontendGalleryImage {
-  const branch = branches.find(b => b.id === apiImage.branch_id);
+  console.log(branches)
+  // @ts-ignore
+  const branch = branches.data.find(b => b.id === apiImage.branch_id);
   const branchName = branch ? `Branch ${extractBranchNumber(branch.name)}` : `Branch ${apiImage.branch_id}`;
   
   // Clean image URL by removing backticks and extra whitespace

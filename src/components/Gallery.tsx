@@ -28,8 +28,6 @@ export const Gallery: React.FC = () => {
           branchApi.getAll(),
         ]);
         // @ts-ignore
-        [apiImages, apiBranches] = [apiImages.data,apiBranches.data]
-        // @ts-ignore
         const frontendImages = apiImages.map((img) =>
           mapGalleryImageToFrontend(img, apiBranches)
         );
