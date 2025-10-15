@@ -68,7 +68,6 @@ async function handleResponse<T>(response: Response): Promise<T> {
 export const branchApi = {
   getAll: async (): Promise<Branch[]> => {
     const response = await fetch(`${API_BASE_URL}/api/branches`)
-
     
     return handleResponse(response);
   },
@@ -106,44 +105,52 @@ export const branchApi = {
 
 // Gallery API
 export const galleryApi = {
-  getAll: async (branchId?: number): Promise<GalleryImage[]> => {
-    const url = branchId 
-      ? `${API_BASE_URL}/api/gallery?branch_id=${branchId}`
-      : `${API_BASE_URL}/api/gallery`;  
-    const response = await fetch(url);
-    return handleResponse(response);
+  getAll: async (): Promise<GalleryImage[]> => {
+    const response = await fetch(`${API_BASE_URL}/api/gallery`);
+    let handledResponse= await handleResponse(response);
+    //@ts-ignore
+    return handledResponse.data;
   },
-
-  getById: async (id: number): Promise<GalleryImage> => {
-    const response = await fetch(`${API_BASE_URL}/api/gallery/${id}`);
-    return handleResponse(response);
+  
+  getByBranchId: async (branchId: number): Promise<GalleryImage[]> => {
+    const response = await fetch(`${API_BASE_URL}/api/gallery/branch/${branchId}`);
+    let handledResponse= await handleResponse(response);
+    //@ts-ignore
+    return handledResponse.data;
   },
-
-  create: async (data: Omit<GalleryImage, 'id' | 'created_at'>): Promise<GalleryImage> => {
-    const response = await fetch(`${API_BASE_URL}/api/gallery`, {
+  
+  create: async (branchId: number, data: Omit<GalleryImage, 'id' | 'branch_id' | 'created_at'>): Promise<GalleryImage> => {
+    const response = await fetch(`${API_BASE_URL}/api/gallery/branch/${branchId}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     });
     return handleResponse(response);
   },
-
-  update: async (id: number, data: Partial<GalleryImage>): Promise<GalleryImage> => {
-    const response = await fetch(`${API_BASE_URL}/api/gallery/${id}`, {
+  
+  update: async (branchId: number, imageId: number, data: Partial<GalleryImage>): Promise<GalleryImage> => {
+    const response = await fetch(`${API_BASE_URL}/api/gallery/branch/${branchId}/image/${imageId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     });
     return handleResponse(response);
   },
-
-  delete: async (id: number): Promise<void> => {
-    const response = await fetch(`${API_BASE_URL}/api/gallery/${id}`, {
+  
+  delete: async (branchId: number, imageId: number): Promise<void> => {
+    const response = await fetch(`${API_BASE_URL}/api/gallery/branch/${branchId}/image/${imageId}`, {
       method: 'DELETE',
     });
-    await handleResponse(response);
+    return handleResponse(response);
   },
-};
+  
+  deleteAllByBranchId: async (branchId: number): Promise<void> => {
+    const response = await fetch(`${API_BASE_URL}/api/gallery/branch/${branchId}`, {
+      method: 'DELETE',
+    });
+    return handleResponse(response);
+  }
+}
 
 // Enquiries API
 export const enquiryApi = {

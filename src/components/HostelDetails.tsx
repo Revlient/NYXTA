@@ -15,8 +15,8 @@ import {
 } from "lucide-react";
 import { Navigation } from "./Navigation";
 import { Footer } from "./Footer";
-import { branchApi } from "../services/api";
-import { mapBranchToFrontend, FrontendBranch } from "../services/dataAdapter";
+import { branchApi, galleryApi } from "../services/api";
+import { mapBranchToFrontend, FrontendBranch, mapGalleryImageToFrontend } from "../services/dataAdapter";
 import FloatingIcons from "./FloatingIcons";
 
 export const HostelDetails: React.FC = () => {
@@ -25,6 +25,7 @@ export const HostelDetails: React.FC = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [branch, setBranch] = useState<FrontendBranch | null>(null);
+  const [galleryImages, setGalleryImages] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -33,18 +34,33 @@ export const HostelDetails: React.FC = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Fetch branch data
+  // Fetch branch data and gallery images
   useEffect(() => {
-    const fetchBranch = async () => {
+    const fetchData = async () => {
       if (!branchId) return;
       
       try {
         setLoading(true);
+        
+        // Fetch branch data
         let apiBranch = await branchApi.getById(parseInt(branchId));
         //@ts-ignore
-        apiBranch = apiBranch.data
+        apiBranch = apiBranch.data;
         const frontendBranch = mapBranchToFrontend(apiBranch);
         setBranch(frontendBranch);
+        
+        // Fetch gallery images for this branch
+        try {
+          let apiGalleryImages = await galleryApi.getByBranchId(parseInt(branchId));
+  
+          // Extract image URLs from the gallery images
+          const imageUrls = apiGalleryImages.map(img => img.image_url);
+          setGalleryImages(imageUrls);
+        } catch (galleryErr) {
+          console.error('Failed to fetch gallery images:', galleryErr);
+          // Don't set error for gallery - we can still show the branch without gallery
+        }
+        
         setError(null);
       } catch (err) {
         console.error('Failed to fetch branch:', err);
@@ -54,7 +70,7 @@ export const HostelDetails: React.FC = () => {
       }
     };
 
-    fetchBranch();
+    fetchData();
   }, [branchId]);
 
   if (loading) {
@@ -83,10 +99,9 @@ export const HostelDetails: React.FC = () => {
     );
   }
 
-  // Get unique images for the gallery (placeholder - will be replaced with actual gallery API)
+  // Combine branch images with gallery images
   const uniqueImages = [
-    branch.image,
-    branch.heroImage,
+    ...galleryImages
   ].filter(img => img);
 
   const openLightbox = (image: string) => {
