@@ -1,7 +1,6 @@
 // API service layer for communicating with the backend
 
 const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000/api';
-console.log(import.meta.env.VITE_BACKEND_URL)
 // Type definitions matching the backend schema
 export interface Branch {
   id: number;

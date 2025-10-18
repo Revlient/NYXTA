@@ -119,14 +119,15 @@ export const HostelDetails: React.FC = () => {
       <Navigation />
 
       {/* Hero Section with Branch Image */}
-      <div className="container mx-auto mt-24 px-4 sm:px-6 py-6">
-        <div className="relative h-64 sm:h-80 w-full rounded-2xl overflow-hidden shadow-2xl">
-          <img
-            src={branch.heroImage}
-            alt={`Hero image for ${branch.name}`}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+      {branch.heroImage && (
+        <div className="container mx-auto mt-24 px-4 sm:px-6 py-6">
+          <div className="relative h-64 sm:h-80 w-full rounded-2xl overflow-hidden shadow-2xl">
+            <img
+              src={branch.heroImage}
+              alt={`Hero image for ${branch.name || 'branch'}`}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
           {/* Back Button */}
           <button
@@ -140,12 +141,16 @@ export const HostelDetails: React.FC = () => {
           {/* Branch Info Overlay */}
           <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6">
             <div className="max-w-2xl">
-              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-3">
-                Welcome to {branch.place}
-              </h1>
-              <p className="text-sm sm:text-base text-white/90 mb-2 sm:mb-3 line-clamp-2 sm:line-clamp-3">
-                {branch.description}
-              </p>
+              {branch.place && (
+                <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-3">
+                  Welcome to {branch.place}
+                </h1>
+              )}
+              {branch.description && (
+                <p className="text-sm sm:text-base text-white/90 mb-2 sm:mb-3 line-clamp-2 sm:line-clamp-3">
+                  {branch.description}
+                </p>
+              )}
               <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-white/80 text-xs sm:text-sm">
                 <div className="flex items-center space-x-1 sm:space-x-2">
                   <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -160,6 +165,7 @@ export const HostelDetails: React.FC = () => {
           </div>
         </div>
       </div>
+      )}
 
       {/* Branch Details Section */}
       <div className="container mx-auto px-6 py-12">
@@ -226,59 +232,67 @@ export const HostelDetails: React.FC = () => {
               </p>
             </div>
             {/* Contact Info */}
-            <div className="bg-gradient-to-r from-white/5 to-white/10 rounded-2xl border border-white/10 p-5">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="flex items-center space-x-3">
-                  <Phone className="w-5 h-5 text-[#A08647]" />
-                  <div>
-                    <div className="text-white font-medium">Contact</div>
-                    <div className="text-white/70">
-                      {branch.phone || "Not available"}
+            {(branch.phone || branch.location) && (
+              <div className="bg-gradient-to-r from-white/5 to-white/10 rounded-2xl border border-white/10 p-5">
+                <div className="grid md:grid-cols-2 gap-4">
+                  {branch.phone && (
+                    <div className="flex items-center space-x-3">
+                      <Phone className="w-5 h-5 text-[#A08647]" />
+                      <div>
+                        <div className="text-white font-medium">Contact</div>
+                        <div className="text-white/70">
+                          {branch.phone}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <MapPin className="w-5 h-5 text-[#A08647]" />
-                  <div>
-                    <div className="text-white font-medium">Location</div>
-                    <a
-                      href={branch.location}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#D1C0B2] hover:underline"
-                    >
-                      View on Map
-                    </a>
-                  </div>
+                  )}
+                  {branch.location && (
+                    <div className="flex items-center space-x-3">
+                      <MapPin className="w-5 h-5 text-[#A08647]" />
+                      <div>
+                        <div className="text-white font-medium">Location</div>
+                        <a
+                          href={branch.location}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#D1C0B2] hover:underline"
+                        >
+                          View on Map
+                        </a>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
-            </div>
+            )}
           </div>
 
           {/* Branch Images Gallery */}
-          <div className="mb-10">
-            <h3 className="text-xl md:text-2xl font-bold text-white mb-5">
-              Branch Gallery
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {uniqueImages.map((image, index) => (
-                <div
-                  key={index}
-                  className="relative group overflow-hidden rounded-xl bg-gradient-to-br from-white/5 to-white/10 border border-white/10 cursor-pointer"
-                  onClick={() => openLightbox(image)}
-                >
-                  <img
-                    src={image}
-                    alt={`Branch ${
-                      branch.branchNumber
-                    } - Gallery Image ${index + 1}`}
-                    className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-              ))}
+          {uniqueImages && uniqueImages.length > 0 && (
+            <div className="mb-10">
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-5">
+                Branch Gallery
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {uniqueImages.map((image, index) => (
+                  <div
+                    key={index}
+                    className="relative group overflow-hidden rounded-xl bg-gradient-to-br from-white/5 to-white/10 border border-white/10 cursor-pointer"
+                    onClick={() => openLightbox(image)}
+                  >
+                    <img
+                      src={image}
+                      alt={`Branch ${
+                        branch.branchNumber
+                      } - Gallery Image ${index + 1}`}
+                      className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Lightbox Modal */}
           {lightboxOpen && selectedImage && (
@@ -303,47 +317,57 @@ export const HostelDetails: React.FC = () => {
           )}
 
           {/* Detailed Information */}
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Location Perks */}
-            <div>
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-5 flex items-center">
-                <MapPin className="w-6 h-6 mr-2 text-[#A08647]" />
-                Prime Location Perks
-              </h3>
-              <div className="space-y-3">
-                {branch.locationPerks.map((perk, index) => (
-                  <div
-                    key={index}
-                    className="bg-white/5 rounded-lg p-3 border border-white/10 hover:bg-white/10 transition-colors duration-300"
-                  >
-                    <div className="font-semibold text-white">{perk.title}</div>
-                    <div className="text-white/60 text-sm">
-                      {perk.distance} • {perk.time_to_reach}
-                    </div>
+          {((branch.locationPerks && branch.locationPerks.length > 0) || (branch.amenities && branch.amenities.length > 0)) && (
+            <div className="grid lg:grid-cols-2 gap-8">
+              {/* Location Perks */}
+              {branch.locationPerks && branch.locationPerks.length > 0 && (
+                <div>
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-5 flex items-center">
+                    <MapPin className="w-6 h-6 mr-2 text-[#A08647]" />
+                    Prime Location Perks
+                  </h3>
+                  <div className="space-y-3">
+                    {branch.locationPerks.map((perk, index) => (
+                      <div
+                        key={index}
+                        className="bg-white/5 rounded-lg p-3 border border-white/10 hover:bg-white/10 transition-colors duration-300"
+                      >
+                        {perk.title && <div className="font-semibold text-white">{perk.title}</div>}
+                        {(perk.distance || perk.time_to_reach) && (
+                          <div className="text-white/60 text-sm">
+                            {perk.distance && <span>{perk.distance}</span>}
+                            {perk.distance && perk.time_to_reach && <span> • </span>}
+                            {perk.time_to_reach && <span>{perk.time_to_reach}</span>}
+                          </div>
+                        )}
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </div>
+                </div>
+              )}
 
-            {/* Amenities */}
-            <div>
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-5 flex items-center">
-                <Star className="w-6 h-6 mr-2 text-[#A08647]" />
-                Included Amenities & Property Features
-              </h3>
-              <div className="grid grid-cols-1 gap-2">
-                {branch.amenities.map((amenity, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center space-x-3 text-white/80 p-2 bg-white/5 rounded-lg border border-white/10"
-                  >
-                    <CheckCircle className="w-5 h-5 text-[#A08647] flex-shrink-0" />
-                    <span className="text-sm">{amenity}</span>
+              {/* Amenities */}
+              {branch.amenities && branch.amenities.length > 0 && (
+                <div>
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-5 flex items-center">
+                    <Star className="w-6 h-6 mr-2 text-[#A08647]" />
+                    Included Amenities & Property Features
+                  </h3>
+                  <div className="grid grid-cols-1 gap-2">
+                    {branch.amenities.map((amenity, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center space-x-3 text-white/80 p-2 bg-white/5 rounded-lg border border-white/10"
+                      >
+                        <CheckCircle className="w-5 h-5 text-[#A08647] flex-shrink-0" />
+                        <span className="text-sm">{amenity}</span>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
+              )}
             </div>
-          </div>
+          )}
 
           {/* Booking Section */}
           <div className="mt-12 bg-gradient-to-r from-[#A08647]/10 to-[#D1C0B2]/10 rounded-2xl border border-white/10 p-6">
@@ -406,7 +430,7 @@ export const HostelDetails: React.FC = () => {
 
             <div className="text-center mt-5 p-3 bg-white/5 rounded-lg border border-white/10">
               <p className="text-white/80 mb-1">
-                <span className="font-semibold">Registration Fee:</span> ₹500
+                <span className="font-semibold">Registration Fee:</span> ₹{branch.regFee}
                 (One-time, Non-refundable)
               </p>
               {branch.ladies ? (

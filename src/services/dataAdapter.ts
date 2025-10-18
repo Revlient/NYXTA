@@ -34,9 +34,10 @@ export interface FrontendBranch {
     distance: string;
     time_to_reach: string;
   }>;
-  amenities: string[];
+  amenities: string[] | null;
   nearbyEssentials: string[];
   cookingFee: number;
+  regFee: number;
 }
 
 export interface FrontendGalleryImage {
@@ -60,7 +61,7 @@ export function mapBranchToFrontend(apiBranch: ApiBranch): FrontendBranch {
   const branchNumberMatch = apiBranch.name.match(/branch\s*(\d+)/i);
   const branchNumber = branchNumberMatch ? branchNumberMatch[1] : String(apiBranch.id);
 
-  return {
+  let toReturn: FrontendBranch =  {
     id: apiBranch.id,
     name: apiBranch.name,
     ladies: isLadies,
@@ -75,10 +76,15 @@ export function mapBranchToFrontend(apiBranch: ApiBranch): FrontendBranch {
     rooms: [], // Will be populated separately if needed
     roomsPrice: apiBranch.room_rate,
     locationPerks: apiBranch.prime_location_perks,
-    amenities: [...apiBranch.amenities, ...apiBranch.property_features],
+    amenities: null,
     nearbyEssentials: [], // Not in backend schema yet
     cookingFee: 350, // Default
+    regFee:apiBranch.reg_fee
   };
+  if (apiBranch.amenities && apiBranch.property_features) {
+    toReturn.amenities = [...apiBranch.amenities, ...apiBranch.property_features];
+  }
+  return toReturn;
 }
 
 // Map API gallery image to frontend format
@@ -86,7 +92,6 @@ export function mapGalleryImageToFrontend(
   apiImage: ApiGalleryImage,
   branches: ApiBranch[]
 ): FrontendGalleryImage {
-  console.log(branches)
   // @ts-ignore
   const branch = branches.data.find(b => b.id === apiImage.branch_id);
   const branchName = branch ? `Branch ${extractBranchNumber(branch.name)}` : `Branch ${apiImage.branch_id}`;

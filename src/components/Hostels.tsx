@@ -37,7 +37,7 @@ export const Hostels: React.FC = () => {
         setLoading(true);
         const apiBranches = await branchApi.getAll();
         
-        console.log("apiBranches",apiBranches)
+        
         // @ts-ignore
         const frontendBranches = apiBranches.data.map(mapBranchToFrontend);
         setBranches(frontendBranches);
@@ -116,7 +116,7 @@ export const Hostels: React.FC = () => {
               >
                 <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-3xl border border-white/20 overflow-hidden shadow-2xl hover:shadow-[#A08647]/10 transition-all duration-300 flex flex-col md:flex-row h-full">
                   {/* Branch Image */}
-                  <div className="relative w-full md:w-1/2 h-64 md:h-full overflow-hidden">
+                  <div className="relative w-full md:w-1/2 h-64 md:h-full overflow-hidden ">
                     <img
                       src={branch.image}
                       alt={`Branch ${branch.branchNumber}`}
@@ -124,7 +124,7 @@ export const Hostels: React.FC = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-3xl font-bold md:hidden">
-                      Branch {branch.branchNumber}
+                       {branch.name}
                     </div>
                     <button
                       onClick={() => toggleDetails(branch.id)}
@@ -148,7 +148,7 @@ export const Hostels: React.FC = () => {
                     <div className="flex justify-between items-start">
                       <div className="flex-grow">
                         <h3 className="text-2xl font-bold text-white mb-2">
-                          Branch {branch.branchNumber}
+                          {branch.name}
                         </h3>
                         {branch.ladies ? (
                           <h5 className="text-md  text-white mb-2">
