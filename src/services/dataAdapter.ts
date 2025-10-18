@@ -12,6 +12,7 @@ export interface FrontendBranch {
   phone: string;
   address: string;
   image: string;
+  thumbnail?: string; // New field from backend
   heroImage: string;
   description: string;
   rooms: Array<{
@@ -71,6 +72,7 @@ export function mapBranchToFrontend(apiBranch: ApiBranch): FrontendBranch {
     phone: apiBranch.contact_no[0] || '',
     address: apiBranch.address,
     image: `/hostels/frontbranch${branchNumber.padStart(2, '0')}.jpg`,
+    thumbnail: apiBranch.thumbnail || undefined, // Map thumbnail from backend
     heroImage: `/locations/${place.toLowerCase()}.jpg`,
     description: `Modern hostel accommodation in ${place}`,
     rooms: [], // Will be populated separately if needed

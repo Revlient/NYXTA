@@ -8,6 +8,7 @@ export interface Branch {
   contact_no: string[];
   address: string;
   gmap_link: string;
+  thumbnail?: string; // New field - Cloudinary URL for branch thumbnail
   room_rate: Array<{
     title: string;
     rate_per_month: number;

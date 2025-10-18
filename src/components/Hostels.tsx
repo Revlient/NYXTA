@@ -40,6 +40,7 @@ export const Hostels: React.FC = () => {
         
         // @ts-ignore
         const frontendBranches = apiBranches.data.map(mapBranchToFrontend);
+        console.log('Fetched Branches:', frontendBranches);
         setBranches(frontendBranches);
         setError(null);
       } catch (err) {
@@ -116,28 +117,36 @@ export const Hostels: React.FC = () => {
               >
                 <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-3xl border border-white/20 overflow-hidden shadow-2xl hover:shadow-[#A08647]/10 transition-all duration-300 flex flex-col md:flex-row h-full">
                   {/* Branch Image */}
-                  <div className="relative w-full md:w-1/2 h-64 md:h-full overflow-hidden ">
-                    <img
-                      src={branch.image}
-                      alt={`Branch ${branch.branchNumber}`}
-                      className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-3xl font-bold md:hidden">
-                       {branch.name}
+                  {(branch.thumbnail || branch.image) && (
+                    <div className="relative w-full md:w-1/2 h-64 md:h-full overflow-hidden ">
+                      <img
+                        src={branch.thumbnail || branch.image}
+                        alt={`Branch ${branch.branchNumber}`}
+                        className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
+                        onError={(e) => {
+                          // Fallback to branch.image if thumbnail fails to load
+                          if (branch.image && e.currentTarget.src !== branch.image) {
+                            e.currentTarget.src = branch.image;
+                          }
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-3xl font-bold md:hidden">
+                         {branch.name}
+                      </div>
+                      <button
+                        onClick={() => toggleDetails(branch.id)}
+                        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#A08647] to-[#D1C0B2] text-white px-4 py-2 rounded-xl font-semibold md:hidden flex items-center space-x-2"
+                      >
+                        <span>
+                          {expandedBranches.includes(branch.id)
+                            ? "Hide Details"
+                            : "View Details"}
+                        </span>
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
                     </div>
-                    <button
-                      onClick={() => toggleDetails(branch.id)}
-                      className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#A08647] to-[#D1C0B2] text-white px-4 py-2 rounded-xl font-semibold md:hidden flex items-center space-x-2"
-                    >
-                      <span>
-                        {expandedBranches.includes(branch.id)
-                          ? "Hide Details"
-                          : "View Details"}
-                      </span>
-                      <ChevronRight className="w-4 h-4" />
-                    </button>
-                  </div>
+                  )}
 
                   {/* Branch Content - Always visible on md+, toggle on mobile */}
                   <div

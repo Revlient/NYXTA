@@ -119,11 +119,11 @@ export const HostelDetails: React.FC = () => {
       <Navigation />
 
       {/* Hero Section with Branch Image */}
-      {branch.heroImage && (
+      {branch.thumbnail && (
         <div className="container mx-auto mt-24 px-4 sm:px-6 py-6">
           <div className="relative h-64 sm:h-80 w-full rounded-2xl overflow-hidden shadow-2xl">
             <img
-              src={branch.heroImage}
+              src={branch.thumbnail}
               alt={`Hero image for ${branch.name || 'branch'}`}
               className="w-full h-full object-cover"
             />
