@@ -85,6 +85,12 @@ export function mapBranchToFrontend(apiBranch: ApiBranch): FrontendBranch {
   };
   if (apiBranch.amenities && apiBranch.property_features) {
     toReturn.amenities = [...apiBranch.amenities, ...apiBranch.property_features];
+  }else if (apiBranch.amenities){
+    toReturn.amenities = [...apiBranch.amenities];
+  }else if(apiBranch.property_features){
+    toReturn.amenities = [...apiBranch.property_features];
+  }else{
+    toReturn.amenities = null;
   }
   return toReturn;
 }
