@@ -159,20 +159,47 @@ export const Hostels: React.FC = () => {
                         <h3 className="text-2xl font-bold text-white mb-2">
                           {branch.name}
                         </h3>
-                        {branch.ladies ? (
-                          <h5 className="text-md  text-white mb-2">
-                            Ladies
-                          </h5>
-                        ) : (
-                          <h5 className="text-md  text-white mb-2">
-                            Gents
-                          </h5>
-                        )}
+                        {/* Badges for branch type and features */}
+                        <div className="flex flex-wrap gap-2 mb-2">
+                          {branch.ladies ? (
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-pink-500/20 text-pink-300 border border-pink-500/30">
+                              👩 Ladies Hostel
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-300 border border-blue-500/30">
+                              👨 Gents Hostel
+                            </span>
+                          )}
+                          {branch.isCooking && (
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-500/20 text-green-300 border border-green-500/30">
+                              👨‍🍳 Cooking Available
+                            </span>
+                          )}
+                        </div>
                         <p className="text-white/60 text-sm">
                           Budget accommodation in prime location
                         </p>
                       </div>
                     </div>
+
+                    {/* Cooking Fee Info */}
+                    {branch.isCooking && branch.cookingFee && (
+                      <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-3">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <p className="text-green-300 font-semibold text-sm">
+                              Cooking Facility Available
+                            </p>
+                            <p className="text-white/60 text-xs">
+                              Includes: Gas & Stove, Fridge, Basic Cooking Vessel
+                            </p>
+                          </div>
+                          <div className="text-green-400 font-bold text-lg">
+                            ₹{branch.cookingFee}/mo
+                          </div>
+                        </div>
+                      </div>
+                    )}
 
                     {/* Contact and location */}
                     <div className="address">

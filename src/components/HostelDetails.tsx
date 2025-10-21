@@ -206,21 +206,21 @@ export const HostelDetails: React.FC = () => {
                     ))}
                 </div>
                 {/* cooking facility */}
-                {branch.ladies ? (
-                  <div className="bg-gradient-to-r from-white/5 to-white/10 rounded-2xl border border-white/10 p-5 h-auto flex flex-col justify-between">
+                {branch.isCooking && branch.cookingFee && (
+                  <div className="bg-gradient-to-r from-green-500/10 to-green-500/5 rounded-2xl border border-green-500/20 p-5 h-auto flex flex-col justify-between">
                     <div className="text-white font-semibold capitalize">
-                      COOKING FACILITY (Optional): ₹350/month
+                      COOKING FACILITY (Optional): ₹{branch.cookingFee}/month
                     </div>
-                    <div className="text-[#A08647] text-xl font-bold">
+                    <div className="text-green-400 text-xl font-bold">
                       Includes:
                       <ul className="list-disc list-inside">
                         <li>Gas & Stove</li>
                         <li>Fridge</li>
-                        <li>Basic Cooking Vessel</li>
+                        <li>Basic Cooking Vessel</li>
                       </ul>
                     </div>
                   </div>
-                ) : null}
+                )}
               </div>
             </div>
             {/* other info */}
@@ -433,16 +433,16 @@ export const HostelDetails: React.FC = () => {
                 <span className="font-semibold">Registration Fee:</span> ₹{branch.regFee}
                 (One-time, Non-refundable)
               </p>
-              {branch.ladies ? (
+              {branch.isCooking && branch.cookingFee && (
                 <p className="text-white/80">
                   <span className="font-semibold">
                     Optional Cooking Facility:
                   </span>{" "}
                   ₹{branch.cookingFee}/month <br />
                   Includes: • ⛽ Gas & Stove • 🧊 Fridge • 🍳
-                  Basic Cooking Vessel
+                  Basic Cooking Vessel
                 </p>
-              ) : null}
+              )}
 
               <p className="text-white/80">
                 <span className="font-semibold">

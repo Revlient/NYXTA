@@ -22,6 +22,10 @@ export interface Branch {
   property_features: string[];
   reg_fee: number;
   is_mess_available: boolean;
+  is_ladies: boolean | null; // New field - Is it a ladies hostel?
+  is_cooking: boolean | null; // New field - Are cooking facilities available?
+  cooking_price: number | null; // New field - Monthly cost for cooking
+  display_order: number | null; // New field - Display order for branches
   created_at?: string;
   updated_at?: string;
 }

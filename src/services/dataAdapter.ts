@@ -37,8 +37,10 @@ export interface FrontendBranch {
   }>;
   amenities: string[] | null;
   nearbyEssentials: string[];
-  cookingFee: number;
+  cookingFee: number | null; // Updated to match backend
   regFee: number;
+  isCooking: boolean; // New field from backend
+  displayOrder: number; // New field from backend
 }
 
 export interface FrontendGalleryImage {
@@ -50,9 +52,11 @@ export interface FrontendGalleryImage {
 
 // Map API branch to frontend format
 export function mapBranchToFrontend(apiBranch: ApiBranch): FrontendBranch {
-  // Extract branch metadata from name or use defaults
+  // Use is_ladies from backend, fallback to name parsing
   const nameLower = apiBranch.name.toLowerCase();
-  const isLadies = nameLower.includes('ladies') || nameLower.includes('women');
+  const isLadies = apiBranch.is_ladies !== null 
+    ? apiBranch.is_ladies 
+    : (nameLower.includes('ladies') || nameLower.includes('women'));
   
   // Extract place from name (e.g., "NYXTA LADIES HOSTEL - EDAPPALLY" -> "Edappally")
   const placeMatch = apiBranch.name.match(/[-–]\s*(.+?)(?:\s*\(|$)/i);
@@ -80,8 +84,10 @@ export function mapBranchToFrontend(apiBranch: ApiBranch): FrontendBranch {
     locationPerks: apiBranch.prime_location_perks,
     amenities: null,
     nearbyEssentials: [], // Not in backend schema yet
-    cookingFee: 350, // Default
-    regFee:apiBranch.reg_fee
+    cookingFee: apiBranch.cooking_price, // Use backend value (can be null)
+    regFee: apiBranch.reg_fee,
+    isCooking: apiBranch.is_cooking || false, // New field from backend
+    displayOrder: apiBranch.display_order || 0, // New field from backend
   };
   if (apiBranch.amenities && apiBranch.property_features) {
     toReturn.amenities = [...apiBranch.amenities, ...apiBranch.property_features];
