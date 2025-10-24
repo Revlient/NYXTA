@@ -40,7 +40,6 @@ export const Hostels: React.FC = () => {
         
         // @ts-ignore
         const frontendBranches = apiBranches.data.map(mapBranchToFrontend);
-        console.log('Fetched Branches:', frontendBranches);
         setBranches(frontendBranches);
         setError(null);
       } catch (err) {
