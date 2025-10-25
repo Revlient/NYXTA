@@ -8,7 +8,6 @@ import {
   Shield,
   Home,
   CheckCircle,
-  Wifi,
   X,
   Clock,
   Loader2,
@@ -16,7 +15,7 @@ import {
 import { Navigation } from "./Navigation";
 import { Footer } from "./Footer";
 import { branchApi, galleryApi } from "../services/api";
-import { mapBranchToFrontend, FrontendBranch, mapGalleryImageToFrontend } from "../services/dataAdapter";
+import { mapBranchToFrontend, FrontendBranch } from "../services/dataAdapter";
 import FloatingIcons from "./FloatingIcons";
 
 export const HostelDetails: React.FC = () => {
@@ -52,10 +51,48 @@ export const HostelDetails: React.FC = () => {
         // Fetch gallery images for this branch
         try {
           let apiGalleryImages = await galleryApi.getByBranchId(parseInt(branchId));
-  
-          // Extract image URLs from the gallery images
-          const imageUrls = apiGalleryImages.map(img => img.image_url);
-          setGalleryImages(imageUrls);
+
+          // Debug: Log the full API response structure
+          // console.log('Full API response:', apiGalleryImages);
+          // console.log('API response type:', typeof apiGalleryImages);
+          // console.log('API response length:', apiGalleryImages?.length);
+
+          // Extract image URLs from the gallery images and clean them
+          const imageUrls = apiGalleryImages.map(img => {
+            // Clean image URL by removing backticks and extra whitespace (same as dataAdapter)
+            return img.image_url.replace(/`/g, '').trim();
+          });
+          
+          // Debug: Log the raw image URLs to check for duplicates from backend
+          // console.log('Raw gallery images from backend:', imageUrls);
+          // console.log('Total images:', imageUrls.length);
+          // console.log('Unique images:', [...new Set(imageUrls)].length);
+          
+          // Debug: Check for duplicate URLs
+          // const duplicates = imageUrls.filter((url, index) => imageUrls.indexOf(url) !== index);
+          // if (duplicates.length > 0) {
+          //   console.log('Duplicate URLs found:', duplicates);
+          // }
+          
+          // Deduplicate based on image filename/content (not full URL)
+          // Extract filename from URL and group by filename
+          const imageMap = new Map();
+          imageUrls.forEach(url => {
+            // Extract filename from URL (e.g., "exterior.jpg", "room.jpg")
+            const filename = url.split('/').pop()?.split('?')[0] || '';
+            if (filename && !imageMap.has(filename)) {
+              imageMap.set(filename, url);
+            }
+          });
+          
+          // Convert back to array of unique image URLs
+          const deduplicatedUrls = Array.from(imageMap.values());
+          
+          // console.log('Images before content deduplication:', imageUrls.length);
+          // console.log('Images after content deduplication:', deduplicatedUrls.length);
+          // console.log('Deduplicated URLs:', deduplicatedUrls);
+          
+          setGalleryImages(deduplicatedUrls);
         } catch (galleryErr) {
           console.error('Failed to fetch gallery images:', galleryErr);
           // Don't set error for gallery - we can still show the branch without gallery
@@ -99,10 +136,12 @@ export const HostelDetails: React.FC = () => {
     );
   }
 
-  // Combine branch images with gallery images
-  const uniqueImages = [
-    ...galleryImages
-  ].filter(img => img);
+  // Gallery images are already deduplicated by content, just filter empty ones
+  const uniqueImages = galleryImages.filter(img => img && img.trim() !== '');
+  
+  // Debug: Log the final images
+  // console.log('Final gallery images to display:', uniqueImages);
+  // console.log('Final unique count:', uniqueImages.length);
 
   const openLightbox = (image: string) => {
     setSelectedImage(image);
@@ -276,7 +315,7 @@ export const HostelDetails: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {uniqueImages.map((image, index) => (
                   <div
-                    key={index}
+                    key={`${image}-${index}`}
                     className="relative group overflow-hidden rounded-xl bg-gradient-to-br from-white/5 to-white/10 border border-white/10 cursor-pointer"
                     onClick={() => openLightbox(image)}
                   >

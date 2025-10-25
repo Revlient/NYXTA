@@ -119,8 +119,26 @@ export const galleryApi = {
   getByBranchId: async (branchId: number): Promise<GalleryImage[]> => {
     const response = await fetch(`${API_BASE_URL}/api/gallery/branch/${branchId}`);
     let handledResponse= await handleResponse(response);
+    
+    // Debug: Log the raw response structure
+    // console.log('Raw API response for branch', branchId, ':', handledResponse);
+    // console.log('Response data:', handledResponse.data);
+    // console.log('Response data type:', typeof handledResponse.data);
+    // console.log('Response data length:', handledResponse.data?.length);
+    
+    // Handle potential response structure issues
     //@ts-ignore
-    return handledResponse.data;
+    const data = handledResponse.data || handledResponse;
+    
+    // Ensure we return an array
+    if (Array.isArray(data)) {
+      return data;
+    } else if (data && Array.isArray(data.data)) {
+      return data.data;
+    } else {
+      console.error('Unexpected response structure:', data);
+      return [];
+    }
   },
   
   create: async (branchId: number, data: Omit<GalleryImage, 'id' | 'branch_id' | 'created_at'>): Promise<GalleryImage> => {
