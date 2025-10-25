@@ -5,39 +5,88 @@ import {
   MapPin,
   Star,
   Phone,
-  Calendar,
   Shield,
   Home,
   CheckCircle,
   Wifi,
   X,
   Clock,
+  Loader2,
 } from "lucide-react";
 import { Navigation } from "./Navigation";
 import { Footer } from "./Footer";
-import branches from "../data/Branches";
+import { branchApi, galleryApi } from "../services/api";
+import { mapBranchToFrontend, FrontendBranch, mapGalleryImageToFrontend } from "../services/dataAdapter";
 import FloatingIcons from "./FloatingIcons";
+
 export const HostelDetails: React.FC = () => {
   const { branchId } = useParams();
   const navigate = useNavigate();
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [branch, setBranch] = useState<FrontendBranch | null>(null);
+  const [galleryImages, setGalleryImages] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const selectedBranchData = branches.find(
-    (b) => b.id === parseInt(branchId || "0")
-  );
+  // Fetch branch data and gallery images
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!branchId) return;
+      
+      try {
+        setLoading(true);
+        
+        // Fetch branch data
+        let apiBranch = await branchApi.getById(parseInt(branchId));
+        //@ts-ignore
+        apiBranch = apiBranch.data;
+        const frontendBranch = mapBranchToFrontend(apiBranch);
+        setBranch(frontendBranch);
+        
+        // Fetch gallery images for this branch
+        try {
+          let apiGalleryImages = await galleryApi.getByBranchId(parseInt(branchId));
+  
+          // Extract image URLs from the gallery images
+          const imageUrls = apiGalleryImages.map(img => img.image_url);
+          setGalleryImages(imageUrls);
+        } catch (galleryErr) {
+          console.error('Failed to fetch gallery images:', galleryErr);
+          // Don't set error for gallery - we can still show the branch without gallery
+        }
+        
+        setError(null);
+      } catch (err) {
+        console.error('Failed to fetch branch:', err);
+        setError('Failed to load hostel details. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  if (!selectedBranchData) {
+    fetchData();
+  }, [branchId]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-12 h-12 text-[#A08647] animate-spin" />
+      </div>
+    );
+  }
+
+  if (error || !branch) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-white mb-4">
-            Branch not found
+            {error || 'Branch not found'}
           </h1>
           <button
             onClick={() => navigate("/")}
@@ -50,10 +99,10 @@ export const HostelDetails: React.FC = () => {
     );
   }
 
-  // Sort rooms in descending order of capacity
-  const sortedRooms = selectedBranchData.rooms.sort(
-    (a, b) => b.capacity - a.capacity
-  );
+  // Combine branch images with gallery images
+  const uniqueImages = [
+    ...galleryImages
+  ].filter(img => img);
 
   const openLightbox = (image: string) => {
     setSelectedImage(image);
@@ -65,28 +114,20 @@ export const HostelDetails: React.FC = () => {
     setSelectedImage(null);
   };
 
-  // Get unique images for the gallery
-  const uniqueImages = Array.from(
-    new Set(
-      selectedBranchData.rooms.reduce<string[]>((acc, room) => {
-        return [...acc, ...room.images];
-      }, [])
-    )
-  );
-
   return (
     <div className="min-h-screen">
       <Navigation />
 
       {/* Hero Section with Branch Image */}
-      <div className="container mx-auto mt-24 px-4 sm:px-6 py-6">
-        <div className="relative h-64 sm:h-80 w-full rounded-2xl overflow-hidden shadow-2xl">
-          <img
-            src={selectedBranchData.heroImage}
-            alt={`Hero image for ${selectedBranchData.name}`}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+      {branch.thumbnail && (
+        <div className="container mx-auto mt-24 px-4 sm:px-6 py-6">
+          <div className="relative h-64 sm:h-80 w-full rounded-2xl overflow-hidden shadow-2xl">
+            <img
+              src={branch.thumbnail}
+              alt={`Hero image for ${branch.name || 'branch'}`}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
           {/* Back Button */}
           <button
@@ -100,12 +141,16 @@ export const HostelDetails: React.FC = () => {
           {/* Branch Info Overlay */}
           <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6">
             <div className="max-w-2xl">
-              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-3">
-                Welcome to {selectedBranchData.place}
-              </h1>
-              <p className="text-sm sm:text-base text-white/90 mb-2 sm:mb-3 line-clamp-2 sm:line-clamp-3">
-                {selectedBranchData.description}
-              </p>
+              {branch.place && (
+                <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-3">
+                  Welcome to {branch.place}
+                </h1>
+              )}
+              {branch.description && (
+                <p className="text-sm sm:text-base text-white/90 mb-2 sm:mb-3 line-clamp-2 sm:line-clamp-3">
+                  {branch.description}
+                </p>
+              )}
               <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-white/80 text-xs sm:text-sm">
                 <div className="flex items-center space-x-1 sm:space-x-2">
                   <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -120,6 +165,7 @@ export const HostelDetails: React.FC = () => {
           </div>
         </div>
       </div>
+      )}
 
       {/* Branch Details Section */}
       <div className="container mx-auto px-6 py-12">
@@ -129,10 +175,10 @@ export const HostelDetails: React.FC = () => {
             <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-5">
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
-                  Branch {selectedBranchData.branchNumber}
+                  Branch {branch.branchNumber}
                 </h2>
                 <p className="text-white/70 text-base md:text-lg">
-                  {selectedBranchData.description}
+                  {branch.description}
                 </p>
               </div>
             </div>
@@ -143,38 +189,38 @@ export const HostelDetails: React.FC = () => {
                   Room Rates
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
-                  {Object.entries(selectedBranchData.roomsPrice)
-                    .sort(([, priceA], [, priceB]) => priceB - priceA)
-                    .map(([roomType, price], index) => (
+                  {branch.roomsPrice
+                    .sort((a, b) => b.rate_per_month - a.rate_per_month)
+                    .map(({ title, rate_per_month }, index) => (
                       <div
                         key={index}
                         className="bg-gradient-to-r from-white/5 to-white/10 rounded-2xl border border-white/10 p-5 h-24 flex flex-col justify-between"
                       >
                         <div className="text-white font-semibold capitalize">
-                          {roomType}
+                          {title}
                         </div>
                         <div className="text-[#A08647] text-xl font-bold">
-                          ₹{price.toLocaleString()}/month
+                          ₹{rate_per_month.toLocaleString()}/month
                         </div>
                       </div>
                     ))}
                 </div>
                 {/* cooking facility */}
-                {selectedBranchData.ladies ? (
-                  <div className="bg-gradient-to-r from-white/5 to-white/10 rounded-2xl border border-white/10 p-5 h-auto flex flex-col justify-between">
+                {branch.isCooking && branch.cookingFee && (
+                  <div className="bg-gradient-to-r from-green-500/10 to-green-500/5 rounded-2xl border border-green-500/20 p-5 h-auto flex flex-col justify-between">
                     <div className="text-white font-semibold capitalize">
-                      COOKING FACILITY (Optional): ₹350/month
+                      COOKING FACILITY (Optional): ₹{branch.cookingFee}/month
                     </div>
-                    <div className="text-[#A08647] text-xl font-bold">
+                    <div className="text-green-400 text-xl font-bold">
                       Includes:
                       <ul className="list-disc list-inside">
                         <li>Gas & Stove</li>
                         <li>Fridge</li>
-                        <li>Basic Cooking Vessel</li>
+                        <li>Basic Cooking Vessel</li>
                       </ul>
                     </div>
                   </div>
-                ) : null}
+                )}
               </div>
             </div>
             {/* other info */}
@@ -186,59 +232,67 @@ export const HostelDetails: React.FC = () => {
               </p>
             </div>
             {/* Contact Info */}
-            <div className="bg-gradient-to-r from-white/5 to-white/10 rounded-2xl border border-white/10 p-5">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="flex items-center space-x-3">
-                  <Phone className="w-5 h-5 text-[#A08647]" />
-                  <div>
-                    <div className="text-white font-medium">Contact</div>
-                    <div className="text-white/70">
-                      {selectedBranchData.phone || "Not available"}
+            {(branch.phone || branch.location) && (
+              <div className="bg-gradient-to-r from-white/5 to-white/10 rounded-2xl border border-white/10 p-5">
+                <div className="grid md:grid-cols-2 gap-4">
+                  {branch.phone && (
+                    <div className="flex items-center space-x-3">
+                      <Phone className="w-5 h-5 text-[#A08647]" />
+                      <div>
+                        <div className="text-white font-medium">Contact</div>
+                        <div className="text-white/70">
+                          {branch.phone}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <MapPin className="w-5 h-5 text-[#A08647]" />
-                  <div>
-                    <div className="text-white font-medium">Location</div>
-                    <a
-                      href={selectedBranchData.location}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#D1C0B2] hover:underline"
-                    >
-                      View on Map
-                    </a>
-                  </div>
+                  )}
+                  {branch.location && (
+                    <div className="flex items-center space-x-3">
+                      <MapPin className="w-5 h-5 text-[#A08647]" />
+                      <div>
+                        <div className="text-white font-medium">Location</div>
+                        <a
+                          href={branch.location}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#D1C0B2] hover:underline"
+                        >
+                          View on Map
+                        </a>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
-            </div>
+            )}
           </div>
 
           {/* Branch Images Gallery */}
-          <div className="mb-10">
-            <h3 className="text-xl md:text-2xl font-bold text-white mb-5">
-              Branch Gallery
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {uniqueImages.map((image, index) => (
-                <div
-                  key={index}
-                  className="relative group overflow-hidden rounded-xl bg-gradient-to-br from-white/5 to-white/10 border border-white/10 cursor-pointer"
-                  onClick={() => openLightbox(image)}
-                >
-                  <img
-                    src={image}
-                    alt={`Branch ${
-                      selectedBranchData.branchNumber
-                    } - Gallery Image ${index + 1}`}
-                    className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-              ))}
+          {uniqueImages && uniqueImages.length > 0 && (
+            <div className="mb-10">
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-5">
+                Branch Gallery
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {uniqueImages.map((image, index) => (
+                  <div
+                    key={index}
+                    className="relative group overflow-hidden rounded-xl bg-gradient-to-br from-white/5 to-white/10 border border-white/10 cursor-pointer"
+                    onClick={() => openLightbox(image)}
+                  >
+                    <img
+                      src={image}
+                      alt={`Branch ${
+                        branch.branchNumber
+                      } - Gallery Image ${index + 1}`}
+                      className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Lightbox Modal */}
           {lightboxOpen && selectedImage && (
@@ -263,47 +317,57 @@ export const HostelDetails: React.FC = () => {
           )}
 
           {/* Detailed Information */}
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Location Perks */}
-            <div>
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-5 flex items-center">
-                <MapPin className="w-6 h-6 mr-2 text-[#A08647]" />
-                Prime Location Perks
-              </h3>
-              <div className="space-y-3">
-                {selectedBranchData.locationPerks.map((perk, index) => (
-                  <div
-                    key={index}
-                    className="bg-white/5 rounded-lg p-3 border border-white/10 hover:bg-white/10 transition-colors duration-300"
-                  >
-                    <div className="font-semibold text-white">{perk.name}</div>
-                    <div className="text-white/60 text-sm">
-                      {perk.distance} • {perk.walk}
-                    </div>
+          {((branch.locationPerks && branch.locationPerks.length > 0) || (branch.amenities && branch.amenities.length > 0)) && (
+            <div className="grid lg:grid-cols-2 gap-8">
+              {/* Location Perks */}
+              {branch.locationPerks && branch.locationPerks.length > 0 && (
+                <div>
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-5 flex items-center">
+                    <MapPin className="w-6 h-6 mr-2 text-[#A08647]" />
+                    Prime Location Perks
+                  </h3>
+                  <div className="space-y-3">
+                    {branch.locationPerks.map((perk, index) => (
+                      <div
+                        key={index}
+                        className="bg-white/5 rounded-lg p-3 border border-white/10 hover:bg-white/10 transition-colors duration-300"
+                      >
+                        {perk.title && <div className="font-semibold text-white">{perk.title}</div>}
+                        {(perk.distance || perk.time_to_reach) && (
+                          <div className="text-white/60 text-sm">
+                            {perk.distance && <span>{perk.distance}</span>}
+                            {perk.distance && perk.time_to_reach && <span> • </span>}
+                            {perk.time_to_reach && <span>{perk.time_to_reach}</span>}
+                          </div>
+                        )}
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </div>
+                </div>
+              )}
 
-            {/* Amenities */}
-            <div>
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-5 flex items-center">
-                <Star className="w-6 h-6 mr-2 text-[#A08647]" />
-                Included Amenities & Property Features
-              </h3>
-              <div className="grid grid-cols-1 gap-2">
-                {selectedBranchData.amenities.map((amenity, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center space-x-3 text-white/80 p-2 bg-white/5 rounded-lg border border-white/10"
-                  >
-                    <CheckCircle className="w-5 h-5 text-[#A08647] flex-shrink-0" />
-                    <span className="text-sm">{amenity}</span>
+              {/* Amenities */}
+              {branch.amenities && branch.amenities.length > 0 && (
+                <div>
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-5 flex items-center">
+                    <Star className="w-6 h-6 mr-2 text-[#A08647]" />
+                    Included Amenities & Property Features
+                  </h3>
+                  <div className="grid grid-cols-1 gap-2">
+                    {branch.amenities.map((amenity, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center space-x-3 text-white/80 p-2 bg-white/5 rounded-lg border border-white/10"
+                      >
+                        <CheckCircle className="w-5 h-5 text-[#A08647] flex-shrink-0" />
+                        <span className="text-sm">{amenity}</span>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
+              )}
             </div>
-          </div>
+          )}
 
           {/* Booking Section */}
           <div className="mt-12 bg-gradient-to-r from-[#A08647]/10 to-[#D1C0B2]/10 rounded-2xl border border-white/10 p-6">
@@ -339,8 +403,8 @@ export const HostelDetails: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <button
                 onClick={() => {
-                  const phone = selectedBranchData.phone || "918848574001";
-                  const message = `Hello, I'd like to book a room at Branch ${selectedBranchData.branchNumber}.`;
+                  const phone = branch.phone || "918848574001";
+                  const message = `Hello, I'd like to book a room at Branch ${branch.branchNumber}.`;
                   const encoded = encodeURIComponent(message);
                   const url = `https://wa.me/${phone.replace(
                     /\D/g,
@@ -352,10 +416,10 @@ export const HostelDetails: React.FC = () => {
               >
                 Book Now via WhatsApp
               </button>
-              {selectedBranchData.phone && (
+              {branch.phone && (
                 <button
                   onClick={() => {
-                    window.open(`tel:${selectedBranchData.phone}`, "_self");
+                    window.open(`tel:${branch.phone}`, "_self");
                   }}
                   className="px-6 py-3 bg-white/10 border border-white/20 rounded-lg text-white font-semibold hover:bg-white/20 transition-all duration-300"
                 >
@@ -366,19 +430,19 @@ export const HostelDetails: React.FC = () => {
 
             <div className="text-center mt-5 p-3 bg-white/5 rounded-lg border border-white/10">
               <p className="text-white/80 mb-1">
-                <span className="font-semibold">Registration Fee:</span> ₹500
+                <span className="font-semibold">Registration Fee:</span> ₹{branch.regFee}
                 (One-time, Non-refundable)
               </p>
-              {selectedBranchData.ladies ? (
+              {branch.isCooking && branch.cookingFee && (
                 <p className="text-white/80">
                   <span className="font-semibold">
                     Optional Cooking Facility:
                   </span>{" "}
-                  ₹{selectedBranchData.cookingFee}/month <br />
+                  ₹{branch.cookingFee}/month <br />
                   Includes: • ⛽ Gas & Stove • 🧊 Fridge • 🍳
-                  Basic Cooking Vessel
+                  Basic Cooking Vessel
                 </p>
-              ) : null}
+              )}
 
               <p className="text-white/80">
                 <span className="font-semibold">
