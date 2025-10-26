@@ -207,7 +207,7 @@ export const HostelDetails: React.FC = () => {
                 </div>
                 {/* cooking facility */}
                 {branch.isCooking && branch.cookingFee && (
-                  <div className="bg-gradient-to-r from-green-500/10 to-green-500/5 rounded-2xl border border-green-500/20 p-5 h-auto flex flex-col justify-between">
+                  <div className="bg-gradient-to-r from-green-500/10 to-green-500/5 rounded-2xl border border-green-500/20 p-5 h-auto flex flex-col justify-between mb-4">
                     <div className="text-white font-semibold capitalize">
                       COOKING FACILITY (Optional): ₹{branch.cookingFee}/month
                     </div>
@@ -221,16 +221,30 @@ export const HostelDetails: React.FC = () => {
                     </div>
                   </div>
                 )}
+                {/* mess facility */}
+                {branch.isMessAvailable && (
+                  <div className="bg-gradient-to-r from-orange-500/10 to-orange-500/5 rounded-2xl border border-orange-500/20 p-5 h-auto flex flex-col justify-between">
+                    <div className="text-white font-semibold capitalize">
+                      MESS FACILITY AVAILABLE (Optional)
+                    </div>
+                    <div className="text-orange-400 text-xl font-bold">
+                      Contact us for pricing and meal plans
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
             {/* other info */}
-            <div className="text-center my-5 p-3 bg-white/5 rounded-lg border border-white/10">
-              <p className="text-white/80">
-                <span className="font-semibold">
-                  Mess facility available at an additional cost (optional)
-                </span>
-              </p>
-            </div>
+            {branch.isMessAvailable && (
+              <div className="text-center my-5 p-3 bg-orange-500/10 rounded-lg border border-orange-500/20">
+                <p className="text-orange-300 font-semibold">
+                  🍽️ Mess Facility Available
+                </p>
+                <p className="text-white/70 text-sm">
+                  Contact us for meal plans and pricing details
+                </p>
+              </div>
+            )}
             {/* Contact Info */}
             {(branch.phone || branch.location) && (
               <div className="bg-gradient-to-r from-white/5 to-white/10 rounded-2xl border border-white/10 p-5">
@@ -444,11 +458,14 @@ export const HostelDetails: React.FC = () => {
                 </p>
               )}
 
-              <p className="text-white/80">
-                <span className="font-semibold">
-                  Mess facility available at an additional cost (optional)
-                </span>
-              </p>
+              {branch.isMessAvailable && (
+                <p className="text-white/80 mt-2">
+                  <span className="font-semibold">
+                    🍽️ Mess Facility:
+                  </span>{" "}
+                  Available at additional cost (Contact for details)
+                </p>
+              )}
             </div>
           </div>
         </div>

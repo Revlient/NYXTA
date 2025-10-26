@@ -40,6 +40,7 @@ export interface FrontendBranch {
   cookingFee: number | null; // Updated to match backend
   regFee: number;
   isCooking: boolean; // New field from backend
+  isMessAvailable: boolean; // New field from backend
   displayOrder: number; // New field from backend
 }
 
@@ -87,6 +88,7 @@ export function mapBranchToFrontend(apiBranch: ApiBranch): FrontendBranch {
     cookingFee: apiBranch.cooking_price, // Use backend value (can be null)
     regFee: apiBranch.reg_fee,
     isCooking: apiBranch.is_cooking || false, // New field from backend
+    isMessAvailable: apiBranch.is_mess_available || false, // New field from backend
     displayOrder: apiBranch.display_order || 0, // New field from backend
   };
   if (apiBranch.amenities && apiBranch.property_features) {
