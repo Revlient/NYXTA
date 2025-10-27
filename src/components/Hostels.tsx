@@ -174,6 +174,11 @@ export const Hostels: React.FC = () => {
                               👨‍🍳 Cooking Available
                             </span>
                           )}
+                          {branch.isMessAvailable && (
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-orange-500/20 text-orange-300 border border-orange-500/30">
+                              🍽️ Mess Available
+                            </span>
+                          )}
                         </div>
                         <p className="text-white/60 text-sm">
                           Budget accommodation in prime location
@@ -181,7 +186,25 @@ export const Hostels: React.FC = () => {
                       </div>
                     </div>
 
-                   
+                    {/* Cooking Fee Info */}
+                    {/* {branch.isCooking && branch.cookingFee && (
+                      <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-3">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <p className="text-green-300 font-semibold text-sm">
+                              Cooking Facility Available
+                            </p>
+                            <p className="text-white/60 text-xs">
+                              Includes: Gas & Stove, Fridge, Basic Cooking Vessel
+                            </p>
+                          </div>
+                          <div className="text-green-400 font-bold text-lg">
+                            ₹{branch.cookingFee}/mo
+                          </div>
+                        </div>
+                      </div>
+                    )} */}
+
                     {/* Contact and location */}
                     <div className="address">
                       <p className="text-white/80 mb-2">
