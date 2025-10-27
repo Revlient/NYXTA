@@ -92,9 +92,6 @@ export const Amenities: React.FC = () => {
       description:
         "Dedicated washing space for clothes and daily laundry needs",
       gradient: "from-red-500 to-pink-500",
-    },
-    {
-      
     }
   ];
 
