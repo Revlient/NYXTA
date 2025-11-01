@@ -50,49 +50,16 @@ export const HostelDetails: React.FC = () => {
         
         // Fetch gallery images for this branch
         try {
-          let apiGalleryImages = await galleryApi.getByBranchId(parseInt(branchId));
+          const apiGalleryImages = await galleryApi.getByBranchId(parseInt(branchId));
+          console.log('Full API response:', apiGalleryImages);
 
-          // Debug: Log the full API response structure
-          // console.log('Full API response:', apiGalleryImages);
-          // console.log('API response type:', typeof apiGalleryImages);
-          // console.log('API response length:', apiGalleryImages?.length);
+          // Extract and clean image URLs - allow duplicates, preserve API order
+          const imageUrls = apiGalleryImages
+            .map(img => (img.image_url || '').replace(/`/g, '').trim())
+            .filter(url => url !== '');
 
-          // Extract image URLs from the gallery images and clean them
-          const imageUrls = apiGalleryImages.map(img => {
-            // Clean image URL by removing backticks and extra whitespace (same as dataAdapter)
-            return img.image_url.replace(/`/g, '').trim();
-          });
-          
-          // Debug: Log the raw image URLs to check for duplicates from backend
-          // console.log('Raw gallery images from backend:', imageUrls);
-          // console.log('Total images:', imageUrls.length);
-          // console.log('Unique images:', [...new Set(imageUrls)].length);
-          
-          // Debug: Check for duplicate URLs
-          // const duplicates = imageUrls.filter((url, index) => imageUrls.indexOf(url) !== index);
-          // if (duplicates.length > 0) {
-          //   console.log('Duplicate URLs found:', duplicates);
-          // }
-          
-          // Deduplicate based on image filename/content (not full URL)
-          // Extract filename from URL and group by filename
-          const imageMap = new Map();
-          imageUrls.forEach(url => {
-            // Extract filename from URL (e.g., "exterior.jpg", "room.jpg")
-            const filename = url.split('/').pop()?.split('?')[0] || '';
-            if (filename && !imageMap.has(filename)) {
-              imageMap.set(filename, url);
-            }
-          });
-          
-          // Convert back to array of unique image URLs
-          const deduplicatedUrls = Array.from(imageMap.values());
-          
-          // console.log('Images before content deduplication:', imageUrls.length);
-          // console.log('Images after content deduplication:', deduplicatedUrls.length);
-          // console.log('Deduplicated URLs:', deduplicatedUrls);
-          
-          setGalleryImages(deduplicatedUrls);
+          setGalleryImages(imageUrls);
+          console.log('Gallery images loaded:', imageUrls.length);
         } catch (galleryErr) {
           console.error('Failed to fetch gallery images:', galleryErr);
           // Don't set error for gallery - we can still show the branch without gallery
